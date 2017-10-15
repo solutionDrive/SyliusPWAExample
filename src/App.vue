@@ -1,7 +1,8 @@
 <template>
   <div>
     <header>
-      <span>Sylius PWA</span>
+      <router-link to="/" class="home">Sylius PWA</router-link>
+      <router-link to="cart" class="cart">Cart</router-link>
     </header>
     <main>
       <router-view></router-view>
@@ -40,8 +41,10 @@ header {
   color: #ffffff;
 }
 
-header span {
-  display: block;
+header a {
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-block;
   position: relative;
   font-size: 20px;
   line-height: 1;
@@ -49,5 +52,14 @@ header span {
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;
+}
+
+header a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+header a.cart {
+  float: right;
 }
 </style>

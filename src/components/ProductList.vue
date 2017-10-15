@@ -11,11 +11,6 @@
                 </div>
             </div>
         </div>
-
-        <button @click="fetchCart()">showCart</button>
-        <div class="container">
-            {{ cart.tokenValue }}
-        </div>
     </div>
 </template>
 
