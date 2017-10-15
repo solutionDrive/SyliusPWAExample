@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <header>
       <span>Sylius PWA</span>
     </header>
