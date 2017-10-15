@@ -17,6 +17,7 @@
                     <img style="width: 100%; height: auto;" :src="'http://demo.sylius.org/media/image/' + product.images[0].path" />
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.slug }}</p>
+                    <button @click="addToCart(product.code)" class="btn btn-primary">add to cart</button>
                 </div>
             </div>
         </div>
@@ -26,23 +27,29 @@
 <script>
     import api from './../api'
     import axios from 'axios'
+    import uuid from 'uuid-random'
 
     export default {
         data() {
             return {
                 taxons: [],
-                products: []
+                products: [],
+                cartid: ''
             }
         },
 
         created() {
             api.getAllCategories().then( response => this.taxons = response.data[0].children)
 
-            this.fetchProducts('mugs');
+            this.fetchProducts('mugs')
         },
         methods: {
             fetchProducts(code) {
-                api.getProducts(code).then( response => this.products = response.data.items);
+                api.getProducts(code).then( response => this.products = response.data.items)
+            },
+            addToCart(productCode) {
+                this.cartid = this.cartid ? this.cartid : uuid();
+                api.addToCart(productCode, this.cartid)
             }
         }
     }

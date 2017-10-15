@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "sw-precache-webpack-plugin": "^0.11.4",
+    "uuid-random": "^1.0.6",
     "vue": "^2.3.3",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuex": "^3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
