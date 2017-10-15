@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        cartid: ''
+        cartid: '',
+        products: []
     },
     mutations: {
         initCartId (state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
         },
         setCartId (state, id) {
             state.cartid = id
+        },
+        setProducts (state, products) {
+            state.products = products
         }
     }
 })

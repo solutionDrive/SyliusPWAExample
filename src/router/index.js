@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Navigation from '@/components/Navigation'
+import ProductList from '@/components/ProductList'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
         path: '/',
-        name: 'index',
-        component: Navigation
+        name: 'productlist',
+        component: ProductList
     }
   ]
 })

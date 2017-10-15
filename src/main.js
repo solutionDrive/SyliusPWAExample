@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import Navigation from './components/Navigation'
+import ProductList from './components/ProductList'
+import Category from './components/Category'
 
 Vue.config.productionTip = false
 
 Vue.component('app', App)
-Vue.component('Navigation', Navigation)
+Vue.component('product-list', ProductList)
+Vue.component('category', Category)
 
 new Vue({
   el: '#app',
