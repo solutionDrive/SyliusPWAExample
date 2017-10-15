@@ -44,8 +44,10 @@
             addToCart(productCode) {
                 if (this.cartid === '') {
                     this.$store.commit('initCartId')
+                    api.pickUpCart(this.cartid).then(response => api.addToCart(productCode, this.cartid))
+                } else {
+                    api.addToCart(productCode, this.cartid)
                 }
-                api.addToCart(productCode, this.cartid)
             },
             fetchCart() {
                 api.getCart(this.cartid).then(response => this.cart = response);

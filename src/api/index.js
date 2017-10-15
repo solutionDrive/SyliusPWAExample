@@ -18,14 +18,11 @@ export default {
     },
     addToCart (productCode, cartid) {
         let variantCode = productCode + '-variant-0';
-        this.pickUpCart(cartid).then(response => {
-            axios.post(this.shop.api + '/carts/' + cartid + '/items', {
+        return axios.post(this.shop.api + '/carts/' + cartid + '/items', {
                 productCode: productCode,
                 quantity: 1,
                 variantCode: variantCode
             })
-        });
-
     },
     getCart (cartid) {
         return axios.get(this.shop.api + '/carts/' + cartid)
