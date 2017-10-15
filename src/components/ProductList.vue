@@ -22,7 +22,6 @@
 <script>
     import api from './../api'
     import axios from 'axios'
-    import uuid from 'uuid-random'
     import {mapState} from 'vuex'
 
     export default {
