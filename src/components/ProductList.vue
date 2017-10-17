@@ -1,6 +1,12 @@
 <template>
     <div>
         <category></category>
+
+        <!--@todo: loading icon-->
+        <div v-if="loading">Loading</div>
+        <div class="container">
+            <div v-if="error" class="alert alert-danger" role="alert">{{ error }}</div>
+        </div>
         <div class="container" v-if="products && products.length">
             <div class="row">
                 <div class="col-sm-3" v-for="product in products">
