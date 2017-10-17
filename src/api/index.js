@@ -21,9 +21,22 @@ export default {
      * ======================================
      */
 
+    /**
+     * Get product list by taxon Code
+     *
+     * @param code taxon code
+     * @returns {AxiosPromise}
+     */
     getProductList (code) {
         return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=US_WEB')
     },
+
+    /**
+     * Get one product by product code
+     *
+     * @param code product code
+     * @returns {AxiosPromise}
+     */
     getProduct (code) {
         return axios.get(this.shop.api + '/products/' + code + '?channel=US_WEB')
     },
