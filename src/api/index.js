@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export default {
     shop: {
-        api: 'http://demo.sylius.org/shop-api'
+        api: 'http://demo.sylius.org/shop-api',
+        channel: 'US_WEB'
     },
 
     /**
@@ -28,7 +29,7 @@ export default {
      * @returns {AxiosPromise}
      */
     getProductList (code) {
-        return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=US_WEB')
+        return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=' + this.shop.channel)
     },
 
     /**
@@ -38,7 +39,7 @@ export default {
      * @returns {AxiosPromise}
      */
     getProduct (code) {
-        return axios.get(this.shop.api + '/products/' + code + '?channel=US_WEB')
+        return axios.get(this.shop.api + '/products/' + code + '?channel=' + this.shop.channel)
     },
 
     /**
@@ -49,7 +50,7 @@ export default {
 
     pickUpCart (cartid) {
         const data = new FormData();
-        data.append('channel', 'US_WEB');
+        data.append('channel', this.shop.channel);
 
         return axios.post(this.shop.api + '/carts/' + cartid, data )
     },
