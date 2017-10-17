@@ -35,7 +35,7 @@
         },
         methods: {
             fetchProducts(code) {
-                api.getProducts(code).then( response => this.$store.commit('setProducts',response.data.items))
+                api.getProductList(code).then( response => this.$store.commit('setProducts',response.data.items))
             },
             addToCart(productCode) {
                 if (this.cartid === '') {

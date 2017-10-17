@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- @todo: currently only root category and direct child category-->
         <ul class="category--list" v-if="taxons && taxons.length">
             <li class="list--item main" v-for="taxon in taxons">
                 <a href="#" @click="fetchProducts(taxon.code)"><span>{{ taxon.code }}</span></a>
@@ -29,7 +30,7 @@
         },
         methods: {
             fetchProducts(code) {
-                api.getProducts(code).then( response => this.$store.commit('setProducts',response.data.items))
+                api.getProductList(code).then( response => this.$store.commit('setProducts',response.data.items))
             }
         }
     }

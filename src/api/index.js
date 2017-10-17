@@ -21,7 +21,7 @@ export default {
      * ======================================
      */
 
-    getProducts (code) {
+    getProductList (code) {
         return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=US_WEB')
     },
     getProduct (code) {
