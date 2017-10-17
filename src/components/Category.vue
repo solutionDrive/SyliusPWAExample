@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <!-- @todo: currently only root category and direct child category-->
         <ul class="category--list" v-if="taxons && taxons.length">
             <li class="list--item main" v-for="taxon in taxons">
