@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ProductList from '@/components/ProductList'
 import Home from '@/components/Home'
+import List from '@/components/ProductList'
 import Cart from '@/components/Cart'
 import Detail from '@/components/Detail'
 
@@ -13,6 +13,11 @@ export default new Router({
             path: '/',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/list/:code',
+            name: 'list',
+            component: List
         },
         {
             path: '/cart',

@@ -23,7 +23,9 @@
     export default {
         data() {
             return {
-                cart:{}
+                cart:{},
+                loading: false,
+                error: ''
             }
         },
         computed: mapState([
@@ -31,11 +33,20 @@
             'products'
         ]),
         created() {
-            this.fetchProducts('mugs')
+            this.fetchDataFromApi()
+        },
+        watch: {
+            '$store': 'fetchDataFromApi'
         },
         methods: {
-            fetchProducts(code) {
-                api.getProductList(code).then( response => this.$store.commit('setProducts',response.data.items))
+            fetchDataFromApi () {
+                this.error = null
+                this.loading = true
+                console.log(this.$route.params.code)
+                api.getProductList(this.$route.params.code)
+                    .then(response => this.$store.commit('setProducts',response.data.items))
+                    .catch(error => this.error = error.toString())
+                this.loading = false
             },
             addToCart(productCode) {
                 if (this.cartid === '') {
