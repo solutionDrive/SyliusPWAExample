@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     shop: {
-        api: 'http://127.0.0.1:8000/shop-api'
+        api: 'http://demo.sylius.org/shop-api'
     },
     getAllCategories () {
         return axios.get(this.shop.api + '/taxons/')
