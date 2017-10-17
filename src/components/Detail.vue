@@ -1,10 +1,13 @@
 <template>
     <div>
-        <img :src="'http://demo.sylius.org/media/image/' + product.images[0].path"
-             :alt="product.name"
-             style="width: 400px;"
-        >
-        <p>{{product.name}}</p>
+        <category></category>
+        <div>
+            <img :src="'http://demo.sylius.org/media/image/' + product.images[0].path"
+                 :alt="product.name"
+                 style="width: 400px;"
+            >
+            <p>{{product.name}}</p>
+        </div>
     </div>
 </template>
 
