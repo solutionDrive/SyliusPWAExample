@@ -4,9 +4,10 @@
         <div class="container" v-if="products && products.length">
             <div class="row">
                 <div class="col-sm-3" v-for="product in products">
-                    <img style="width: 100%; height: auto;" :src="'http://127.0.0.1:8000/media/image/' + product.images[0].path" />
+                    <img style="width: 100%; height: auto;" :src="'http://demo.sylius.org/media/image/' + product.images[0].path" />
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.slug }}</p>
+                    <router-link :to="'/detail/' + product.code">to details</router-link>
                     <button @click="addToCart(product.code)" class="btn btn-primary">add to cart</button>
                 </div>
             </div>
