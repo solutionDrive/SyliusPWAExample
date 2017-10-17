@@ -24,6 +24,10 @@ export default {
     getProducts (code) {
         return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=US_WEB')
     },
+    getProduct (code) {
+        return axios.get(this.shop.api + '/products/' + code + '?channel=US_WEB')
+    },
+
     /**
      * ======================================
      * cart api
