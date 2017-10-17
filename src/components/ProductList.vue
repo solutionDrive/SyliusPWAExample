@@ -36,7 +36,7 @@
             this.fetchDataFromApi()
         },
         watch: {
-            '$store': 'fetchDataFromApi'
+            '$route': 'fetchDataFromApi'
         },
         methods: {
             fetchDataFromApi () {
