@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     shop: {
-        api: 'http://demo.sylius.org/shop-api',
+        api: 'http://demo.sylius.org/shop-api', // use local api, demo shop api not working for adding to cart
         channel: 'US_WEB'
     },
 
