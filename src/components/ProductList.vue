@@ -53,7 +53,6 @@
 
 <script>
     import api from './../api'
-    import axios from 'axios'
     import {mapState} from 'vuex'
 
     export default {
