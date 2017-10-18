@@ -19,6 +19,8 @@
 </script>
 
 <style>
+    @import './../node_modules/bulma/css/bulma.css';
+
     body {
         margin: 0;
     }
