@@ -1,24 +1,14 @@
 <template>
     <div class="container">
-        <ul class="nav nav-pills" v-if="taxons && taxons.length">
-            <li v-for="taxon in taxons"
-                class="nav-item" :class="{dropdown : taxon.hasChildren}">
-
-                <router-link :to="'/list/' + taxon.code"
-                             class="nav-link" :class="{'dropdown-toggle' : taxon.hasChildren}"
-                >
-                    <span>{{ taxon.code }}</span>
-                </router-link>
-
-                <!--@todo: show/hide dropdown-->
-                <!--<div class="dropdown-menu" v-if="taxon.hasChildren">-->
-                    <!--<div v-for="child in taxon.children">-->
-                        <!--<router-link :to="'/list/' + child.code" class="dropdown-item">{{ child.code }}</router-link>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </li>
-        </ul>
-        <hr>
+        <div class="tabs is-toggle margin-top">
+            <ul v-if="taxons && taxons.length">
+                <li v-for="taxon in taxons" :class="{'is-active' : taxon.isActive}">
+                    <router-link :to="'/list/' + taxon.code">
+                        <span>{{ taxon.code }}</span>
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
