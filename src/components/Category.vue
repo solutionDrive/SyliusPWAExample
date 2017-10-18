@@ -22,19 +22,28 @@
                 taxons: []
             }
         },
+        watch: {
+            '$route': 'fetchDataFromApi'
+        },
         created() {
-            api.getAllCategories().then( response => {
-                this.taxons = response.data[0].children
-                this.taxons.forEach(taxon => {
-                    taxon.hasChildren = !!(taxon.children && taxon.children.length)
+            this.fetchDataFromApi()
+        },
+        methods: {
+            fetchDataFromApi () {
+                api.getAllCategories().then( response => {
+                    this.taxons = response.data[0].children
+                    this.taxons.forEach(taxon => {
+                        taxon.hasChildren = !!(taxon.children && taxon.children.length)
+                        taxon.isActive = taxon.code === this.$route.params.code
+                    })
                 })
-            })
+            }
         }
     }
 </script>
 
-<style>
-    .nav.nav-pills {
-        background: #eee;
+<style scoped>
+    .margin-top {
+        margin-top: 24px;
     }
 </style>
