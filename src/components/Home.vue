@@ -1,5 +1,6 @@
 <template>
     <div>
+        <mini-cart></mini-cart>
         <category></category>
         <div class="container">
             <hr>
@@ -9,7 +10,12 @@
 </template>
 
 <script>
+    import MiniCart from "./MiniCart.vue";
+
     export default {
+        components: {
+            'mini-cart': MiniCart
+        },
         name: "home"
     }
 </script>
