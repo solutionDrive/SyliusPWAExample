@@ -104,6 +104,9 @@
                                 @todo: price summary not correct
                             </div>
                         </div>
+                        <div>
+                            @todo: checkout
+                        </div>
                     </div>
                 </div>
             </div>
