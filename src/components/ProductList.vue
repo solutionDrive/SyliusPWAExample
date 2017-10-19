@@ -29,7 +29,7 @@
                                 <div class="card-image">
                                     <figure class="image is-4by3">
                                         <router-link :to="'/detail/' + product.code">
-                                            <img :src="'http://demo.sylius.org/media/image/' + product.images[0].path" />
+                                            <img :src="imageUrl + product.images[0].path" />
                                         </router-link>
                                     </figure>
                                 </div>
@@ -53,6 +53,7 @@
 
 <script>
     import api from '@/api'
+    import appConfig from '@/config'
     import {mapState} from 'vuex'
 
     export default {
@@ -60,7 +61,8 @@
             return {
                 cart:{},
                 loading: false,
-                error: ''
+                error: '',
+                imageUrl: '',
             }
         },
         computed: mapState([
@@ -68,6 +70,7 @@
         ]),
         created() {
             this.fetchDataFromApi()
+            this.imageUrl = appConfig.imageUrl
         },
         watch: {
             '$route': 'fetchDataFromApi'
