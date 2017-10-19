@@ -9,6 +9,15 @@
         <main>
             <router-view></router-view>
         </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        @todo: footer
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
