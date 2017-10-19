@@ -13,13 +13,13 @@
                 <div v-if="product">
                     <div class="columns">
                         <div class="column is-half-tablet">
-                            <img :src="'http://demo.sylius.org/media/image/' + product.images[0].path"
+                            <img :src="imageUrl + product.images[0].path"
                                  :alt="product.name"
                             >
                             <hr>
                             <div class="columns is-mobile">
                                 <div class="column is-one-third" v-for="thumbnail in product.images">
-                                    <img :src="'http://demo.sylius.org/media/image/' + thumbnail.path"
+                                    <img :src="imageUrl + thumbnail.path"
                                          :alt="product.name"
                                     >
                                 </div>
@@ -79,13 +79,15 @@
 <script>
     import api from './../api'
     import {mapState} from 'vuex'
+    import appConfig from '@/config'
 
     export default {
         data () {
             return {
                 product: {},
                 error: '',
-                loading: false
+                loading: false,
+                imageUrl: '',
             }
         },
         computed: mapState([
@@ -93,6 +95,7 @@
         ]),
         created () {
             this.fetchDataFromApi()
+            this.imageUrl = appConfig.imageUrl;
         },
         watch: {
             '$route': 'fetchDataFromApi'
