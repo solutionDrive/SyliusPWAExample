@@ -4,9 +4,9 @@
             <div class="level-left"></div>
             <div class="level-right">
                 <p class="level-item">
-                    <a class="button is-light">
+                    <router-link to="/cart" class="button is-light">
                         <span>{{ total + currency}}</span>
-                    </a>
+                    </router-link>
                 </p>
             </div>
         </nav>
