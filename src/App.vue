@@ -3,7 +3,7 @@
         <header>
             <div class="container">
                 <router-link to="/" class="home">Sylius PWA</router-link>
-                <router-link to="cart" class="cart">Cart</router-link>
+                <router-link to="/cart" class="cart">Cart</router-link>
             </div>
         </header>
         <main>
