@@ -1,10 +1,7 @@
 import axios from 'axios'
+import appConfig from '@/config'
 
 export default {
-    shop: {
-        api: 'http://demo.sylius.org/shop-api', // use local api, demo shop api not working for adding to cart
-        channel: 'US_WEB'
-    },
 
     /**
      * ======================================
@@ -13,7 +10,7 @@ export default {
      */
 
     getAllCategories () {
-        return axios.get(this.shop.api + '/taxons/')
+        return axios.get(appConfig.apiUrl + '/taxons/')
     },
 
     /**
@@ -29,7 +26,7 @@ export default {
      * @returns {AxiosPromise}
      */
     getProductList (code) {
-        return axios.get(this.shop.api + '/taxon-products/' + code + '?channel=' + this.shop.channel)
+        return axios.get(appConfig.apiUrl + '/taxon-products/' + code + '?channel=' + appConfig.apiChannel)
     },
 
     /**
@@ -39,7 +36,7 @@ export default {
      * @returns {AxiosPromise}
      */
     getProduct (code) {
-        return axios.get(this.shop.api + '/products/' + code + '?channel=' + this.shop.channel)
+        return axios.get(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
     },
 
     /**
@@ -50,19 +47,19 @@ export default {
 
     pickUpCart (cartid) {
         const data = new FormData();
-        data.append('channel', this.shop.channel);
+        data.append('channel', appConfig.apiChannel);
 
-        return axios.post(this.shop.api + '/carts/' + cartid, data )
+        return axios.post(appConfig.apiUrl + '/carts/' + cartid, data )
     },
     addToCart (productCode, cartid) {
         let variantCode = productCode + '-variant-0';
-        return axios.post(this.shop.api + '/carts/' + cartid + '/items', {
+        return axios.post(appConfig.apiUrl + '/carts/' + cartid + '/items', {
                 productCode: productCode,
                 quantity: 1,
                 variantCode: variantCode
             })
     },
     getCart (cartid) {
-        return axios.get(this.shop.api + '/carts/' + cartid)
+        return axios.get(appConfig.apiUrl + '/carts/' + cartid)
     }
 }
