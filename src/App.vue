@@ -27,8 +27,13 @@
     }
 </script>
 
-<style>
-    @import './../node_modules/bulma/css/bulma.css';
+<style lang="scss">
+    $app-background-color: #35495E;
+    $header-font-color: #fff;
+    $footer-background-color: $app-background-color;
+    $footer-font-color: #fff;
+
+    @import './../node_modules/bulma/bulma.sass';
 
     body {
         margin: 0;
@@ -45,13 +50,13 @@
         margin: 0;
         height: 56px;
         padding: 0 16px 0 24px;
-        background-color: #35495E;
+        background-color: $app-background-color;
         color: #ffffff;
     }
 
     header a {
         text-decoration: none;
-        color: #ffffff;
+        color: $header-font-color;
         display: inline-block;
         position: relative;
         font-size: 20px;
@@ -69,5 +74,9 @@
 
     header a.cart {
         float: right;
+    }
+
+    footer.footer {
+        color: $footer-font-color;
     }
 </style>
