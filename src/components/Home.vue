@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <mini-cart></mini-cart>
-        <category></category>
+    <div class="section">
         <div class="container">
-            <hr>
-            <h1 class="title">Homepage</h1>
+            <mini-cart></mini-cart>
+            <category></category>
+            <div class="container">
+                <hr>
+                <h1 class="title">Homepage</h1>
+            </div>
         </div>
     </div>
 </template>
