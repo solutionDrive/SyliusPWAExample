@@ -5,7 +5,11 @@
         <br>
 
         <!--@todo: loading icon-->
-        <div v-if="loading">Loading</div>
+        <div v-if="loading">
+            <h1 class="title">
+                Loading
+            </h1>
+        </div>
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
@@ -90,9 +94,11 @@
                 imageUrl: '',
             }
         },
-        computed: mapState([
-            'cartid'
-        ]),
+        computed: {
+            ...mapState([
+                'cartid'
+            ])
+        },
         created () {
             this.fetchDataFromApi()
             this.imageUrl = appConfig.imageUrl;
@@ -105,16 +111,21 @@
                 this.error = this.product = null
                 this.loading = true
                 api.getProduct(this.$route.params.code)
-                    .then(response => this.product = response.data)
+                    .then(response => {
+                        this.product = response.data
+                        this.loading = false
+                    })
                     .catch(error => this.error = error.toString())
-                this.loading = false
             },
             addToCart(productCode) {
+                this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('initCartId')
-                    api.pickUpCart(this.cartid).then(response => api.addToCart(productCode, this.cartid))
+                    api.pickUpCart(this.cartid).then(response => {
+                        api.addToCart(productCode, this.cartid).then(() => this.loading = false)
+                    })
                 } else {
-                    api.addToCart(productCode, this.cartid)
+                    api.addToCart(productCode, this.cartid).then(() => this.loading = false)
                 }
             }
         }
