@@ -66,13 +66,13 @@
             'products'
         ]),
         created() {
-            this.fetchDataFromApi()
+            this.fetchProductsFromApi()
         },
         watch: {
-            '$route': 'fetchDataFromApi'
+            '$route': 'fetchProductsFromApi'
         },
         methods: {
-            fetchDataFromApi () {
+            fetchProductsFromApi () {
                 this.error = null
                 this.loading = true
                 this.$store.commit('reset')
