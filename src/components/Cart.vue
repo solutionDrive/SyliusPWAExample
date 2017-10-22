@@ -1,6 +1,7 @@
 <template>
     <div class="section">
         <div class="container">
+            <mini-cart></mini-cart>
             <category></category>
 
             <br>
@@ -120,6 +121,7 @@
     import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import MiniCart from '@/components/MiniCart'
 
     export default {
         data () {
@@ -152,7 +154,8 @@
             }
         },
         components: {
-            ClipLoader
+            ClipLoader,
+            MiniCart
         }
     }
 </script>
