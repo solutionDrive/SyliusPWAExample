@@ -114,13 +114,12 @@
                     })
                     .catch(error => this.error = error.toString())
             },
-            updateAfterAddToCart (productCode) {
-                api.addToCart(productCode, this.cartid).then(() => {
-                    api.getCart(this.cartid).then(response => {
-                        this.$store.commit('cart/setCart', response.data)
-                        this.loading = false
-                    })
-                })
+            async updateAfterAddToCart (productCode) {
+                await api.addToCart(productCode, this.cartid)
+                let cart = await api.getCart(this.cartid)
+                this.$store.commit('cart/setCart', cart.data)
+
+                this.loading = false
             },
             async addToCart(productCode) {
                 this.loading = true
@@ -129,7 +128,7 @@
                     await api.pickUpCart(this.cartid);
                 }
 
-                this.updateAfterAddToCart(productCode);
+                await this.updateAfterAddToCart(productCode)
             }
         },
         components: {
