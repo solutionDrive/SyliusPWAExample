@@ -54,10 +54,10 @@ export default {
     addToCart (productCode, cartid) {
         let variantCode = productCode + '-variant-0';
         return axios.post(appConfig.apiUrl + '/carts/' + cartid + '/items', {
-                productCode: productCode,
-                quantity: 1,
-                variantCode: variantCode
-            })
+            productCode: productCode,
+            quantity: 1,
+            variantCode: variantCode
+        })
     },
     getCart (cartid) {
         return axios.get(appConfig.apiUrl + '/carts/' + cartid)
