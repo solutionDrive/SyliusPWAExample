@@ -33,16 +33,12 @@
                 return this.empty(this.cart) ? 0 : this.cart.items.length
             },
             ...mapState({
-                cart: state => state.cart.cart,
-//                cartid: state => state.cart.cartid
+                cart: state => state.cart.cart
             })
         },
-//        created () {
-//            api.getCart(this.cartid).then(response => this.$store.commit('cart/setCart', response.data))
-//        },
         methods: {
             empty () {
-                return Object.keys(this.cart).length == 0
+                return Object.keys(this.cart).length === 0
             }
         }
     }
