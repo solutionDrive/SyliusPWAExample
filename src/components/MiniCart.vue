@@ -24,20 +24,20 @@
         name: 'miniCart',
         computed: {
             total () {
-                return this.categoryEmpty(this.cart) ? '0.00' : this.cart.totals.items / 100
+                return this.cartEmpty(this.cart) ? '0.00' : this.cart.totals.items / 100
             },
             currency () {
-                return this.categoryEmpty(this.cart) ? 'USD' : this.cart.currency
+                return this.cartEmpty(this.cart) ? 'USD' : this.cart.currency
             },
             itemCount () {
-                return this.categoryEmpty(this.cart) ? 0 : this.cart.items.length
+                return this.cartEmpty(this.cart) ? 0 : this.cart.items.length
             },
             ...mapState({
                 cart: state => state.cart.cart
             })
         },
         methods: {
-            categoryEmpty () {
+            cartEmpty () {
                 return Object.keys(this.cart).length === 0
             }
         }
