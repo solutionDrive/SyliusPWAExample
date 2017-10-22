@@ -13,11 +13,14 @@ export default new Vuex.Store({
         setProducts (state, products) {
             state.products = products
         },
-        reset (state) {
+        resetProducts (state) {
             state.products = []
         },
         setCategory (state, category) {
             state.category = category
+        },
+        resetCategory (state) {
+            state.category = {}
         }
     },
     modules: {
