@@ -5,8 +5,8 @@
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <h1 class="title">@todo: category name</h1>
-                <p>@todo: category description</p>
+                <h1 class="title">{{ category.self.name }}</h1>
+                <p>{{ category.self.description }}</p>
                 <hr>
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div class="columns">
@@ -63,16 +63,17 @@
             }
         },
         computed: mapState([
-            'products'
+            'products',
+            'category'
         ]),
         created() {
-            this.fetchProductsFromApi()
+            this.fetchDataFromApi()
         },
         watch: {
-            '$route': 'fetchProductsFromApi'
+            '$route': 'fetchDataFromApi'
         },
         methods: {
-            fetchProductsFromApi () {
+            fetchDataFromApi () {
                 this.error = null
                 this.loading = true
                 this.$store.commit('reset')
@@ -82,6 +83,10 @@
                         this.loading = false
                     })
                     .catch(error => this.error = error.toString())
+
+                api.getCategoryByCode(this.$route.params.code).then(response => {
+                    this.$store.commit('setCategory', response.data)
+                })
             }
         },
         components: {
