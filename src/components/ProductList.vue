@@ -61,10 +61,10 @@
                 imageUrl: appConfig.imageUrl
             }
         },
-        computed: mapState([
-            'products',
-            'category'
-        ]),
+        computed: mapState({
+            products: state => state.list.products,
+            category: state => state.list.category
+        }),
         created() {
             this.fetchDataFromApi()
         },
@@ -72,29 +72,29 @@
             '$route': 'fetchDataFromApi'
         },
         methods: {
-            fetchProductsFromApi () {
-                return api.getProductList(this.$route.params.code)
-            },
-            fetchCategoryFromApi () {
-                return api.getCategoryByCode(this.$route.params.code)
-            },
             async fetchDataFromApi () {
                 this.error = null
                 this.loading = true
                 try {
-                    this.$store.commit('resetCategory')
-                    this.$store.commit('resetProducts')
+                    this.$store.commit('list/resetCategory')
+                    this.$store.commit('list/resetProducts')
 
                     let category = await this.fetchCategoryFromApi()
-                    this.$store.commit('setCategory', category.data)
+                    this.$store.commit('list/setCategory', category.data)
 
                     let products = await this.fetchProductsFromApi()
-                    this.$store.commit('setProducts', products.data.items)
+                    this.$store.commit('list/setProducts', products.data.items)
                 } catch (error) {
                     this.error = error.toString()
                 }
 
                 this.loading = false
+            },
+            fetchProductsFromApi () {
+                return api.getProductList(this.$route.params.code)
+            },
+            fetchCategoryFromApi () {
+                return api.getCategoryByCode(this.$route.params.code)
             },
             categoryEmpty () {
                 return Object.keys(this.category).length === 0
