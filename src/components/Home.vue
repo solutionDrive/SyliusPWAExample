@@ -2,7 +2,7 @@
     <div class="section">
         <div class="container">
             <hr>
-            <h1 class="title">Homepage</h1>
+            <h1 class="title">@todo: latest Products</h1>
         </div>
     </div>
 </template>
