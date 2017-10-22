@@ -122,16 +122,14 @@
                     })
                 })
             },
-            addToCart(productCode) {
+            async addToCart(productCode) {
                 this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
-                    api.pickUpCart(this.cartid).then(response => {
-                        this.updateAfterAddToCart(productCode);
-                    })
-                } else {
-                    this.updateAfterAddToCart(productCode);
+                    await api.pickUpCart(this.cartid);
                 }
+
+                this.updateAfterAddToCart(productCode);
             }
         },
         components: {
