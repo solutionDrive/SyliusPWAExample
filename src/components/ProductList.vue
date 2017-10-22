@@ -5,8 +5,8 @@
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <h1 class="title">{{ category.self.name }}</h1>
-                <p>{{ category.self.description }}</p>
+                <h1 class="title" v-if="!categoryEmpty()">{{ category.self.name }}</h1>
+                <p v-if="!categoryEmpty()">{{ category.self.description }}</p>
                 <hr>
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div class="columns">
@@ -73,20 +73,32 @@
             '$route': 'fetchDataFromApi'
         },
         methods: {
-            fetchDataFromApi () {
+            fetchProductsFromApi () {
+                return api.getProductList(this.$route.params.code)
+            },
+            fetchCategoryFromApi () {
+                return api.getCategoryByCode(this.$route.params.code)
+            },
+            async fetchDataFromApi () {
                 this.error = null
                 this.loading = true
-                this.$store.commit('reset')
-                api.getProductList(this.$route.params.code)
-                    .then(response => {
-                        this.$store.commit('setProducts',response.data.items)
-                        this.loading = false
-                    })
-                    .catch(error => this.error = error.toString())
+                try {
+                    this.$store.commit('resetCategory')
+                    this.$store.commit('resetProducts')
 
-                api.getCategoryByCode(this.$route.params.code).then(response => {
-                    this.$store.commit('setCategory', response.data)
-                })
+                    let category = await this.fetchCategoryFromApi()
+                    this.$store.commit('setCategory', category.data)
+
+                    let products = await this.fetchProductsFromApi()
+                    this.$store.commit('setProducts', products.data.items)
+                } catch (error) {
+                    this.error = error.toString()
+                }
+
+                this.loading = false
+            },
+            categoryEmpty () {
+                return Object.keys(this.category).length === 0
             }
         },
         components: {
