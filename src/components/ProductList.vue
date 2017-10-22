@@ -2,8 +2,6 @@
     <div class="section">
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
 
-        <category></category>
-
         <div class="container">
             @todo: breadcrumb component
         </div>

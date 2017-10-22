@@ -1,11 +1,7 @@
 <template>
     <div>
-
         <div class="section">
             <div class="container">
-                <mini-cart></mini-cart>
-                <category></category>
-                <br>
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
@@ -80,7 +76,6 @@
     import {mapState} from 'vuex'
     import appConfig from '@/config'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import MiniCart from '@/components/MiniCart'
 
     export default {
         data () {
@@ -132,8 +127,7 @@
             }
         },
         components: {
-            ClipLoader,
-            MiniCart
+            ClipLoader
         }
     }
 </script>
