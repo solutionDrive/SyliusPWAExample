@@ -114,25 +114,23 @@
                     })
                     .catch(error => this.error = error.toString())
             },
+            updateAfterAddToCart (productCode) {
+                api.addToCart(productCode, this.cartid).then(() => {
+                    api.getCart(this.cartid).then(response => {
+                        this.$store.commit('cart/setCart', response.data)
+                        this.loading = false
+                    })
+                })
+            },
             addToCart(productCode) {
                 this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
                     api.pickUpCart(this.cartid).then(response => {
-                        api.addToCart(productCode, this.cartid).then(() => {
-                            api.getCart(this.cartid).then(response => {
-                                this.$store.commit('cart/setCart', response.data)
-                                this.loading = false
-                            })
-                        })
+                        this.updateAfterAddToCart(productCode);
                     })
                 } else {
-                    api.addToCart(productCode, this.cartid).then(() => {
-                        api.getCart(this.cartid).then(response => {
-                            this.$store.commit('cart/setCart', response.data)
-                            this.loading = false
-                        })
-                    })
+                    this.updateAfterAddToCart(productCode);
                 }
             }
         },
