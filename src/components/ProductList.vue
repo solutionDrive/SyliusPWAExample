@@ -1,7 +1,5 @@
 <template>
     <div class="section">
-        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
-
         <div class="container">
             @todo: breadcrumb component
         </div>
@@ -12,6 +10,7 @@
             <h1 class="title">@todo: category name</h1>
             <p>@todo: category description</p>
             <hr>
+            <div class="section" v-if="loading"><clip-loader></clip-loader></div>
             <div class="columns">
                 <div class="column is-one-quarter">
                     @todo: category tree
@@ -77,6 +76,7 @@
             fetchDataFromApi () {
                 this.error = null
                 this.loading = true
+                this.$store.commit('reset')
                 api.getProductList(this.$route.params.code)
                     .then(response => {
                         this.$store.commit('setProducts',response.data.items)

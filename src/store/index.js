@@ -11,6 +11,9 @@ export default new Vuex.Store({
     mutations: {
         setProducts (state, products) {
             state.products = products
+        },
+        reset (state) {
+            state.products = []
         }
     },
     modules: {
