@@ -1,5 +1,7 @@
 <template>
     <div class="section">
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
+
         <category></category>
 
         <div class="container">
@@ -7,9 +9,6 @@
         </div>
 
         <br>
-
-        <!--@todo: loading icon-->
-        <div v-if="loading">Loading</div>
         <div class="container">
             <div v-if="error" class="notification is-danger">{{ error }}</div>
             <h1 class="title">@todo: category name</h1>
@@ -55,6 +54,7 @@
     import api from '@/api'
     import appConfig from '@/config'
     import {mapState} from 'vuex'
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
 
     export default {
         data() {
@@ -80,10 +80,15 @@
                 this.error = null
                 this.loading = true
                 api.getProductList(this.$route.params.code)
-                    .then(response => this.$store.commit('setProducts',response.data.items))
+                    .then(response => {
+                        this.$store.commit('setProducts',response.data.items)
+                        this.loading = false
+                    })
                     .catch(error => this.error = error.toString())
-                this.loading = false
             }
+        },
+        components: {
+            ClipLoader
         }
     }
 </script>

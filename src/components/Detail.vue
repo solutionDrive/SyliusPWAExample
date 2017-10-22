@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div v-if="loading">
-            <clip-loader></clip-loader>
-        </div>
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
 
         <category></category>
         <br>
@@ -80,7 +78,7 @@
     import api from '@/api'
     import {mapState} from 'vuex'
     import appConfig from '@/config'
-    import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
 
     export default {
         data () {
