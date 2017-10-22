@@ -115,7 +115,6 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
     import api from '@/api'
     import appConfig from '@/config'
 
@@ -128,9 +127,9 @@
             }
         },
         computed: {
-            ...mapState([
-                'cartid'
-            ])
+            cartid () {
+                return this.$store.state.cart.cartid
+            }
         },
         created () {
             if (this.cartid !== '') {
