@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 import ProductList from './components/ProductList'
-import Category from './components/Category'
 import Cart from './components/Cart'
 import Detail from './components/Detail'
 import Home from './components/Home'
@@ -14,7 +13,6 @@ Vue.config.productionTip = false
 
 Vue.component('app', App)
 Vue.component('product-list', ProductList)
-Vue.component('category', Category)
 Vue.component('cart', Cart)
 Vue.component('detail', Detail)
 Vue.component('home', Home)

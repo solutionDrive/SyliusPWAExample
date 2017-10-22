@@ -17,13 +17,13 @@
 
         <div class="container header-navi">
             <mini-cart></mini-cart>
-            <category></category>
+            <navigation></navigation>
         </div>
     </header>
 </template>
 
 <script>
-    import Category from '@/components/Category'
+    import Navigation from '@/components/Navigation'
     import MiniCart from '@/components/MiniCart'
     import appConfig from '@/config'
 
@@ -35,7 +35,7 @@
             }
         },
         components: {
-            Category,
+            Navigation,
             MiniCart
         }
     }
