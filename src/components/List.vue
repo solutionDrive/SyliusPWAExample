@@ -1,7 +1,6 @@
 <template>
     <div>
         <breadcrumb :taxon-code="$route.params.code"></breadcrumb>
-
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
@@ -14,7 +13,7 @@
                         @todo: category tree
                     </div>
                     <div class="column">
-                        <div class="columns is-multiline is-mobile">
+                        <div class="columns is-multiline">
                             <div class="column is-full">
                                 @todo: search box
                             </div>
