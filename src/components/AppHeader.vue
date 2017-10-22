@@ -1,20 +1,26 @@
 <template>
-    <div>
-        <header>
-            <div class="container">
-                <router-link to="/" class="home">Sylius PWA</router-link>
-                <router-link to="/cart" class="cart">Cart</router-link>
-            </div>
-        </header>
+    <header>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <router-link to="/" class="navbar-item">
+                    <strong>Sylius PWA</strong>
+                </router-link>
 
-        <div class="section">
-            <div class="container">
-                <mini-cart></mini-cart>
-                <category></category>
-                <br>
+                <button class="button navbar-burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
+        </nav>
+
+
+        <div class="container header-navi">
+            <mini-cart></mini-cart>
+            <category></category>
+            <br>
         </div>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -31,39 +37,7 @@
 </script>
 
 <style lang="scss">
-    @import "./../assets/scss/variables";
-
-    body {
-        margin: 0;
-    }
-
-    header {
-        margin: 0;
-        height: 56px;
-        padding: 0 16px 0 24px;
-        background-color: $app-background-color;
-        color: #ffffff;
-    }
-
-    header a {
-        text-decoration: none;
-        color: $header-font-color;
-        display: inline-block;
-        position: relative;
-        font-size: 20px;
-        line-height: 1;
-        letter-spacing: .02em;
-        font-weight: 400;
-        box-sizing: border-box;
-        padding-top: 16px;
-    }
-
-    header a:hover {
-        text-decoration: none;
-        color: #ffffff;
-    }
-
-    header a.cart {
-        float: right;
+    .header-navi {
+        margin-top: 2em;
     }
 </style>
