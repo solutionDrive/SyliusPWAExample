@@ -4,13 +4,12 @@
             <category></category>
 
             <br>
-
+            <clip-loader></clip-loader>
             <div v-if="emptyCart">
                 <div class="notification is-info">
                     <p><strong>Info</strong></p>
                     <p>Your cart is empty</p>
                 </div>
-                cart empty
             </div>
             <div v-else>
                 <h1 class="title">Your shopping cart</h1>
@@ -118,6 +117,7 @@
     import api from '@/api'
     import appConfig from '@/config'
     import {mapState} from 'vuex'
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
 
     export default {
         data () {
@@ -143,6 +143,9 @@
                     this.emptyCart = false
                 }
             }
+        },
+        component: {
+            ClipLoader
         }
     }
 </script>
