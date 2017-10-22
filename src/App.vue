@@ -4,25 +4,19 @@
         <main>
             <router-view></router-view>
         </main>
-        <footer class="footer">
-            <div class="container">
-                <div class="content has-text-centered">
-                    <p>
-                        @todo: footer
-                    </p>
-                </div>
-            </div>
-        </footer>
+        <app-footer></app-footer>
     </div>
 </template>
 
 <script>
     import AppHeader from '@/components/AppHeader'
+    import AppFooter from '@/components/AppFooter'
 
     export default {
         name: 'app',
         components: {
-            AppHeader
+            AppHeader,
+            AppFooter
         }
     }
 </script>
@@ -33,9 +27,5 @@
 
     body {
         background: $app-background-color;
-    }
-
-    footer.footer {
-        color: $footer-font-color;
     }
 </style>
