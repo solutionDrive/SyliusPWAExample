@@ -74,7 +74,7 @@
 </template>
 
 <script>
-    import api from '@/api'
+    import {productApi, cartApi} from '@/api'
     import {mapState} from 'vuex'
     import appConfig from '@/config'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
@@ -106,7 +106,7 @@
             fetchDataFromApi () {
                 this.error = this.product = null
                 this.loading = true
-                api.getProduct(this.$route.params.code)
+                productApi.getProduct(this.$route.params.code)
                     .then(response => {
                         this.product = response.data
                         this.breadcrumb = this.product.taxons.others
@@ -115,8 +115,8 @@
                     .catch(error => this.error = error.toString())
             },
             async updateAfterAddToCart (productCode) {
-                await api.addToCart(productCode, this.cartid)
-                let cart = await api.getCart(this.cartid)
+                await cartApi.addToCart(productCode, this.cartid)
+                let cart = await cartApi.getCart(this.cartid)
                 this.$store.commit('cart/setCart', cart.data)
 
                 this.loading = false
@@ -125,7 +125,7 @@
                 this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
-                    await api.pickUpCart(this.cartid);
+                    await cartApi.pickUpCart(this.cartid);
                 }
 
                 await this.updateAfterAddToCart(productCode)

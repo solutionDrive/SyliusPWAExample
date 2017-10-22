@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import api from '@/api'
+    import {categoryApi} from '@/api'
     import axios from 'axios'
 
     export default {
@@ -30,7 +30,7 @@
         },
         methods: {
             fetchDataFromApi () {
-                api.getAllCategories().then( response => {
+                categoryApi.getAllCategories().then( response => {
                     this.taxons = response.data[0].children
                     this.taxons.forEach(taxon => {
                         taxon.hasChildren = !!(taxon.children && taxon.children.length)

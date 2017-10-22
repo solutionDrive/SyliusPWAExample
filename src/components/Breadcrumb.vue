@@ -13,7 +13,7 @@
 
 <script>
     import appConfig from '@/config'
-    import api from '@/api'
+    import {categoryApi} from '@/api'
 
     export default {
         data () {
@@ -46,7 +46,7 @@
                 }
             },
             getListBreadcrumb () {
-                api.getCategoryByCode(this.taxonCode).then((response) => {
+                categoryApi.getCategoryByCode(this.taxonCode).then((response) => {
                     this.breadcrumb = []
                     let category = response.data
                     let parent = category.parentTree

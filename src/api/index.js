@@ -1,14 +1,7 @@
 import axios from 'axios'
 import appConfig from '@/config'
 
-export default {
-
-    /**
-     * ======================================
-     * taxon api
-     * ======================================
-     */
-
+export const categoryApi = {
     getAllCategories () {
         return axios.get(appConfig.apiUrl + '/taxons/')
     },
@@ -16,13 +9,9 @@ export default {
     getCategoryByCode (code) {
         return axios.get(appConfig.apiUrl + '/taxons/' + code + '?locale=' + appConfig.apiLocale)
     },
+}
 
-    /**
-     * ======================================
-     * product api
-     * ======================================
-     */
-
+export const productApi = {
     /**
      * Get product list by taxon Code
      *
@@ -42,13 +31,9 @@ export default {
     getProduct (code) {
         return axios.get(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
     },
+}
 
-    /**
-     * ======================================
-     * cart api
-     * ======================================
-     */
-
+export const cartApi = {
     pickUpCart (cartid) {
         const data = new FormData();
         data.append('channel', appConfig.apiChannel);

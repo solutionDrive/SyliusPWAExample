@@ -113,7 +113,7 @@
 </template>
 
 <script>
-    import api from '@/api'
+    import {cartApi} from '@/api'
     import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
@@ -142,7 +142,7 @@
                     return
                 }
                 this.loading = true
-                let cart = await api.getCart(this.cartid)
+                let cart = await cartApi.getCart(this.cartid)
                 this.$store.commit('cart/setCart', cart.data)
                 this.loading = false
                 this.emptyCart = false

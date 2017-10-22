@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import api from '@/api'
+    import {categoryApi, productApi} from '@/api'
     import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
@@ -90,11 +90,11 @@
                 this.$store.commit('list/resetProducts')
             },
             async fetchCategoryFromApi () {
-                let category = await api.getCategoryByCode(this.$route.params.code)
+                let category = await categoryApi.getCategoryByCode(this.$route.params.code)
                 return this.$store.commit('list/setCategory', category.data)
             },
             async fetchProductsFromApi () {
-                let products = await api.getProductList(this.$route.params.code)
+                let products = await productApi.getProductList(this.$route.params.code)
                 return this.$store.commit('list/setProducts', products.data.items)
             },
             categoryEmpty () {

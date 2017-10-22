@@ -18,7 +18,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import api from '@/api'
 
     export default {
         name: 'miniCart',
