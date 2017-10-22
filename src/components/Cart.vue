@@ -117,26 +117,31 @@
 <script>
     import api from '@/api'
     import appConfig from '@/config'
+    import {mapState} from 'vuex'
 
     export default {
         data () {
             return {
-                cart: {},
                 emptyCart: true,
                 imageUrl: appConfig.imageUrl
             }
         },
         computed: {
-            cartid () {
-                return this.$store.state.cart.cartid
-            }
+            ...mapState({
+                cartid: state => state.cart.cartid,
+                cart: state => state.cart.cart
+            })
         },
         created () {
-            if (this.cartid !== '') {
-                api.getCart(this.cartid).then(response => {
-                    this.cart = response.data
+            this.getCart()
+        },
+        methods: {
+            async getCart () {
+                if (this.cartid !== '') {
+                    let cart = await api.getCart(this.cartid)
+                    this.$store.commit('cart/setCart', cart.data)
                     this.emptyCart = false
-                })
+                }
             }
         }
     }
