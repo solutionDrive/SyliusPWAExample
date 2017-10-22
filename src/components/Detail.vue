@@ -1,15 +1,11 @@
 <template>
     <div>
-        <category></category>
-
-        <br>
-
-        <!--@todo: loading icon-->
         <div v-if="loading">
-            <h1 class="title">
-                Loading
-            </h1>
+            <clip-loader></clip-loader>
         </div>
+
+        <category></category>
+        <br>
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
@@ -84,6 +80,7 @@
     import api from '@/api'
     import {mapState} from 'vuex'
     import appConfig from '@/config'
+    import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
     export default {
         data () {
@@ -128,6 +125,9 @@
                     api.addToCart(productCode, this.cartid).then(() => this.loading = false)
                 }
             }
+        },
+        components: {
+            ClipLoader
         }
     }
 </script>
