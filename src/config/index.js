@@ -1,5 +1,5 @@
 export default {
-    imageUrl: 'http://127.0.0.1:8000/media/image/',
-    apiUrl: 'http://127.0.0.1:8000/shop-api',
+    imageUrl: 'http://sylius-api.dev/media/image/',
+    apiUrl: 'http://sylius-api.dev/shop-api',
     apiChannel: 'US_WEB'
 }
