@@ -60,6 +60,7 @@
                 loading: false,
                 error: '',
                 imageUrl: '',
+                appName: appConfig.appName
             }
         },
         computed: mapState([
