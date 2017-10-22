@@ -1,6 +1,6 @@
 # syliuspwaexample
 
-> A Vue.js project
+> a Sylius PWA Demo Shop 
 
 ## Build Setup
 
@@ -18,4 +18,18 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Configuration
+
+configuration for (Sylius DemoShop Api)[http://demo.sylius.org]
+ 
+```
+# src/config/index.js
+
+export default {
+    appName: 'Sylius PWA',
+    imageUrl: 'http://demo.sylius.org/media/image/',
+    apiUrl: 'http://demo.sylius.org/shop-api',
+    apiChannel: 'US_WEB',
+    apiLocale: 'en_GB'
+}
+```
