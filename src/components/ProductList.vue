@@ -56,7 +56,6 @@
     export default {
         data() {
             return {
-                cart:{},
                 loading: false,
                 error: '',
                 imageUrl: appConfig.imageUrl
