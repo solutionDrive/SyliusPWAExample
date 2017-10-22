@@ -1,15 +1,17 @@
 <template>
     <div>
-    <header>
-        <div class="container">
-            <router-link to="/" class="home">Sylius PWA</router-link>
-            <router-link to="/cart" class="cart">Cart</router-link>
-        </div>
-    </header>
+        <header>
+            <div class="container">
+                <router-link to="/" class="home">Sylius PWA</router-link>
+                <router-link to="/cart" class="cart">Cart</router-link>
+            </div>
+        </header>
 
         <div class="section">
             <div class="container">
+                <mini-cart></mini-cart>
                 <category></category>
+                <br>
             </div>
         </div>
     </div>
@@ -17,11 +19,13 @@
 
 <script>
     import Category from '@/components/Category'
+    import MiniCart from '@/components/MiniCart'
 
     export default {
         name: 'app-header',
         components: {
-            Category
+            Category,
+            MiniCart
         }
     }
 </script>
