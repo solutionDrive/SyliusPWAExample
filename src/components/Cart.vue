@@ -4,7 +4,9 @@
             <category></category>
 
             <br>
-            <clip-loader></clip-loader>
+            <div v-if="loading">
+                <clip-loader></clip-loader>
+            </div>
             <div v-if="emptyCart">
                 <div class="notification is-info">
                     <p><strong>Info</strong></p>
@@ -149,7 +151,7 @@
                 this.emptyCart = false
             }
         },
-        component: {
+        components: {
             ClipLoader
         }
     }
