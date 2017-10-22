@@ -20,7 +20,7 @@ npm run build --report
 
 ## Configuration
 
-configuration for (Sylius DemoShop Api)[http://demo.sylius.org]
+configuration for [Sylius DemoShop Api](http://demo.sylius.org)
  
 ```
 # src/config/index.js
