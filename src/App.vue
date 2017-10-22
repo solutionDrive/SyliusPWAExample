@@ -28,11 +28,7 @@
 </script>
 
 <style lang="scss">
-    $app-background-color: #35495E;
-    $header-font-color: #fff;
-    $footer-background-color: $app-background-color;
-    $footer-font-color: #fff;
-
+    @import "./assets/scss/variables";
     @import './../node_modules/bulma/bulma.sass';
 
     body {
