@@ -1,15 +1,6 @@
 <template>
     <div>
-        <div class="container">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                    <li><a href="#">{{ appName }}</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Components</a></li>
-                    <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
-                </ul>
-            </nav>
-        </div>
+        <breadcrumb></breadcrumb>
 
         <div class="section">
             <div class="container">
@@ -60,6 +51,7 @@
     import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import Breadcrumb from '@/components/Breadcrumb'
 
     export default {
         data() {
@@ -67,8 +59,7 @@
                 cart:{},
                 loading: false,
                 error: '',
-                imageUrl: appConfig.imageUrl,
-                appName: appConfig.appName
+                imageUrl: appConfig.imageUrl
             }
         },
         computed: mapState([
@@ -94,7 +85,8 @@
             }
         },
         components: {
-            ClipLoader
+            ClipLoader,
+            Breadcrumb
         }
     }
 </script>
