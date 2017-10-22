@@ -122,7 +122,8 @@
     export default {
         data () {
             return {
-                emptyCart: true,
+                loading: false,
+                emptyCart: false,
                 imageUrl: appConfig.imageUrl
             }
         },
@@ -137,11 +138,15 @@
         },
         methods: {
             async getCart () {
-                if (this.cartid !== '') {
-                    let cart = await api.getCart(this.cartid)
-                    this.$store.commit('cart/setCart', cart.data)
-                    this.emptyCart = false
+                if (this.cartid === '') {
+                    this.emptyCart = true
+                    return
                 }
+                this.loading = true
+                let cart = await api.getCart(this.cartid)
+                this.$store.commit('cart/setCart', cart.data)
+                this.loading = false
+                this.emptyCart = false
             }
         },
         component: {
