@@ -31,11 +31,8 @@
     @import "./assets/scss/variables";
     @import './../node_modules/bulma/bulma.sass';
 
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: #2c3e50;
+    body {
+        background: $app-background-color;
     }
 
     footer.footer {
