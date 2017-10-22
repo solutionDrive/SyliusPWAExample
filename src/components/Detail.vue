@@ -92,9 +92,9 @@
             }
         },
         computed: {
-            cartid () {
-                return this.$store.state.cart.cartid;
-            }
+            ...mapState({
+                cartid: state => state.cart.cartid
+            })
         },
         created () {
             this.fetchDataFromApi()
