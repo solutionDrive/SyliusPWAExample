@@ -1,15 +1,28 @@
 <template>
+    <div>
     <header>
         <div class="container">
             <router-link to="/" class="home">Sylius PWA</router-link>
             <router-link to="/cart" class="cart">Cart</router-link>
         </div>
     </header>
+
+        <div class="section">
+            <div class="container">
+                <category></category>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+    import Category from '@/components/Category'
+
     export default {
-        name: 'app-header'
+        name: 'app-header',
+        components: {
+            Category
+        }
     }
 </script>
 
