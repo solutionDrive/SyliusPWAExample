@@ -92,9 +92,9 @@
             }
         },
         computed: {
-            ...mapState([
-                'cartid'
-            ])
+            cartid () {
+                return this.$store.state.cart.cartid;
+            }
         },
         created () {
             this.fetchDataFromApi()
@@ -117,12 +117,22 @@
             addToCart(productCode) {
                 this.loading = true
                 if (this.cartid === '') {
-                    this.$store.commit('initCartId')
+                    this.$store.commit('cart/initCartId')
                     api.pickUpCart(this.cartid).then(response => {
-                        api.addToCart(productCode, this.cartid).then(() => this.loading = false)
+                        api.addToCart(productCode, this.cartid).then(() => {
+                            api.getCart(this.cartid).then(response => {
+                                this.$store.commit('cart/setCart', response.data)
+                                this.loading = false
+                            })
+                        })
                     })
                 } else {
-                    api.addToCart(productCode, this.cartid).then(() => this.loading = false)
+                    api.addToCart(productCode, this.cartid).then(() => {
+                        api.getCart(this.cartid).then(response => {
+                            this.$store.commit('cart/setCart', response.data)
+                            this.loading = false
+                        })
+                    })
                 }
             }
         },
