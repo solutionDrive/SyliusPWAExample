@@ -35,10 +35,12 @@
         },
         methods: {
             getBreadcrumbFromApi () {
+                // breadcrumb on list page
                 if (this.taxonCode) {
                     this.getListBreadcrumb()
                 }
 
+                // breadcrumb on details page
                 if (this.productBreadcrumb) {
                     this.breadcrumb = this.productBreadcrumb
                 }
