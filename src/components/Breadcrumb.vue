@@ -23,16 +23,27 @@
             }
         },
         props: {
-            'taxonCode': ''
+            'taxonCode': '',
+            'productBreadcrumb': ''
         },
         watch: {
-            '$route': 'getBreadcrumbFromApi'
+            '$route': 'getBreadcrumbFromApi',
+            'productBreadcrumb': 'getBreadcrumbFromApi'
         },
         created () {
             this.getBreadcrumbFromApi()
         },
         methods: {
             getBreadcrumbFromApi () {
+                if (this.taxonCode) {
+                    this.getListBreadcrumb()
+                }
+
+                if (this.productBreadcrumb) {
+                    this.breadcrumb = this.productBreadcrumb
+                }
+            },
+            getListBreadcrumb () {
                 api.getCategoryByCode(this.taxonCode).then((response) => {
                     this.breadcrumb = []
                     let category = response.data

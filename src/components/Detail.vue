@@ -1,5 +1,7 @@
 <template>
     <div>
+        <breadcrumb :product-breadcrumb="breadcrumb"></breadcrumb>
+
         <div class="section">
             <div class="container">
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
@@ -76,11 +78,13 @@
     import {mapState} from 'vuex'
     import appConfig from '@/config'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import Breadcrumb from '@/components/Breadcrumb'
 
     export default {
         data () {
             return {
                 product: {},
+                breadcrumb: [],
                 error: '',
                 loading: false,
                 imageUrl: '',
@@ -105,6 +109,7 @@
                 api.getProduct(this.$route.params.code)
                     .then(response => {
                         this.product = response.data
+                        this.breadcrumb = this.product.taxons.others
                         this.loading = false
                     })
                     .catch(error => this.error = error.toString())
@@ -127,7 +132,8 @@
             }
         },
         components: {
-            ClipLoader
+            ClipLoader,
+            Breadcrumb
         }
     }
 </script>
