@@ -14,10 +14,11 @@
             </div>
         </nav>
 
-
-        <div class="container header-navi">
-            <mini-cart></mini-cart>
-            <navigation></navigation>
+        <div class="section header-navi">
+            <div class="container">
+                <mini-cart></mini-cart>
+                <navigation></navigation>
+            </div>
         </div>
     </header>
 </template>
@@ -43,6 +44,6 @@
 
 <style lang="scss">
     .header-navi {
-        margin-top: 2em;
+        padding-bottom: 0;
     }
 </style>
