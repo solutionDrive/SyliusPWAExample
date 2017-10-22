@@ -18,7 +18,6 @@
         <div class="container header-navi">
             <mini-cart></mini-cart>
             <category></category>
-            <br>
         </div>
     </header>
 </template>
