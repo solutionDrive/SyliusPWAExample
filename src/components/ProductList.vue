@@ -73,28 +73,29 @@
         },
         methods: {
             async fetchDataFromApi () {
-                this.error = null
-                this.loading = true
+                this.resetList();
                 try {
-                    this.$store.commit('list/resetCategory')
-                    this.$store.commit('list/resetProducts')
-
-                    let category = await this.fetchCategoryFromApi()
-                    this.$store.commit('list/setCategory', category.data)
-
-                    let products = await this.fetchProductsFromApi()
-                    this.$store.commit('list/setProducts', products.data.items)
+                    await this.fetchCategoryFromApi()
+                    await this.fetchProductsFromApi()
                 } catch (error) {
                     this.error = error.toString()
                 }
 
                 this.loading = false
             },
-            fetchProductsFromApi () {
-                return api.getProductList(this.$route.params.code)
+            resetList: function () {
+                this.error = null
+                this.loading = true
+                this.$store.commit('list/resetCategory')
+                this.$store.commit('list/resetProducts')
             },
-            fetchCategoryFromApi () {
-                return api.getCategoryByCode(this.$route.params.code)
+            async fetchCategoryFromApi () {
+                let category = await api.getCategoryByCode(this.$route.params.code)
+                return this.$store.commit('list/setCategory', category.data)
+            },
+            async fetchProductsFromApi () {
+                let products = await api.getProductList(this.$route.params.code)
+                return this.$store.commit('list/setProducts', products.data.items)
             },
             categoryEmpty () {
                 return Object.keys(this.category).length === 0
