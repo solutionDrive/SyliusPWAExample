@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        products: []
+        products: [],
+        category: {}
     },
     mutations: {
         setProducts (state, products) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
         },
         reset (state) {
             state.products = []
+        },
+        setCategory (state, category) {
+            state.category = category
         }
     },
     modules: {
