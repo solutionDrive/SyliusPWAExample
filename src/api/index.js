@@ -13,6 +13,10 @@ export default {
         return axios.get(appConfig.apiUrl + '/taxons/')
     },
 
+    getCategoryByCode (code) {
+        return axios.get(appConfig.apiUrl + '/taxons/' + code + '?locale=' + appConfig.apiLocale)
+    },
+
     /**
      * ======================================
      * product api
