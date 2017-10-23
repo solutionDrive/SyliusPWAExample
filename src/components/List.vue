@@ -5,8 +5,8 @@
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <h1 class="title" v-if="!categoryEmpty()">{{ category.self.name }}</h1>
-                <p v-if="!categoryEmpty()">{{ category.self.description }}</p>
+                <h1 class="title" v-if="!objectEmpty(category)">{{ category.self.name }}</h1>
+                <p v-if="!objectEmpty(category)">{{ category.self.description }}</p>
                 <hr>
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div class="columns">
@@ -51,6 +51,7 @@
     import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import mixin from '@/mixins/utils'
     import Breadcrumb from '@/components/Breadcrumb'
 
     export default {
@@ -96,14 +97,14 @@
             async fetchProductsFromApi () {
                 let products = await productApi.getProductList(this.$route.params.code)
                 return this.$store.commit('list/setProducts', products.data.items)
-            },
-            categoryEmpty () {
-                return Object.keys(this.category).length === 0
             }
         },
         components: {
             ClipLoader,
             Breadcrumb
-        }
+        },
+        mixins: [
+            mixin
+        ]
     }
 </script>
