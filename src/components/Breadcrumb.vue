@@ -46,7 +46,7 @@
                 this.$store.subscribe((mutation, state) => {
                     if (mutation.type === 'list/setCategory') {
                         this.breadcrumb = []
-                        let parent = this.$store.state.list.category.parentTree
+                        let parent = state.list.category.parentTree
                         this.addChildrenToBreadcrumb(parent)
                     }
                 })
