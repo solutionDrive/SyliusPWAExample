@@ -13,7 +13,6 @@
 
 <script>
     import appConfig from '@/config'
-    import {categoryApi} from '@/api'
 
     export default {
         data () {
@@ -22,27 +21,14 @@
                 breadcrumb: []
             }
         },
-        props: {
-            'productBreadcrumb': ''
-        },
         watch: {
-            '$route': 'getBreadcrumbFromApi',
-            'productBreadcrumb': 'getBreadcrumbFromApi'
+            '$route': 'initBreadcrumb'
         },
         created () {
-            this.getBreadcrumbFromApi()
+            this.initBreadcrumb()
         },
         methods: {
-            getBreadcrumbFromApi () {
-                // breadcrumb on list page
-                this.getListBreadcrumb()
-
-                // breadcrumb on details page
-//                if (this.productBreadcrumb) {
-//                    this.breadcrumb = this.productBreadcrumb
-//                }
-            },
-            getListBreadcrumb () {
+            initBreadcrumb () {
                 this.$store.subscribe((mutation, state) => {
                     if (mutation.type === 'list/setCategory') {
                         this.breadcrumb = []
