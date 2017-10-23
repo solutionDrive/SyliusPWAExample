@@ -1,6 +1,6 @@
 <template>
     <div>
-        <breadcrumb :product-breadcrumb="breadcrumb"></breadcrumb>
+        <breadcrumb></breadcrumb>
 
         <div class="section">
             <div class="container">
@@ -84,7 +84,6 @@
     export default {
         data () {
             return {
-                breadcrumb: [],
                 error: '',
                 loading: false,
                 imageUrl: ''
@@ -111,7 +110,6 @@
                 productApi.getProduct(this.$route.params.code)
                     .then(response => {
                         this.$store.commit('detail/setProduct', response.data)
-                        this.breadcrumb = this.product.taxons.others
                         this.loading = false
                     })
                     .catch(error => this.error = error.toString())
