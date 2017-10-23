@@ -1,6 +1,6 @@
 <template>
     <div>
-        <breadcrumb :taxon-code="$route.params.code"></breadcrumb>
+        <breadcrumb></breadcrumb>
 
         <div class="section">
             <div class="container">
