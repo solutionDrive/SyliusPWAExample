@@ -7,7 +7,7 @@
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
-                <div v-if="product">
+                <div v-if="!objectEmpty(product)">
                     <div class="columns">
                         <div class="column is-half-tablet">
                             <img :src="imageUrl + product.images[0].path"
@@ -77,6 +77,7 @@
     import {productApi, cartApi} from '@/api'
     import {mapState} from 'vuex'
     import appConfig from '@/config'
+    import mixin from '@/mixins/utils'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import Breadcrumb from '@/components/Breadcrumb'
 
@@ -134,6 +135,9 @@
         components: {
             ClipLoader,
             Breadcrumb
-        }
+        },
+        mixins: [
+            mixin
+        ]
     }
 </script>
