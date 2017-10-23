@@ -38,9 +38,9 @@
                 this.getListBreadcrumb()
 
                 // breadcrumb on details page
-                if (this.productBreadcrumb) {
-                    this.breadcrumb = this.productBreadcrumb
-                }
+//                if (this.productBreadcrumb) {
+//                    this.breadcrumb = this.productBreadcrumb
+//                }
             },
             getListBreadcrumb () {
                 this.$store.subscribe((mutation, state) => {
@@ -48,6 +48,11 @@
                         this.breadcrumb = []
                         let parent = state.list.category.parentTree
                         this.addChildrenToBreadcrumb(parent)
+                    }
+                    if (mutation.type === 'detail/setProduct') {
+                        this.breadcrumb = []
+                        let product = state.detail.product
+                        this.breadcrumb = product.taxons.others
                     }
                 })
             },
