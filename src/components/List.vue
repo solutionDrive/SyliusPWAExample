@@ -47,10 +47,10 @@
 </template>
 
 <script>
-    import {categoryApi, productApi} from '@/api'
-    import appConfig from '@/config'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import {categoryApi, productApi} from '@/api'
+    import appConfig from '@/config'
     import mixin from '@/mixins/utils'
     import Breadcrumb from '@/components/Breadcrumb'
 
