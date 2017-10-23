@@ -103,32 +103,40 @@
             '$route': 'fetchDataFromApi'
         },
         methods: {
-            fetchDataFromApi () {
+            resetDetail () {
                 this.error = null
-                this.loading = true
                 this.$store.commit('detail/resetProduct')
-                productApi.getProduct(this.$route.params.code)
-                    .then(response => {
-                        this.$store.commit('detail/setProduct', response.data)
-                        this.loading = false
-                    })
-                    .catch(error => this.error = error.toString())
             },
-            async updateAfterAddToCart (productCode) {
-                await cartApi.addToCart(productCode, this.cartid)
-                let cart = await cartApi.getCart(this.cartid)
-                this.$store.commit('cart/setCart', cart.data)
-
+            async fetchDataFromApi () {
+                this.resetDetail();
+                this.loading = true
+                try {
+                    let product = await productApi.getProduct(this.$route.params.code)
+                    this.$store.commit('detail/setProduct', product.data)
+                } catch (error) {
+                    this.error = error.toString()
+                }
                 this.loading = false
             },
             async addToCart(productCode) {
-                this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
                     await cartApi.pickUpCart(this.cartid);
                 }
 
                 await this.updateAfterAddToCart(productCode)
+            },
+            async updateAfterAddToCart (productCode) {
+                try {
+                    this.loading = true
+                    await cartApi.addToCart(productCode, this.cartid)
+                    let cart = await cartApi.getCart(this.cartid)
+                    this.$store.commit('cart/setCart', cart.data)
+                } catch (error) {
+                    this.error = error.toString()
+                }
+
+                this.loading = false
             }
         },
         components: {
