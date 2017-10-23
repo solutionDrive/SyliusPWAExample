@@ -88,7 +88,7 @@
                 breadcrumb: [],
                 error: '',
                 loading: false,
-                imageUrl: '',
+                imageUrl: ''
             }
         },
         computed: {
