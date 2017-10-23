@@ -46,11 +46,12 @@
                 }
             },
             getListBreadcrumb () {
-                categoryApi.getCategoryByCode(this.taxonCode).then((response) => {
-                    this.breadcrumb = []
-                    let category = response.data
-                    let parent = category.parentTree
-                    this.addChildrenToBreadcrumb(parent)
+                this.$store.subscribe((mutation, state) => {
+                    if (mutation.type === 'list/setCategory') {
+                        this.breadcrumb = []
+                        let parent = this.$store.state.list.category.parentTree
+                        this.addChildrenToBreadcrumb(parent)
+                    }
                 })
             },
             addChildrenToBreadcrumb (parent) {
