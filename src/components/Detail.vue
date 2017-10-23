@@ -74,11 +74,11 @@
 </template>
 
 <script>
-    import {productApi, cartApi} from '@/api'
     import {mapState} from 'vuex'
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import appConfig from '@/config'
     import mixin from '@/mixins/utils'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import {productApi, cartApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
 
     export default {
