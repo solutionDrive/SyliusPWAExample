@@ -84,7 +84,6 @@
     export default {
         data () {
             return {
-                product: {},
                 breadcrumb: [],
                 error: '',
                 loading: false,
@@ -93,6 +92,7 @@
         },
         computed: {
             ...mapState({
+                product: state => state.detail.product,
                 cartid: state => state.cart.cartid
             })
         },
@@ -105,11 +105,12 @@
         },
         methods: {
             fetchDataFromApi () {
-                this.error = this.product = null
+                this.error = null
                 this.loading = true
+                this.$store.commit('detail/resetProduct')
                 productApi.getProduct(this.$route.params.code)
                     .then(response => {
-                        this.product = response.data
+                        this.$store.commit('detail/setProduct', response.data)
                         this.breadcrumb = this.product.taxons.others
                         this.loading = false
                     })
