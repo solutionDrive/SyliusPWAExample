@@ -23,7 +23,6 @@
             }
         },
         props: {
-            'taxonCode': '',
             'productBreadcrumb': ''
         },
         watch: {
@@ -36,9 +35,7 @@
         methods: {
             getBreadcrumbFromApi () {
                 // breadcrumb on list page
-                if (this.taxonCode) {
-                    this.getListBreadcrumb()
-                }
+                this.getListBreadcrumb()
 
                 // breadcrumb on details page
                 if (this.productBreadcrumb) {
