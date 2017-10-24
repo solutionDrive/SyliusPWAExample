@@ -8,7 +8,6 @@
                 <h1 class="title" v-if="!objectEmpty(category)">{{ category.self.name }}</h1>
                 <p v-if="!objectEmpty(category)">{{ category.self.description }}</p>
                 <hr>
-                <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div class="columns">
                     <div class="column is-one-quarter">
                         <list-sidebar></list-sidebar>
@@ -18,6 +17,7 @@
                             <div class="column is-full">
                                 @todo: search box
                             </div>
+                            <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                             <div class="column is-one-third" v-for="product in products">
                                 <div class="card">
                                     <div class="card-image">
