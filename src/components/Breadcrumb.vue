@@ -4,6 +4,7 @@
             <ul>
                 <li><router-link to="/" >{{ appName }}</router-link></li>
                 <li v-for="code in breadcrumb">
+                    <!--@todo use category name instead of code in the breadcrumb like sidebar-->
                     <router-link :to="'/list/' + code">{{ code }}</router-link>
                 </li>
             </ul>
