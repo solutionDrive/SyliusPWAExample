@@ -30,7 +30,7 @@
                                     <div class="card-content">
                                         <div class="content">
                                             <router-link :to="'/detail/' + product.code">{{ product.name }}</router-link>
-                                            <p>@todo first variant price</p>
+                                            <p>{{ getPrice(product) }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +97,22 @@
             async fetchProductsFromApi () {
                 let products = await productApi.getProductList(this.$route.params.code)
                 return this.$store.commit('list/setProducts', products.data.items)
+            },
+            /**
+             * @todo: there must be a better way to fetch the collect price on list
+             *
+             * @param product
+             * @returns {string}
+             */
+            getPrice (product) {
+                let variants = product.variants
+                let key = product.code + '-variant-0'
+                let variant = variants[key]
+                if (typeof variant === 'object' && typeof variant.price === 'object') {
+                    return this.getFormattedPrice(variant.price)
+                }
+
+                return ''
             }
         },
         components: {
