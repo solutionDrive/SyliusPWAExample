@@ -21,9 +21,6 @@
                 breadcrumb: []
             }
         },
-        watch: {
-            '$route': 'initBreadcrumb'
-        },
         created () {
             this.initBreadcrumb()
         },
