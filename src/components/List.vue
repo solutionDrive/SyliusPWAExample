@@ -11,7 +11,7 @@
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div class="columns">
                     <div class="column is-one-quarter">
-                        @todo: category tree
+                        <list-sidebar></list-sidebar>
                     </div>
                     <div class="column">
                         <div class="columns is-multiline is-mobile">
@@ -53,6 +53,7 @@
     import appConfig from '@/config'
     import mixin from '@/mixins/utils'
     import Breadcrumb from '@/components/Breadcrumb'
+    import ListSidebar from '@/components/ListSidebar'
 
     export default {
         data() {
@@ -117,7 +118,8 @@
         },
         components: {
             ClipLoader,
-            Breadcrumb
+            Breadcrumb,
+            ListSidebar
         },
         mixins: [
             mixin
