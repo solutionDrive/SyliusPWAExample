@@ -15,7 +15,7 @@
                     <div class="column">
                         <div class="columns is-multiline is-mobile">
                             <div class="column is-full">
-                                @todo: search box
+                                <list-search></list-search>
                             </div>
                             <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                             <div class="column is-one-third" v-for="product in products">
@@ -54,6 +54,7 @@
     import mixin from '@/mixins/utils'
     import Breadcrumb from '@/components/Breadcrumb'
     import ListSidebar from '@/components/ListSidebar'
+    import ListSearch from '@/components/ListSearch'
 
     export default {
         data() {
@@ -119,7 +120,8 @@
         components: {
             ClipLoader,
             Breadcrumb,
-            ListSidebar
+            ListSidebar,
+            ListSearch
         },
         mixins: [
             mixin
