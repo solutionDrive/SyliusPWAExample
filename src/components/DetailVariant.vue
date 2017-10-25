@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="control">
-            <button @click="addToCart()" class="button is-link">add first variant to cart</button>
+            <button @click="addToCart()" class="button is-link">add to cart</button>
         </div>
     </div>
 </template>
