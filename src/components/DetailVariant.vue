@@ -64,9 +64,15 @@
             }
         },
         created () {
-            this.variantCode = this.product.code + '-variant-0'
+            this.initVariant()
         },
         methods: {
+            /**
+             * @todo: is there a better way to get the first variant? what if no variant?
+             */
+            initVariant () {
+                this.variantCode = this.product.code + '-variant-0'
+            },
             getVariantName (variant) {
                 return Object.values(variant.nameAxis).join()
             },
