@@ -26,14 +26,6 @@
                             <h1 class="title">{{product.name}}</h1>
                             <hr>
                             <div>@todo: review</div>
-                            <div class="columns">
-                                <div class="column is-half">
-                                    @todo: price first variant
-                                </div>
-                                <div class="column is-half">
-                                    <small>{{product.code}}</small>
-                                </div>
-                            </div>
                             <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
