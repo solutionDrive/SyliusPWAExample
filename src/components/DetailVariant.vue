@@ -95,7 +95,7 @@
             async updateAfterAddToCart () {
                 try {
                     this.loading = true
-                    await cartApi.addToCart(this.cartid, this.product.code, this.quantity, this.variantCode)
+                    await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
                     let cart = await cartApi.getCart(this.cartid)
                     this.$store.commit('cart/setCart', cart.data)
                 } catch (error) {
