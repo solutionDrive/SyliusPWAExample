@@ -1,9 +1,13 @@
 <template>
     <div class="box">
-        <div>
-            <a @click="addToCart(product.code)" class="button is-link">
-                add first variant to cart
-            </a>
+        <div class="field">
+            <label class="label">Quantity</label>
+            <div class="control">
+                <input v-model="quantity" class="input" type="number" min="1">
+            </div>
+        </div>
+        <div class="control">
+            <button @click="addToCart(product.code)" class="button is-link">add first variant to cart</button>
         </div>
     </div>
 </template>
@@ -17,7 +21,8 @@
         data () {
             return {
                 loading: false,
-                error: ''
+                error: '',
+                quantity: 1
             }
         },
         props: [
