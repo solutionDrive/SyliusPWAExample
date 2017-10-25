@@ -40,6 +40,15 @@ export const cartApi = {
 
         return axios.post(appConfig.apiUrl + '/carts/' + cartid, data )
     },
+    /**
+     * @todo: for single product without variantCode ?
+     *
+     * @param cartid
+     * @param productCode
+     * @param quantity
+     * @param variantCode
+     * @returns {AxiosPromise}
+     */
     addToCart (cartid, productCode, quantity, variantCode) {
         return axios.post(appConfig.apiUrl + '/carts/' + cartid + '/items', {
             productCode,
