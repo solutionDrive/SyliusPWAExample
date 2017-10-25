@@ -35,6 +35,7 @@
                                 </div>
                             </div>
                             <p>@todo: product description</p>
+                            <detail-variant></detail-variant>
                             <div class="box">
                                 @todo: product variant
                                 <div>
@@ -80,6 +81,7 @@
     import mixin from '@/mixins/utils'
     import {productApi, cartApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
+    import DetailVariant from '@/components/DetailVariant'
 
     export default {
         data () {
@@ -141,7 +143,8 @@
         },
         components: {
             ClipLoader,
-            Breadcrumb
+            Breadcrumb,
+            DetailVariant
         },
         mixins: [
             mixin
