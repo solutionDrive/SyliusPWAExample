@@ -34,16 +34,7 @@
                                     <small>{{product.code}}</small>
                                 </div>
                             </div>
-                            <p>@todo: product description</p>
-                            <detail-variant></detail-variant>
-                            <div class="box">
-                                @todo: product variant
-                                <div>
-                                    <a @click="addToCart(product.code)" class="button is-link">
-                                        add first variant to cart
-                                    </a>
-                                </div>
-                            </div>
+                            <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
                     <div class="tabs is-boxed">
@@ -93,8 +84,7 @@
         },
         computed: {
             ...mapState({
-                product: state => state.detail.product,
-                cartid: state => state.cart.cartid
+                product: state => state.detail.product
             })
         },
         created () {
@@ -118,26 +108,6 @@
                 } catch (error) {
                     this.error = error.toString()
                 }
-                this.loading = false
-            },
-            async addToCart(productCode) {
-                if (this.cartid === '') {
-                    this.$store.commit('cart/initCartId')
-                    await cartApi.pickUpCart(this.cartid);
-                }
-
-                await this.updateAfterAddToCart(productCode)
-            },
-            async updateAfterAddToCart (productCode) {
-                try {
-                    this.loading = true
-                    await cartApi.addToCart(productCode, this.cartid)
-                    let cart = await cartApi.getCart(this.cartid)
-                    this.$store.commit('cart/setCart', cart.data)
-                } catch (error) {
-                    this.error = error.toString()
-                }
-
                 this.loading = false
             }
         },
