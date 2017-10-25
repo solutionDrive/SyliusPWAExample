@@ -4,6 +4,7 @@
             <ul>
                 <li><router-link to="/" >{{ appName }}</router-link></li>
                 <li v-for="code in breadcrumb">
+                    <!--@todo use category name instead of code in the breadcrumb like sidebar-->
                     <router-link :to="'/list/' + code">{{ code }}</router-link>
                 </li>
             </ul>
@@ -13,7 +14,6 @@
 
 <script>
     import appConfig from '@/config'
-    import {categoryApi} from '@/api'
 
     export default {
         data () {
@@ -22,35 +22,23 @@
                 breadcrumb: []
             }
         },
-        props: {
-            'taxonCode': '',
-            'productBreadcrumb': ''
-        },
-        watch: {
-            '$route': 'getBreadcrumbFromApi',
-            'productBreadcrumb': 'getBreadcrumbFromApi'
-        },
         created () {
-            this.getBreadcrumbFromApi()
+            this.initBreadcrumb()
         },
         methods: {
-            getBreadcrumbFromApi () {
-                // breadcrumb on list page
-                if (this.taxonCode) {
-                    this.getListBreadcrumb()
-                }
-
-                // breadcrumb on details page
-                if (this.productBreadcrumb) {
-                    this.breadcrumb = this.productBreadcrumb
-                }
-            },
-            getListBreadcrumb () {
-                categoryApi.getCategoryByCode(this.taxonCode).then((response) => {
-                    this.breadcrumb = []
-                    let category = response.data
-                    let parent = category.parentTree
-                    this.addChildrenToBreadcrumb(parent)
+            initBreadcrumb () {
+                this.$store.subscribe((mutation, state) => {
+                    if (mutation.type === 'list/setCategory') {
+                        this.breadcrumb = []
+                        let parent = state.list.category.parentTree
+                        this.addChildrenToBreadcrumb(parent)
+                        return
+                    }
+                    if (mutation.type === 'detail/setProduct') {
+                        this.breadcrumb = []
+                        let product = state.detail.product
+                        this.breadcrumb = product.taxons.others
+                    }
                 })
             },
             addChildrenToBreadcrumb (parent) {

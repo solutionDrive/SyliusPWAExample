@@ -1,13 +1,13 @@
 <template>
     <div>
-        <breadcrumb :product-breadcrumb="breadcrumb"></breadcrumb>
+        <breadcrumb></breadcrumb>
 
         <div class="section">
             <div class="container">
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
-                <div v-if="product">
+                <div v-if="!objectEmpty(product)">
                     <div class="columns">
                         <div class="column is-half-tablet">
                             <img :src="imageUrl + product.images[0].path"
@@ -26,23 +26,7 @@
                             <h1 class="title">{{product.name}}</h1>
                             <hr>
                             <div>@todo: review</div>
-                            <div class="columns">
-                                <div class="column is-half">
-                                    @todo: price first variant
-                                </div>
-                                <div class="column is-half">
-                                    <small>{{product.code}}</small>
-                                </div>
-                            </div>
-                            <p>@todo: product description</p>
-                            <div class="box">
-                                @todo: product variant
-                                <div>
-                                    <a @click="addToCart(product.code)" class="button is-link">
-                                        add first variant to cart
-                                    </a>
-                                </div>
-                            </div>
+                            <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
                     <div class="tabs is-boxed">
@@ -74,25 +58,25 @@
 </template>
 
 <script>
-    import {productApi, cartApi} from '@/api'
     import {mapState} from 'vuex'
-    import appConfig from '@/config'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
+    import appConfig from '@/config'
+    import mixin from '@/mixins/utils'
+    import {productApi, cartApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
+    import DetailVariant from '@/components/DetailVariant'
 
     export default {
         data () {
             return {
-                product: {},
-                breadcrumb: [],
                 error: '',
                 loading: false,
-                imageUrl: '',
+                imageUrl: ''
             }
         },
         computed: {
             ...mapState({
-                cartid: state => state.cart.cartid
+                product: state => state.detail.product
             })
         },
         created () {
@@ -103,37 +87,29 @@
             '$route': 'fetchDataFromApi'
         },
         methods: {
-            fetchDataFromApi () {
-                this.error = this.product = null
-                this.loading = true
-                productApi.getProduct(this.$route.params.code)
-                    .then(response => {
-                        this.product = response.data
-                        this.breadcrumb = this.product.taxons.others
-                        this.loading = false
-                    })
-                    .catch(error => this.error = error.toString())
+            resetDetail () {
+                this.error = null
+                this.$store.commit('detail/resetProduct')
             },
-            async updateAfterAddToCart (productCode) {
-                await cartApi.addToCart(productCode, this.cartid)
-                let cart = await cartApi.getCart(this.cartid)
-                this.$store.commit('cart/setCart', cart.data)
-
-                this.loading = false
-            },
-            async addToCart(productCode) {
+            async fetchDataFromApi () {
+                this.resetDetail();
                 this.loading = true
-                if (this.cartid === '') {
-                    this.$store.commit('cart/initCartId')
-                    await cartApi.pickUpCart(this.cartid);
+                try {
+                    let product = await productApi.getProduct(this.$route.params.code)
+                    this.$store.commit('detail/setProduct', product.data)
+                } catch (error) {
+                    this.error = error.toString()
                 }
-
-                await this.updateAfterAddToCart(productCode)
+                this.loading = false
             }
         },
         components: {
             ClipLoader,
-            Breadcrumb
-        }
+            Breadcrumb,
+            DetailVariant
+        },
+        mixins: [
+            mixin
+        ]
     }
 </script>
