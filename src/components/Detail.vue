@@ -29,25 +29,7 @@
                             <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
-                    <div class="tabs is-boxed">
-                        <ul>
-                            <li class="is-active">
-                                <a>
-                                    <span>Details</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span>Attributes</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span>Reviews</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <detail-product-tab></detail-product-tab>
                     <p>
                         @todo: similar product
                     </p>
@@ -65,6 +47,7 @@
     import {productApi, cartApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
     import DetailVariant from '@/components/DetailVariant'
+    import DetailProductTab from '@/components/DetailProductTab'
 
     export default {
         data () {
@@ -106,7 +89,8 @@
         components: {
             ClipLoader,
             Breadcrumb,
-            DetailVariant
+            DetailVariant,
+            DetailProductTab
         },
         mixins: [
             mixin
