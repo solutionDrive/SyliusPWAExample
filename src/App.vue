@@ -1,54 +1,31 @@
 <template>
-  <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
-    </main>
-  </div>
+    <div>
+        <app-header></app-header>
+        <main>
+            <router-view></router-view>
+        </main>
+        <app-footer></app-footer>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+    import AppHeader from '@/components/AppHeader'
+    import AppFooter from '@/components/AppFooter'
+
+    export default {
+        name: 'app',
+        components: {
+            AppHeader,
+            AppFooter
+        }
+    }
 </script>
 
-<style>
-body {
-  margin: 0;
-}
+<style lang="scss">
+    @import "./assets/scss/variables";
+    @import './../node_modules/bulma/bulma.sass';
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
+    body {
+        background: $app-background-color;
+    }
 </style>
