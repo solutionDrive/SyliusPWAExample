@@ -15,7 +15,7 @@
                     <div class="column">
                         <div class="columns is-multiline">
                             <div class="column is-full">
-                                @todo: need an api for search
+                                @todo: need SyliusElasticSearchBundle for filter/search api
                                 <list-search></list-search>
                             </div>
                             <div class="section" v-if="loading"><clip-loader></clip-loader></div>
