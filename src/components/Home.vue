@@ -2,7 +2,9 @@
     <div class="section">
         <div class="container">
             <hr>
-            <h1 class="title">@todo: need api for latest Products</h1>
+            <div class="title">
+                <h1>@todo: need api for latest Products</h1>
+            </div>
         </div>
     </div>
 </template>
