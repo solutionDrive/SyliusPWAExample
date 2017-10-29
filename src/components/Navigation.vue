@@ -14,10 +14,9 @@
 
 <script>
     import {categoryApi} from '@/api'
-    import axios from 'axios'
 
     export default {
-        data() {
+        data () {
             return {
                 taxons: []
             }
@@ -25,12 +24,12 @@
         watch: {
             '$route': 'fetchDataFromApi'
         },
-        created() {
+        created () {
             this.fetchDataFromApi()
         },
         methods: {
             fetchDataFromApi () {
-                categoryApi.getAllCategories().then( response => {
+                categoryApi.getAllCategories().then(response => {
                     this.taxons = response.data[0].children
                     this.taxons.forEach(taxon => {
                         taxon.hasChildren = !!(taxon.children && taxon.children.length)

@@ -7,7 +7,7 @@ const state = {
 
 const mutations = {
     initCartId (state) {
-        state.cartid = uuidRandom();
+        state.cartid = uuidRandom()
     },
     setCartId (state, id) {
         state.cartid = id

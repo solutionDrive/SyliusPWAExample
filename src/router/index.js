@@ -28,6 +28,6 @@ export default new Router({
             path: '/detail/:code',
             name: 'detail',
             component: Detail
-        },
+        }
     ]
 })

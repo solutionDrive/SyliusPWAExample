@@ -18,7 +18,7 @@ Vue.component('detail', Detail)
 Vue.component('home', Home)
 
 new Vue({
-  el: '#app',
-  router,
-  store
+    el: '#app',
+    router,
+    store
 })

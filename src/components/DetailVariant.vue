@@ -79,7 +79,7 @@
             resetError () {
                 this.error = ''
             },
-            async addToCart() {
+            async addToCart () {
                 if (!this.variantCode) {
                     this.error = 'choose a variant'
                     return
@@ -87,7 +87,7 @@
 
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
-                    await cartApi.pickUpCart(this.cartid);
+                    await cartApi.pickUpCart(this.cartid)
                 }
 
                 await this.updateAfterAddToCart()
