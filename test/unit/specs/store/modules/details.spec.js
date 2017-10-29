@@ -3,9 +3,10 @@ import detail from '@/store/modules/detail'
 const {setProduct, resetProduct} = detail.mutations
 
 describe('detail store module', () => {
+    const mockProduct = {name: 'mock'}
+
     it('should set product state', () => {
         const state = {product: {}}
-        const mockProduct = {name: 'mock'}
         setProduct(state, mockProduct)
 
         expect(state.product).to.equal(mockProduct)
@@ -13,7 +14,6 @@ describe('detail store module', () => {
 
     it('should reset product state', () => {
         const state = {product: {}}
-        const mockProduct = {name: 'mock'}
         setProduct(state, mockProduct)
         resetProduct(state)
 
