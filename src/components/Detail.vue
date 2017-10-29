@@ -44,7 +44,7 @@
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import appConfig from '@/config'
     import mixin from '@/mixins/utils'
-    import {productApi, cartApi} from '@/api'
+    import {productApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
     import DetailVariant from '@/components/DetailVariant'
     import DetailProductTab from '@/components/DetailProductTab'
@@ -64,7 +64,7 @@
         },
         created () {
             this.fetchDataFromApi()
-            this.imageUrl = appConfig.imageUrl;
+            this.imageUrl = appConfig.imageUrl
         },
         watch: {
             '$route': 'fetchDataFromApi'
@@ -75,7 +75,7 @@
                 this.$store.commit('detail/resetProduct')
             },
             async fetchDataFromApi () {
-                this.resetDetail();
+                this.resetDetail()
                 this.loading = true
                 try {
                     let product = await productApi.getProduct(this.$route.params.code)

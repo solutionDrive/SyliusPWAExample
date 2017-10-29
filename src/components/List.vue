@@ -58,7 +58,7 @@
     import ListSearch from '@/components/ListSearch'
 
     export default {
-        data() {
+        data () {
             return {
                 loading: false,
                 error: '',
@@ -69,7 +69,7 @@
             products: state => state.list.products,
             category: state => state.list.category
         }),
-        created() {
+        created () {
             this.fetchDataFromApi()
         },
         watch: {
@@ -77,7 +77,7 @@
         },
         methods: {
             async fetchDataFromApi () {
-                this.resetList();
+                this.resetList()
                 try {
                     await this.fetchCategoryFromApi()
                     await this.fetchProductsFromApi()
