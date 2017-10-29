@@ -1,6 +1,6 @@
 {
-  "name": "syliuspwaexample",
-  "short_name": "syliuspwaexample",
+  "name": "sylius-pwa",
+  "short_name": "sylius-pwa",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
