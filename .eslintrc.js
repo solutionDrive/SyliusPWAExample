@@ -26,6 +26,8 @@ module.exports = {
 		// use 4 indent
 		'indent': [2, 4],
 		// turn off no-new
-		'no-new': 0
+		'no-new': 0,
+		// allow unused expressions for chai
+        'no-unused-expressions': 0
 	}
 }
