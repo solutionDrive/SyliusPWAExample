@@ -56,6 +56,7 @@ describe('api/cart', () => {
 
         return cartApi.getCart(testCartId)
             .then(response => {
+                expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testCartResponse)
             })
     })

@@ -29,6 +29,7 @@ describe('api/category', () => {
 
         return categoryApi.getAllCategories()
             .then(response => {
+                expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testCategories)
             })
     })
@@ -40,6 +41,7 @@ describe('api/category', () => {
 
         return categoryApi.getCategoryByCode(code)
             .then(response => {
+                expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testCategory)
             })
     })

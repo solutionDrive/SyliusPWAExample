@@ -31,6 +31,7 @@ describe('api/product', () => {
 
         return productApi.getProductList(code)
             .then(response => {
+                expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(productList)
             })
     })
@@ -43,6 +44,7 @@ describe('api/product', () => {
 
         return productApi.getProduct(code)
             .then(response => {
+                expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testProduct)
             })
     })
