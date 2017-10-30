@@ -10,17 +10,7 @@
                 <div v-if="!objectEmpty(product)">
                     <div class="columns">
                         <div class="column is-half-tablet">
-                            <img :src="imageUrl + product.images[0].path"
-                                 :alt="product.name"
-                            >
-                            <hr>
-                            <div class="columns is-mobile">
-                                <div class="column is-one-third" v-for="thumbnail in product.images">
-                                    <img :src="imageUrl + thumbnail.path"
-                                         :alt="product.name"
-                                    >
-                                </div>
-                            </div>
+                            <detail-product-image :product=product></detail-product-image>
                         </div>
                         <div class="column is-half-tablet">
                             <h1 class="title">{{product.name}}</h1>
@@ -42,19 +32,18 @@
 <script>
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import appConfig from '@/config'
     import mixin from '@/mixins/utils'
     import {productApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
     import DetailVariant from '@/components/DetailVariant'
     import DetailProductTab from '@/components/DetailProductTab'
+    import DetailProductImage from '@/components/DetailProductImage'
 
     export default {
         data () {
             return {
                 error: '',
-                loading: false,
-                imageUrl: ''
+                loading: false
             }
         },
         computed: {
@@ -64,7 +53,6 @@
         },
         created () {
             this.fetchDataFromApi()
-            this.imageUrl = appConfig.imageUrl
         },
         watch: {
             '$route': 'fetchDataFromApi'
@@ -90,7 +78,8 @@
             ClipLoader,
             Breadcrumb,
             DetailVariant,
-            DetailProductTab
+            DetailProductTab,
+            DetailProductImage
         },
         mixins: [
             mixin
