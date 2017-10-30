@@ -31,6 +31,26 @@ describe('api/cart', () => {
             })
     })
 
+    it('should add products to the cart', () => {
+        const productCode = 'testProduct1234'
+        const quantity = 2
+        const variantCode = 'testVariant5678'
+        const data = {
+            productCode,
+            quantity,
+            variantCode
+        }
+        const cartId = 'testCart9876'
+        const cartResponse = {item: 'testCartItem'}
+        mock.onPost(appConfig.apiUrl + '/carts/' + cartId + '/items', data).reply(201, cartResponse)
+
+        return cartApi.addToCart(cartId, productCode, quantity, variantCode)
+            .then(response => {
+                expect(response.status).to.equal(201)
+                expect(response.data).to.deep.equal(cartResponse)
+            })
+    })
+
     it('should get the cart', () => {
         const testCart = {name: 'test'}
         const cartId = 'testCart1234'
