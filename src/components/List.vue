@@ -10,7 +10,7 @@
                 <hr>
                 <div class="columns">
                     <div class="column is-one-quarter">
-                        <list-sidebar></list-sidebar>
+                        <list-sidebar :category = category.self></list-sidebar>
                     </div>
                     <div class="column">
                         <div class="columns is-multiline">

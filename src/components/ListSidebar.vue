@@ -18,22 +18,10 @@
 
     export default {
         name: 'list-sidebar',
-        data () {
-            return {
-                category: {}
-            }
-        },
-        created () {
-            this.initSidebar()
-        },
+        props: [
+            'category'
+        ],
         methods: {
-            initSidebar () {
-                this.$store.subscribe((mutation, state) => {
-                    if (mutation.type === 'list/setCategory') {
-                        this.category = state.list.category.self
-                    }
-                })
-            },
             isEmpty
         }
     }
