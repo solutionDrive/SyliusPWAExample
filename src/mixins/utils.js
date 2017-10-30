@@ -1,8 +1,5 @@
 export default {
     methods: {
-        objectEmpty (obj) {
-            return Object.keys(obj).length === 0
-        },
         /**
          * @todo must be a better way, and this function not belongs here
          *

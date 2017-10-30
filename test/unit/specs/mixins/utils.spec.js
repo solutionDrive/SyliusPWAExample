@@ -1,13 +1,8 @@
 import mixin from '@/mixins/utils'
 
-const {objectEmpty, getFormattedPrice} = mixin.methods
+const {getFormattedPrice} = mixin.methods
 
 describe('mixin utils', () => {
-    it('should check if object is empty', () => {
-        expect(objectEmpty({})).to.equal(true)
-        expect(objectEmpty({name: 'not emtpy'})).to.equal(false)
-    })
-
     it('should get the formatted price', () => {
         const priceUSD = {
             currency: 'USD',
