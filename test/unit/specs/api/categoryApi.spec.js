@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter'
 import appConfig from '@/config'
 import {categoryApi} from '@/api'
 
-describe('api category', () => {
+describe('api/category', () => {
     // @todo need a better way to deal with mock for all the api tests
     let mock
 
