@@ -22,8 +22,8 @@
 </script>
 
 <style lang="scss">
-    @import "./assets/scss/variables";
-    @import './../node_modules/bulma/bulma.sass';
+    @import "../assets/scss/variables";
+    @import '../../node_modules/bulma/bulma';
 
     body {
         background: $app-background-color;
