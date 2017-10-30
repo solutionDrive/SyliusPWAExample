@@ -25,6 +25,7 @@
             '$route': 'fetchDataFromApi'
         },
         created () {
+            // @todo: check cache (state) first before each time fetching from api
             this.fetchDataFromApi()
         },
         methods: {
