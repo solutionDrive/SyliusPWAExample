@@ -7,16 +7,27 @@ const mock = new MockAdapter(axios)
 
 describe('api category', () => {
     it('should get all categories', () => {
-        const mockCategories = [
+        const testCategories = [
             {name: 'category1'},
             {name: 'category2'},
             {name: 'category3'}
         ]
-        mock.onGet(appConfig.apiUrl + '/taxons/').reply(200, mockCategories)
+        mock.onGet(appConfig.apiUrl + '/taxons/').reply(200, testCategories)
 
         return categoryApi.getAllCategories()
             .then(response => {
-                expect(response.data).to.deep.equal(mockCategories)
+                expect(response.data).to.deep.equal(testCategories)
+            })
+    })
+
+    it('should get all category by code', () => {
+        const testCategory = {name: 'category1'}
+        const code = 'test1234'
+        mock.onGet(appConfig.apiUrl + '/taxons/' + code + '?locale=' + appConfig.apiLocale).reply(200, testCategory)
+
+        return categoryApi.getCategoryByCode(code)
+            .then(response => {
+                expect(response.data).to.deep.equal(testCategory)
             })
     })
 })
