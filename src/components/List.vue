@@ -38,7 +38,6 @@
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
-    import appConfig from '@/config'
     import Breadcrumb from '@/components/Breadcrumb'
     import ListSidebar from '@/components/ListSidebar'
     import ListSearch from '@/components/ListSearch'
@@ -48,8 +47,7 @@
         data () {
             return {
                 loading: false,
-                error: '',
-                imageUrl: appConfig.imageUrl
+                error: ''
             }
         },
         computed: mapState({
