@@ -19,15 +19,15 @@ describe('api/cart', () => {
         mock.restore()
     })
 
-    const cartId = 'testCart9876'
+    const testCartId = 'testCart9876'
     const testCartResponse = {item: 'testCartItem'}
 
     it('should pick up a cart', () => {
         const data = new FormData()
         data.append('channel', appConfig.apiChannel)
-        mock.onPost(appConfig.apiUrl + '/carts/' + cartId, data).reply(201)
+        mock.onPost(appConfig.apiUrl + '/carts/' + testCartId, data).reply(201)
 
-        return cartApi.pickUpCart(cartId)
+        return cartApi.pickUpCart(testCartId)
             .then(response => {
                 expect(response.status).to.equal(201)
             })
@@ -42,9 +42,9 @@ describe('api/cart', () => {
             quantity,
             variantCode
         }
-        mock.onPost(appConfig.apiUrl + '/carts/' + cartId + '/items', data).reply(201, testCartResponse)
+        mock.onPost(appConfig.apiUrl + '/carts/' + testCartId + '/items', data).reply(201, testCartResponse)
 
-        return cartApi.addToCart(cartId, productCode, quantity, variantCode)
+        return cartApi.addToCart(testCartId, productCode, quantity, variantCode)
             .then(response => {
                 expect(response.status).to.equal(201)
                 expect(response.data).to.deep.equal(testCartResponse)
@@ -52,9 +52,9 @@ describe('api/cart', () => {
     })
 
     it('should get the cart', () => {
-        mock.onGet(appConfig.apiUrl + '/carts/' + cartId).reply(200, testCartResponse)
+        mock.onGet(appConfig.apiUrl + '/carts/' + testCartId).reply(200, testCartResponse)
 
-        return cartApi.getCart(cartId)
+        return cartApi.getCart(testCartId)
             .then(response => {
                 expect(response.data).to.deep.equal(testCartResponse)
             })
