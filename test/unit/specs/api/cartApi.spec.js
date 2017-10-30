@@ -32,13 +32,13 @@ describe('api/cart', () => {
     })
 
     it('should get the cart', () => {
-        const cart = {name: 'test'}
+        const testCart = {name: 'test'}
         const cartId = 'testCart1234'
-        mock.onGet(appConfig.apiUrl + '/carts/' + cartId).reply(200, cart)
+        mock.onGet(appConfig.apiUrl + '/carts/' + cartId).reply(200, testCart)
 
         return cartApi.getCart(cartId)
             .then(response => {
-                expect(response.data).to.deep.equal(cart)
+                expect(response.data).to.deep.equal(testCart)
             })
     })
 })
