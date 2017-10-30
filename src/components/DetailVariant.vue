@@ -13,8 +13,8 @@
             <div class="field">
                 <label class="label">Variant</label>
                 <div class="control">
-                    <div class="select is-fullwidth" :class="{ 'is-danger': error }">
-                        <select v-model="variantCode" v-on:change="resetError">
+                    <div class="select is-fullwidth">
+                        <select v-model="variantCode">
                             <option v-for="variant in product.variants"
                                     :value="variant.code">
                                 {{getVariantName(variant)}}
@@ -22,7 +22,6 @@
                         </select>
                     </div>
                 </div>
-                <p class="help is-danger" v-if="error">{{error}}</p>
             </div>
             <div class="field">
                 <label class="label">Quantity</label>
@@ -30,24 +29,24 @@
                     <input v-model="quantity" class="input" type="number" min="1">
                 </div>
             </div>
-            <div class="control">
-                <button @click="addToCart()" class="button is-link">add to cart</button>
-            </div>
+            <detail-add-to-cart
+                :product = product
+                :variantCode = variantCode
+                :quantity = quantity
+            >
+            </detail-add-to-cart>
         </div>
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import {cartApi} from '@/api'
     import mixin from '@/mixins/utils'
+    import DetailAddToCart from '@/components/DetailAddToCart'
 
     export default {
         name: 'detail-variant',
         data () {
             return {
-                loading: false,
-                error: '',
                 quantity: 1,
                 variantCode: ''
             }
@@ -56,9 +55,6 @@
             'product'
         ],
         computed: {
-            ...mapState({
-                cartid: state => state.cart.cartid
-            }),
             price () {
                 return this.getFormattedPrice(this.product.variants[this.variantCode].price)
             }
@@ -75,35 +71,10 @@
             },
             getVariantName (variant) {
                 return Object.values(variant.nameAxis).join()
-            },
-            resetError () {
-                this.error = ''
-            },
-            async addToCart () {
-                if (!this.variantCode) {
-                    this.error = 'choose a variant'
-                    return
-                }
-
-                if (this.cartid === '') {
-                    this.$store.commit('cart/initCartId')
-                    await cartApi.pickUpCart(this.cartid)
-                }
-
-                await this.updateAfterAddToCart()
-            },
-            async updateAfterAddToCart () {
-                try {
-                    this.loading = true
-                    await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
-                    let cart = await cartApi.getCart(this.cartid)
-                    this.$store.commit('cart/setCart', cart.data)
-                } catch (error) {
-                    this.error = error.toString()
-                }
-
-                this.loading = false
             }
+        },
+        components: {
+            DetailAddToCart
         },
         mixins: [
             mixin
