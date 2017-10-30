@@ -3,9 +3,22 @@ import MockAdapter from 'axios-mock-adapter'
 import appConfig from '@/config'
 import {categoryApi} from '@/api'
 
-const mock = new MockAdapter(axios)
-
 describe('api category', () => {
+    // @todo need a better way to deal with mock for all the api tests
+    let mock
+
+    before(() => {
+        mock = new MockAdapter(axios)
+    })
+
+    afterEach(() => {
+        mock.reset()
+    })
+
+    after(() => {
+        mock.restore()
+    })
+
     it('should get all categories', () => {
         const testCategories = [
             {name: 'category1'},
