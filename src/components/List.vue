@@ -20,21 +20,7 @@
                             </div>
                             <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                             <div class="column is-one-third" v-for="product in products">
-                                <div class="card">
-                                    <div class="card-image">
-                                        <figure class="image is-4by3">
-                                            <router-link :to="'/detail/' + product.code">
-                                                <img :src="imageUrl + product.images[0].path" />
-                                            </router-link>
-                                        </figure>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="content">
-                                            <router-link :to="'/detail/' + product.code">{{ product.name }}</router-link>
-                                            <p>{{ getPrice(product) }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <product-card :product = product></product-card>
                             </div>
                             <div class="column is-full">
                                 @todo: pagination component
@@ -53,10 +39,10 @@
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
     import appConfig from '@/config'
-    import mixin from '@/mixins/utils'
     import Breadcrumb from '@/components/Breadcrumb'
     import ListSidebar from '@/components/ListSidebar'
     import ListSearch from '@/components/ListSearch'
+    import ProductCard from '@/components/ProductCard'
 
     export default {
         data () {
@@ -102,32 +88,14 @@
                 let products = await productApi.getProductList(this.$route.params.code)
                 return this.$store.commit('list/setProducts', products.data.items)
             },
-            /**
-             * @todo: there must be a better way to fetch the collect price on list
-             *
-             * @param product
-             * @returns {string}
-             */
-            getPrice (product) {
-                let variants = product.variants
-                let key = product.code + '-variant-0'
-                let variant = variants[key]
-                if (typeof variant === 'object' && typeof variant.price === 'object') {
-                    return this.getFormattedPrice(variant.price)
-                }
-
-                return ''
-            },
             isEmpty
         },
         components: {
             ClipLoader,
             Breadcrumb,
             ListSidebar,
-            ListSearch
-        },
-        mixins: [
-            mixin
-        ]
+            ListSearch,
+            ProductCard
+        }
     }
 </script>
