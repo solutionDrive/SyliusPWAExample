@@ -1,5 +1,5 @@
 <template>
-    <aside class="menu" v-if="!objectEmpty(category)">
+    <aside class="menu" v-if="!isEmpty(category)">
         <ul class="menu-list">
             <li>
                 <router-link :to="'/list/' + category.code" class="is-active">{{ category.name }}</router-link>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import mixin from '@/mixins/utils'
+    import {isEmpty} from 'lodash'
 
     export default {
         name: 'list-sidebar',
@@ -33,10 +33,8 @@
                         this.category = state.list.category.self
                     }
                 })
-            }
-        },
-        mixins: [
-            mixin
-        ]
+            },
+            isEmpty
+        }
     }
 </script>

@@ -7,7 +7,7 @@
                 <div class="section" v-if="loading"><clip-loader></clip-loader></div>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
-                <div v-if="!objectEmpty(product)">
+                <div v-if="!isEmpty(product)">
                     <div class="columns">
                         <div class="column is-half-tablet">
                             <detail-product-image :product=product></detail-product-image>
@@ -30,9 +30,9 @@
 </template>
 
 <script>
+    import {isEmpty} from 'lodash'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import mixin from '@/mixins/utils'
     import {productApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
     import DetailVariant from '@/components/DetailVariant'
@@ -72,7 +72,8 @@
                     this.error = error.toString()
                 }
                 this.loading = false
-            }
+            },
+            isEmpty
         },
         components: {
             ClipLoader,
@@ -80,9 +81,6 @@
             DetailVariant,
             DetailProductTab,
             DetailProductImage
-        },
-        mixins: [
-            mixin
-        ]
+        }
     }
 </script>

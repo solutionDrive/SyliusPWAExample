@@ -5,8 +5,8 @@
         <div class="section">
             <div class="container">
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <h1 class="title" v-if="!objectEmpty(category)">{{ category.self.name }}</h1>
-                <p v-if="!objectEmpty(category)">{{ category.self.description }}</p>
+                <h1 class="title" v-if="!isEmpty(category)">{{ category.self.name }}</h1>
+                <p v-if="!isEmpty(category)">{{ category.self.description }}</p>
                 <hr>
                 <div class="columns">
                     <div class="column is-one-quarter">
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+    import {isEmpty} from 'lodash'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
@@ -116,7 +117,8 @@
                 }
 
                 return ''
-            }
+            },
+            isEmpty
         },
         components: {
             ClipLoader,

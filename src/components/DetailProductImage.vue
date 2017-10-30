@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!objectEmpty(product)">
+    <div v-if="!isEmpty(product)">
         <img :src="imageUrl + product.images[0].path"
              :alt="product.name"
         >
@@ -15,8 +15,8 @@
 </template>
 
 <script>
+    import {isEmpty} from 'lodash'
     import appConfig from '@/config'
-    import mixin from '@/mixins/utils'
 
     export default {
         name: 'detail-product-image',
@@ -28,8 +28,8 @@
         props: [
             'product'
         ],
-        mixins: [
-            mixin
-        ]
+        methods: {
+            isEmpty
+        }
     }
 </script>
