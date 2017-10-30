@@ -18,27 +18,26 @@
 
 <script>
     import {mapState} from 'vuex'
+    import {isEmpty} from 'lodash'
 
     export default {
         name: 'miniCart',
         computed: {
             total () {
-                return this.cartEmpty(this.cart) ? '0.00' : this.cart.totals.items / 100
+                return this.isEmpty(this.cart) ? '0.00' : this.cart.totals.items / 100
             },
             currency () {
-                return this.cartEmpty(this.cart) ? 'USD' : this.cart.currency
+                return this.isEmpty(this.cart) ? 'USD' : this.cart.currency
             },
             itemCount () {
-                return this.cartEmpty(this.cart) ? 0 : this.cart.items.length
+                return this.isEmpty(this.cart) ? 0 : this.cart.items.length
             },
             ...mapState({
                 cart: state => state.cart.cart
             })
         },
         methods: {
-            cartEmpty () {
-                return Object.keys(this.cart).length === 0
-            }
+            isEmpty
         }
     }
 </script>
