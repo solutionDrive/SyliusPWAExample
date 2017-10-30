@@ -19,7 +19,19 @@ describe('api/cart', () => {
         mock.restore()
     })
 
-    it('should get cart', () => {
+    it('should pick up a cart', () => {
+        const data = new FormData()
+        data.append('channel', appConfig.apiChannel)
+        const cartId = 'testCart9876'
+        mock.onPost(appConfig.apiUrl + '/carts/' + cartId, data).reply(201)
+
+        return cartApi.pickUpCart(cartId)
+            .then(response => {
+                expect(response.status).to.equal(201)
+            })
+    })
+
+    it('should get the cart', () => {
         const cart = {name: 'test'}
         const cartId = 'testCart1234'
         mock.onGet(appConfig.apiUrl + '/carts/' + cartId).reply(200, cart)
@@ -29,5 +41,4 @@ describe('api/cart', () => {
                 expect(response.data).to.deep.equal(cart)
             })
     })
-
 })
