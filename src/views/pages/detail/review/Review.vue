@@ -9,7 +9,7 @@
                 </div>
                 <div class="column is-three-quarters">
                     <div v-if="!isEmpty(review)" v-for="item in review.items" class="box">
-                        <detail-review-media-box :item = item></detail-review-media-box>
+                        <review-media-box :item = item></review-media-box>
                     </div>
                     <div>
                         <a class="button is-link">add your Review</a>
@@ -24,10 +24,10 @@
     import {isEmpty} from 'lodash'
     import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
-    import DetailReviewMediaBox from '@/views/pages/detail/review/DetailReviewMediaBox'
+    import ReviewMediaBox from '@/views/pages/detail/review/ReviewMediaBox'
 
     export default {
-        name: 'detail-review',
+        name: 'review',
         data () {
             return {
                 error: '',
@@ -60,7 +60,7 @@
         },
         components: {
             ProductCard,
-            DetailReviewMediaBox
+            ReviewMediaBox
         }
     }
 </script>

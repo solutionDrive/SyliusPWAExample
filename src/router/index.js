@@ -4,7 +4,7 @@ import Home from '@/views/pages/home/Home'
 import List from '@/views/pages/list/List'
 import Cart from '@/views/pages/cart/Cart'
 import Detail from '@/views/pages/detail/Detail'
-import Review from '@/views/pages/detail/review/DetailReview'
+import Review from '@/views/pages/detail/review/Review'
 
 Vue.use(Router)
 

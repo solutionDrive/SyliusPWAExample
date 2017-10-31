@@ -24,7 +24,7 @@
     import StarRating from 'vue-star-rating'
 
     export default {
-        name: 'detail-review-media-box',
+        name: 'review-media-box',
         props: [
             'item'
         ],
