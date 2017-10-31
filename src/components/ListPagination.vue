@@ -5,8 +5,11 @@
             <a class="pagination-next" :disabled = "current === pages">Next page</a>
             <ul class="pagination-list">
                 <li v-for="page in pages">
-                    <a class="pagination-link"
-                       :class="{'is-current': page === current}">{{page}}</a>
+                    <router-link :to="getPageLink(page)"
+                                 class="pagination-link"
+                                 :class="{'is-current': page === current}">
+                        {{ page }}
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -30,6 +33,9 @@
             }
         },
         methods: {
+            getPageLink (page) {
+                return this.$route.path + '?page=' + encodeURIComponent(page)
+            },
             isEmpty
         }
     }
