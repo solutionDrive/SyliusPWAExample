@@ -4,8 +4,8 @@
             <div class="content">
                 <p>
                     <strong>{{item.author}}</strong>
-                    <small>@todo created_at not available in the api</small>
-                    <star-rating :star-size = 13
+                    <span>@todo created_at not available in the api</span>
+                    <star-rating :star-size = 15
                                  :show-rating = false
                                  :read-only = true
                                  :inline = true
