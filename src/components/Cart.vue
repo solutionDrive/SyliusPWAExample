@@ -59,7 +59,7 @@
                     return
                 }
                 this.loading = true
-                let cart = await cartApi.getCart(this.cartid)
+                const cart = await cartApi.getCart(this.cartid)
                 this.$store.commit('cart/setCart', cart.data)
                 this.loading = false
                 this.emptyCart = false

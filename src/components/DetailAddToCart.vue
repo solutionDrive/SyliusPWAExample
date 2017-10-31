@@ -51,7 +51,7 @@
                 try {
                     this.loading = true
                     await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
-                    let cart = await cartApi.getCart(this.cartid)
+                    const cart = await cartApi.getCart(this.cartid)
                     this.$store.commit('cart/setCart', cart.data)
                 } catch (error) {
                     this.error = error.toString()

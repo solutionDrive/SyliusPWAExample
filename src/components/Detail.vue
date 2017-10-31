@@ -66,7 +66,7 @@
                 this.resetDetail()
                 this.loading = true
                 try {
-                    let product = await productApi.getProduct(this.$route.params.code)
+                    const product = await productApi.getProduct(this.$route.params.code)
                     this.$store.commit('detail/setProduct', product.data)
                 } catch (error) {
                     this.error = error.toString()

@@ -30,13 +30,13 @@
                 this.$store.subscribe((mutation, state) => {
                     if (mutation.type === 'list/setCategory') {
                         this.breadcrumb = []
-                        let parent = state.list.category.parentTree
+                        const parent = state.list.category.parentTree
                         this.addChildrenToBreadcrumb(parent)
                         return
                     }
                     if (mutation.type === 'detail/setProduct') {
                         this.breadcrumb = []
-                        let product = state.detail.product
+                        const product = state.detail.product
                         this.breadcrumb = product.taxons.others
                     }
                 })

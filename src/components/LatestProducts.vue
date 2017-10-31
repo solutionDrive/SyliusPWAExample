@@ -31,7 +31,7 @@
                 this.loading = true
 
                 try {
-                    let products = await productApi.getLatestProducts()
+                    const products = await productApi.getLatestProducts()
                     this.products = products.data.items
                 } catch (error) {
                     this.error = error.toString()

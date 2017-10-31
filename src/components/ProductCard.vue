@@ -39,9 +39,9 @@
              * @returns {string}
              */
             getPrice (product) {
-                let variants = product.variants
-                let key = product.code + '-variant-0'
-                let variant = variants[key]
+                const variants = product.variants
+                const key = product.code + '-variant-0'
+                const variant = variants[key]
                 if (typeof variant === 'object' && typeof variant.price === 'object') {
                     return this.getFormattedPrice(variant.price)
                 }
