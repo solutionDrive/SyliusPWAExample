@@ -2,6 +2,7 @@
     <div class="section">
         <div class="container">
             <div v-if="error" class="notification is-danger">{{ error }}</div>
+            <div class="section" v-if="loading"><clip-loader></clip-loader></div>
 
             <div class="columns is-multiline">
                 <div class="column is-one-quarter" v-if="!isEmpty(product)">
@@ -22,6 +23,7 @@
 
 <script>
     import {isEmpty} from 'lodash'
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
     import ReviewMediaBox from '@/views/pages/detail/review/ReviewMediaBox'
@@ -30,14 +32,17 @@
         name: 'review',
         data () {
             return {
+                loading: false,
                 error: '',
                 product: {},
                 review: {}
             }
         },
-        created () {
-            this.fetchProduct()
-            this.fetchProductReview()
+        async created () {
+            this.loading = true
+            await this.fetchProduct()
+            await this.fetchProductReview()
+            this.loading = false
         },
         methods: {
             async fetchProduct () {
@@ -60,7 +65,8 @@
         },
         components: {
             ProductCard,
-            ReviewMediaBox
+            ReviewMediaBox,
+            ClipLoader
         }
     }
 </script>
