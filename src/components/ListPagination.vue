@@ -1,17 +1,12 @@
 <template>
-    <div>
+    <div v-if="!isEmpty(list)">
         <nav class="pagination" role="navigation" aria-label="pagination">
-            <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
-            <a class="pagination-next">Next page</a>
+            <a class="pagination-previous" :disabled = "current === 1">Previous</a>
+            <a class="pagination-next" :disabled = "current === pages">Next page</a>
             <ul class="pagination-list">
-                <li>
-                    <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-                </li>
-                <li>
-                    <a class="pagination-link" aria-label="Goto page 2">2</a>
-                </li>
-                <li>
-                    <a class="pagination-link" aria-label="Goto page 3">3</a>
+                <li v-for="page in pages">
+                    <a class="pagination-link"
+                       :class="{'is-current': page === current}">{{page}}</a>
                 </li>
             </ul>
         </nav>
@@ -19,10 +14,23 @@
 </template>
 
 <script>
+    import {isEmpty} from 'lodash'
+
     export default {
         name: 'list-pagination',
         props: [
             'list'
-        ]
+        ],
+        computed: {
+            current () {
+                return this.list.page
+            },
+            pages () {
+                return this.list.pages
+            }
+        },
+        methods: {
+            isEmpty
+        }
     }
 </script>
