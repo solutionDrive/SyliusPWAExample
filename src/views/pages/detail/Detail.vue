@@ -34,10 +34,10 @@
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi} from '@/api'
-    import Breadcrumb from '@/components/Breadcrumb'
-    import DetailVariant from '@/components/DetailVariant'
-    import DetailProductTab from '@/components/DetailProductTab'
-    import DetailProductImage from '@/components/DetailProductImage'
+    import Breadcrumb from '@/views/components/Breadcrumb'
+    import DetailVariant from '@/views/pages/detail/DetailVariant'
+    import DetailProductTab from '@/views/pages/detail/DetailProductTab'
+    import DetailProductImage from '@/views/pages/detail/DetailProductImage'
 
     export default {
         data () {

@@ -24,8 +24,8 @@
 </template>
 
 <script>
-    import Navigation from '@/components/Navigation'
-    import MiniCart from '@/components/MiniCart'
+    import Navigation from '@/views/components/Navigation'
+    import MiniCart from '@/views/components/MiniCart'
     import appConfig from '@/config'
 
     export default {

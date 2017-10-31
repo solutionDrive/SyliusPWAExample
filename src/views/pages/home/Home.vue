@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import LatestProducts from '@/components/LatestProducts'
+    import LatestProducts from '@/views/components/LatestProducts'
 
     export default {
         name: 'home',

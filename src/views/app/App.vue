@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import AppHeader from '@/components/AppHeader'
-    import AppFooter from '@/components/AppFooter'
+    import AppHeader from '@/views/app/AppHeader'
+    import AppFooter from '@/views/app/AppFooter'
 
     export default {
         name: 'app',
@@ -22,8 +22,8 @@
 </script>
 
 <style lang="scss">
-    @import "../assets/scss/variables";
-    @import '../../node_modules/bulma/bulma';
+    @import "../../assets/scss/variables";
+    @import '../../../node_modules/bulma/bulma';
 
     body {
         background: $app-background-color;

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import List from '@/components/List'
-import Cart from '@/components/Cart'
-import Detail from '@/components/Detail'
+import Home from '@/views/pages/home/Home'
+import List from '@/views/pages/list/List'
+import Cart from '@/views/pages/cart/Cart'
+import Detail from '@/views/pages/detail/Detail'
 
 Vue.use(Router)
 
