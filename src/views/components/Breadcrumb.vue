@@ -5,7 +5,7 @@
                 <li><router-link to="/" >Home</router-link></li>
                 <li v-for="code in breadcrumb">
                     <!--@todo use category name instead of code in the breadcrumb like sidebar-->
-                    <router-link :to="'/list/' + code">{{ code }}</router-link>
+                    <router-link :to="{name: 'list', params: {code: code}}">{{code}}</router-link>
                 </li>
             </ul>
         </nav>
