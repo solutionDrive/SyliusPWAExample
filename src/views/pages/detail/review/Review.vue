@@ -19,6 +19,7 @@
                         </router-link>
                     </div>
                 </div>
+                <!--@todo: what if no reviews, should display an info notification-->
             </div>
         </div>
     </div>
