@@ -41,7 +41,7 @@
 
 <script>
     import mixin from '@/mixins/utils'
-    import DetailAddToCart from '@/components/DetailAddToCart'
+    import DetailAddToCart from '@/views/pages/detail/DetailAddToCart'
 
     export default {
         name: 'detail-variant',

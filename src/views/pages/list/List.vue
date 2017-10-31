@@ -38,11 +38,11 @@
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
-    import Breadcrumb from '@/components/Breadcrumb'
-    import ProductCard from '@/components/ProductCard'
-    import ListSidebar from '@/components/ListSidebar'
-    import ListSearch from '@/components/ListSearch'
-    import ListPagination from '@/components/ListPagination'
+    import Breadcrumb from '@/views/components/Breadcrumb'
+    import ProductCard from '@/views/components/ProductCard'
+    import ListSidebar from '@/views/pages/list/ListSidebar'
+    import ListSearch from '@/views/pages/list/ListSearch'
+    import ListPagination from '@/views/pages/list/ListPagination'
 
     export default {
         data () {

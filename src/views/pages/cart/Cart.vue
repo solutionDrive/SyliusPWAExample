@@ -33,8 +33,8 @@
     import {cartApi} from '@/api'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import CartSummary from '@/components/CartSummary'
-    import CartDashboard from '@/components/CartDashboard'
+    import CartSummary from '@/views/pages/cart/CartSummary'
+    import CartDashboard from '@/views/pages/cart/CartDashboard'
 
     export default {
         data () {
