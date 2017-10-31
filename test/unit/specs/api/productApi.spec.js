@@ -20,19 +20,28 @@ describe('api/product', () => {
     })
 
     it('should get list of product by the taxon code', () => {
-        const productList = [
+        const testProductList = [
             {name: 'product1'},
             {name: 'product2'},
             {name: 'product3'}
         ]
-        const code = 'testCategory1234'
-        mock.onGet(appConfig.apiUrl + '/taxon-products/' + code + '?channel=' + appConfig.apiChannel)
-            .reply(200, productList)
+        const testCode = 'testCategory1234'
+        const query = {
+            'channel': appConfig.apiChannel,
+            'limit': appConfig.apiLimit,
+            'page': 2
+        }
+        const queryString = Object.keys(query).map(key => {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(query[key])
+        }).join('&')
 
-        return productApi.getProductList(code)
+        mock.onGet(appConfig.apiUrl + '/taxon-products/' + testCode + '?' + queryString)
+            .reply(200, testProductList)
+
+        return productApi.getProductList(testCode, 2)
             .then(response => {
                 expect(response.status).to.equal(200)
-                expect(response.data).to.deep.equal(productList)
+                expect(response.data).to.deep.equal(testProductList)
             })
     })
 
