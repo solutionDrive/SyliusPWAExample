@@ -37,6 +37,7 @@
         </div>
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
+        <div v-if="added" class="notification is-success">new review created successfully!</div>
     </div>
 </template>
 
@@ -52,6 +53,7 @@
             return {
                 loading: false,
                 error: '',
+                added: false,
                 title: '',
                 rating: 0,
                 comment: '',
@@ -80,7 +82,7 @@
                         this.comment,
                         this.email
                     )
-                    this.$router.go(-1)
+                    this.added = true
                 } catch (error) {
                     this.error = error.toString()
                 }
