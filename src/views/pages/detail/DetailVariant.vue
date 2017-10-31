@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="is-clipped">
         <div class="columns">
             <div class="column is-one-third">
                 <h3 class="title">{{price}}</h3>
