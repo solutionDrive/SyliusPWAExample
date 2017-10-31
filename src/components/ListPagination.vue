@@ -48,6 +48,8 @@
             getPageLink (page) {
                 if (page < 1) {
                     page = 1
+                } else if (page > this.pages) {
+                    page = this.pages
                 }
                 return this.$route.path + '?page=' + encodeURIComponent(page)
             },
