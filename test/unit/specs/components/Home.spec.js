@@ -6,6 +6,6 @@ describe('Home.vue', () => {
         const Constructor = Vue.extend(Home)
         const vm = new Constructor().$mount()
         expect(vm.$el.querySelector('.title').textContent)
-            .to.equal('@todo: need api for latest Products')
+            .to.equal('Latest Products')
     })
 })
