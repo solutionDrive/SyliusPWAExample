@@ -9,7 +9,9 @@
                     <product-card :product = product></product-card>
                 </div>
                 <div class="column is-three-quarters">
-                    create form
+                    <div class="box">
+                        <review-create-form></review-create-form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,6 +23,7 @@
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
+    import ReviewCreateForm from '@/views/pages/detail/review/ReviewCreateForm'
 
     export default {
         name: 'review-create',
@@ -49,6 +52,7 @@
         },
         components: {
             ProductCard,
+            ReviewCreateForm,
             ClipLoader
         }
     }
