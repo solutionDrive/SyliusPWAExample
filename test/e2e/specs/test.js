@@ -12,7 +12,7 @@ module.exports = {
             .url(devServer)
             .waitForElementVisible('#app', 5000)
             .assert.elementPresent('.title')
-            .assert.containsText('h1', '@todo: need api for latest Products')
+            .assert.containsText('h1', 'Latest Products')
             .assert.elementCount('img', 0)
             .end()
     }
