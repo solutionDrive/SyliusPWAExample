@@ -39,6 +39,15 @@ export const productApi = {
         return axios.get(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
     },
     /**
+     * Get one product by the given slug
+     *
+     * @param slug
+     * @returns {AxiosPromise}
+     */
+    getProductBySlug (slug) {
+        return axios.get(appConfig.apiUrl + '/products-by-slug/' + slug + '?channel=' + appConfig.apiChannel)
+    },
+    /**
      * @todo: need an api for this method
      *
      * @returns {*|AxiosPromise}

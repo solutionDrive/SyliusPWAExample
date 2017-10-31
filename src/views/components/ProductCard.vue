@@ -2,14 +2,14 @@
     <div class="card" v-if="!isEmpty(product)">
         <div class="card-image">
             <figure class="image is-4by3">
-                <router-link :to="'/detail/' + product.code">
+                <router-link :to="'/detail/' + product.slug">
                     <img :src="imageUrl + product.images[0].path" />
                 </router-link>
             </figure>
         </div>
         <div class="card-content">
             <div class="content">
-                <router-link :to="'/detail/' + product.code">{{ product.name }}</router-link>
+                <router-link :to="'/detail/' + product.slug">{{ product.name }}</router-link>
                 <p>{{ getPrice(product) }}</p>
             </div>
         </div>

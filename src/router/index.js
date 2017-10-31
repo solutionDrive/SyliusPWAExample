@@ -25,7 +25,7 @@ export default new Router({
             component: Cart
         },
         {
-            path: '/detail/:code',
+            path: '/detail/:slug',
             name: 'detail',
             component: Detail
         }
