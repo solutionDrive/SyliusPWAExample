@@ -17,37 +17,80 @@
         </div>
         <div class="field">
             <div class="control">
-                <input class="input" type="text" placeholder="Title">
+                <input v-model="title" class="input" type="text" placeholder="Title">
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <textarea class="textarea" placeholder="Write your own review"></textarea>
+                <textarea v-model="comment" class="textarea" placeholder="Write your own review"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input v-model="email" class="input" type="email" placeholder="Email">
             </div>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link">Add</button>
+                <button @click="submit" class="button is-link">Add</button>
             </div>
         </div>
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
+        <div v-if="error" class="notification is-danger">{{ error }}</div>
     </div>
 </template>
 
 <script>
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import StarRating from 'vue-star-rating'
+    import Validator from 'email-validator'
+    import {reviewApi} from '@/api'
 
     export default {
         name: 'review-create-form',
         data () {
             return {
-                rating: 0
+                loading: false,
+                error: '',
+                title: '',
+                rating: 0,
+                comment: '',
+                email: ''
             }
         },
         props: [
             'productName'
         ],
+        methods: {
+            validate () {
+                return this.title !== '' && this.rating > 0 && this.comment !== '' && Validator.validate(this.email)
+            },
+            async submit () {
+                if (this.validate() === false) {
+                    this.error = 'form validation failed'
+                    return
+                }
+
+                try {
+                    this.loading = true
+                    await reviewApi.addReviewForSlug(
+                        this.$route.params.slug,
+                        this.title,
+                        this.rating,
+                        this.comment,
+                        this.email
+                    )
+                    this.$router.go(-1)
+                } catch (error) {
+                    this.error = error.toString()
+                }
+
+                this.loading = false
+            }
+        },
         components: {
-            StarRating
+            StarRating,
+            ClipLoader
         }
     }
 </script>
