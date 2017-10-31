@@ -8,25 +8,9 @@
                     <product-card :product = product></product-card>
                 </div>
                 <div class="column is-three-quarters">
-                    <article class="media box" v-if="!isEmpty(review)" v-for="item in review.items">
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <strong>{{item.author}}</strong>
-                                    <small>@todo created_at not available in the api</small>
-                                    <star-rating :star-size = 13
-                                                 :show-rating = false
-                                                 :read-only = true
-                                                 :inline = true
-                                                 v-model="item.rating"
-                                    >
-                                    </star-rating>
-                                    <br>
-                                    {{item.comment}}
-                                </p>
-                            </div>
-                        </div>
-                    </article>
+                    <div v-if="!isEmpty(review)" v-for="item in review.items" class="box">
+                        <detail-review-media-box :item = item></detail-review-media-box>
+                    </div>
                     <div>
                         <a class="button is-link">add your Review</a>
                     </div>
@@ -40,7 +24,7 @@
     import {isEmpty} from 'lodash'
     import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
-    import StarRating from 'vue-star-rating'
+    import DetailReviewMediaBox from '@/views/pages/detail/review/DetailReviewMediaBox'
 
     export default {
         name: 'detail-review',
@@ -76,7 +60,7 @@
         },
         components: {
             ProductCard,
-            StarRating
+            DetailReviewMediaBox
         }
     }
 </script>
