@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="tabs is-toggle margin-top">
+        <div class="tabs margin-top">
             <ul v-if="taxons && taxons.length">
                 <li v-for="taxon in taxons" :class="{'is-active' : taxon.isActive}">
                     <router-link :to="'/list/' + taxon.code">
