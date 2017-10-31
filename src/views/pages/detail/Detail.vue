@@ -20,9 +20,11 @@
                         </div>
                     </div>
                     <detail-product-tab></detail-product-tab>
-                    <p>
-                        @todo: similar product
-                    </p>
+                    <hr>
+                    <div class="has-text-centered latest-product-header">
+                        <strong>Latest Products</strong>
+                    </div>
+                    <latest-products></latest-products>
                 </div>
             </div>
         </div>
@@ -35,6 +37,7 @@
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi} from '@/api'
     import Breadcrumb from '@/views/components/Breadcrumb'
+    import LatestProducts from '@/views/components/LatestProducts'
     import DetailVariant from '@/views/pages/detail/DetailVariant'
     import DetailProductTab from '@/views/pages/detail/DetailProductTab'
     import DetailProductImage from '@/views/pages/detail/DetailProductImage'
@@ -79,6 +82,7 @@
         components: {
             ClipLoader,
             Breadcrumb,
+            LatestProducts,
             DetailVariant,
             DetailProductTab,
             DetailProductImage,
@@ -86,3 +90,9 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .latest-product-header {
+        margin-bottom: 1.5em;
+    }
+</style>
