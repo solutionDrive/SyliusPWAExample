@@ -7,7 +7,7 @@
                      v-model="rating"
         >
         </star-rating>
-        <a href="#">@todo: #Reviews</a>
+        <router-link :to="'/detail/' + this.$route.params.slug + '/review/'">@todo: #Reviews</router-link>
         <a href="#">Add your review</a>
     </div>
 </template>
