@@ -1,6 +1,6 @@
 <template>
     <div v-if="!isEmpty(list)">
-        <nav class="pagination" role="navigation" aria-label="pagination">
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
             <router-link :to="getPageLink(current-1)"
                          :disabled = "current === 1"
                          class="pagination-previous"
