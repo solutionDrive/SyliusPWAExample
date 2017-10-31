@@ -1,6 +1,7 @@
 <template>
     <div v-if="!isEmpty(list)">
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            <!--@todo: previous link still clickable when href is different as current url-->
             <router-link :to="getPageLink(current - 1)"
                          :disabled = "current === 1"
                          class="pagination-previous"
