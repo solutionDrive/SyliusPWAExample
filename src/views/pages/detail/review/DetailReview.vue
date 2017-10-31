@@ -8,14 +8,14 @@
                     <product-card :product = product></product-card>
                 </div>
                 <div class="column is-three-quarters">
-                    <article class="media box">
+                    <article class="media box" v-if="!isEmpty(review)" v-for="item in review.items">
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong>John Smith</strong>
+                                    <strong>{{item.author}}</strong>
                                     <small>@todo created_at not available in the api</small>
                                     <br>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                                    {{item.comment}}
                                 </p>
                             </div>
                         </div>
