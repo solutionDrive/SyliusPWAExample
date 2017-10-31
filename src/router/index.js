@@ -4,6 +4,7 @@ import Home from '@/views/pages/home/Home'
 import List from '@/views/pages/list/List'
 import Cart from '@/views/pages/cart/Cart'
 import Detail from '@/views/pages/detail/Detail'
+import Review from '@/views/pages/detail/review/DetailReview'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
             path: '/detail/:slug',
             name: 'detail',
             component: Detail
+        },
+        {
+            path: '/detail/:slug/review',
+            name: 'review',
+            component: Review
         }
     ]
 })
