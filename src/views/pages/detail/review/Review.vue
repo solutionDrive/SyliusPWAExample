@@ -8,12 +8,15 @@
                 <div class="column is-one-quarter" v-if="!isEmpty(product)">
                     <product-card :product = product></product-card>
                 </div>
-                <div class="column is-three-quarters">
-                    <div v-if="!isEmpty(review)" v-for="item in review.items" class="box">
+                <div class="column is-three-quarters" v-if="!isEmpty(review)">
+                    <div v-for="item in review.items" class="box">
                         <review-media-box :item = item></review-media-box>
                     </div>
                     <div>
-                        <a class="button is-link">add your Review</a>
+                        <router-link :to="'/detail/' + this.$route.params.slug + '/review/new'"
+                                     class="button is-link">
+                            add your Review
+                        </router-link>
                     </div>
                 </div>
             </div>

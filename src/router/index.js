@@ -4,7 +4,8 @@ import Home from '@/views/pages/home/Home'
 import List from '@/views/pages/list/List'
 import Cart from '@/views/pages/cart/Cart'
 import Detail from '@/views/pages/detail/Detail'
-import Review from '@/views/pages/detail/review/Review'
+import ReviewIndex from '@/views/pages/detail/review/Review'
+import ReviewCreate from '@/views/pages/detail/review/ReviewCreate'
 
 Vue.use(Router)
 
@@ -32,8 +33,13 @@ export default new Router({
         },
         {
             path: '/detail/:slug/review',
-            name: 'review',
-            component: Review
+            name: 'review-index',
+            component: ReviewIndex
+        },
+        {
+            path: '/detail/:slug/review/new',
+            name: 'review-create',
+            component: ReviewCreate
         }
     ]
 })
