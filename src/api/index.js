@@ -19,7 +19,12 @@ export const productApi = {
      * @returns {AxiosPromise}
      */
     getProductList (code) {
-        return axios.get(appConfig.apiUrl + '/taxon-products/' + code + '?channel=' + appConfig.apiChannel)
+        const query = {
+            'channel': appConfig.apiChannel,
+            'limit': appConfig.apiLimit
+        }
+
+        return axios.get(appConfig.apiUrl + '/taxon-products/' + code + '?' + toQueryString(query))
     },
 
     /**
@@ -68,4 +73,16 @@ export const cartApi = {
     getCart (cartid) {
         return axios.get(appConfig.apiUrl + '/carts/' + cartid)
     }
+}
+
+/**
+ * query object to query string
+ *
+ * @param paramsObject
+ * @returns {string}
+ */
+function toQueryString (paramsObject) {
+    return Object.keys(paramsObject).map(key => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(paramsObject[key])
+    }).join('&')
 }
