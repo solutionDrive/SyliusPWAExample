@@ -4,7 +4,7 @@
             <div class="level-left"></div>
             <div class="level-right">
                 <p class="level-item">
-                    <router-link to="/cart" class="button is-dark">
+                    <router-link :to="{name: 'cart'}" class="button is-dark">
                         <span>{{ total + currency}}</span>
                         <span v-if="itemCount">
                             , {{ itemCount }} item

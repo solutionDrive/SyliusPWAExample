@@ -13,7 +13,7 @@
                         <review-media-box :item = item></review-media-box>
                     </div>
                     <div>
-                        <router-link :to="'/detail/' + this.$route.params.slug + '/review/new'"
+                        <router-link :to="{name: 'review-create', params: {slug: this.$route.params.slug}}"
                                      class="button is-link">
                             add your Review
                         </router-link>

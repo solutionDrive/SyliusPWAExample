@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul v-if="!isEmpty(breadcrumb)">
-                <li><router-link to="/" >Home</router-link></li>
+                <li><router-link to="{name: 'home'}" >Home</router-link></li>
                 <li v-for="code in breadcrumb">
                     <!--@todo use category name instead of code in the breadcrumb like sidebar-->
                     <router-link :to="{name: 'list', params: {code: code}}">{{code}}</router-link>

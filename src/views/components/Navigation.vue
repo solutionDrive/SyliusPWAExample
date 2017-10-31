@@ -3,7 +3,7 @@
         <div class="tabs margin-top">
             <ul v-if="taxons && taxons.length">
                 <li v-for="taxon in taxons" :class="{'is-active' : taxon.isActive}">
-                    <router-link :to="'/list/' + taxon.code">
+                    <router-link :to="{name: 'list', params: {code: taxon.code}}">
                         <span>{{ taxon.code }}</span>
                     </router-link>
                 </li>

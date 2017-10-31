@@ -2,10 +2,14 @@
     <aside class="menu" v-if="!isEmpty(category)">
         <ul class="menu-list">
             <li>
-                <router-link :to="'/list/' + category.code" class="is-active">{{ category.name }}</router-link>
+                <router-link :to="{name: 'list', params: {code: category.code}}" class="is-active">
+                    {{ category.name }}
+                </router-link>
                 <ul v-if="category.children.length">
                     <li v-for="child in category.children">
-                        <router-link :to="'/list/' + child.code">{{ child.name }}</router-link>
+                        <router-link :to="{name: 'list', params: {code: child.code}}">
+                            {{ child.name }}
+                        </router-link>
                     </li>
                 </ul>
             </li>

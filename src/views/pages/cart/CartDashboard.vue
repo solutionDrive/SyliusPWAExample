@@ -23,7 +23,9 @@
                             </div>
                             <div class="media-content">
                                 <div class="content">
-                                    <router-link :to="'/detail/' + item.product.code">{{ item.product.name }}</router-link>
+                                    <router-link :to="{name: 'detail', params: {slug: item.product.slug}}">
+                                        {{ item.product.name }}
+                                    </router-link>
                                     <p><small>{{item.product.code}}</small></p>
                                     <p><small>{{item.product.variants[0].axis[0]}}</small></p>
                                 </div>
