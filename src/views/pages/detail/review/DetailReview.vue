@@ -14,6 +14,13 @@
                                 <p>
                                     <strong>{{item.author}}</strong>
                                     <small>@todo created_at not available in the api</small>
+                                    <star-rating :star-size = 13
+                                                 :show-rating = false
+                                                 :read-only = true
+                                                 :inline = true
+                                                 v-model="item.rating"
+                                    >
+                                    </star-rating>
                                     <br>
                                     {{item.comment}}
                                 </p>
@@ -33,6 +40,7 @@
     import {isEmpty} from 'lodash'
     import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
+    import StarRating from 'vue-star-rating'
 
     export default {
         name: 'detail-review',
@@ -67,7 +75,8 @@
             isEmpty
         },
         components: {
-            ProductCard
+            ProductCard,
+            StarRating
         }
     }
 </script>
