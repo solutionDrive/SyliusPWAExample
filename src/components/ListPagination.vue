@@ -1,13 +1,13 @@
 <template>
     <div v-if="!isEmpty(list)">
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-            <router-link :to="getPageLink(current-1)"
+            <router-link :to="getPageLink(current - 1)"
                          :disabled = "current === 1"
                          class="pagination-previous"
                          exact>
                 Previous
             </router-link>
-            <router-link :to="getPageLink(current+1)"
+            <router-link :to="getPageLink(current + 1)"
                          :disabled = "current === pages"
                          class="pagination-next"
                          exact>
