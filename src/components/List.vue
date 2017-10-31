@@ -15,10 +15,10 @@
                     <div class="column">
                         <div class="columns is-multiline">
                             <div class="column is-full">
-                                @todo: need SyliusElasticSearchBundle for filter/search api
                                 <list-search></list-search>
+                                <p class="is-pulled-right">@todo: need SyliusElasticSearchBundle for filter/search api</p>
                             </div>
-                            <div class="section" v-if="loading"><clip-loader></clip-loader></div>
+                            <div class="column is-full" v-if="loading"><clip-loader></clip-loader></div>
                             <div class="column is-one-third" v-for="product in products">
                                 <product-card :product = product></product-card>
                             </div>
