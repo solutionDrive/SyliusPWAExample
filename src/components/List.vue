@@ -77,6 +77,7 @@
             resetList: function () {
                 this.error = null
                 this.loading = true
+                this.list = {}
                 this.$store.commit('list/resetCategory')
                 this.$store.commit('list/resetProducts')
             },
