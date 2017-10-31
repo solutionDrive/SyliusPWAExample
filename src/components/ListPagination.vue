@@ -15,11 +15,13 @@
             </router-link>
             <ul class="pagination-list">
                 <li v-for="page in pages">
-                    <router-link :to="getPageLink(page)"
+                    <router-link v-if="Math.abs(page - current) < 2 || page === pages || page === 1"
+                                 :to="getPageLink(page)"
                                  class="pagination-link"
                                  :class="{'is-current': page === current}">
                         {{ page }}
                     </router-link>
+                    <span v-else-if="Math.abs(page - current) === 2" class="pagination-ellipsis">&hellip;</span>
                 </li>
             </ul>
         </nav>
