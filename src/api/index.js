@@ -15,13 +15,15 @@ export const productApi = {
     /**
      * Get product list by taxon Code
      *
-     * @param code taxon code
+     * @param code
+     * @param page
      * @returns {AxiosPromise}
      */
-    getProductList (code) {
+    getProductList (code, page = 1) {
         const query = {
             'channel': appConfig.apiChannel,
-            'limit': appConfig.apiLimit
+            'limit': appConfig.apiLimit,
+            page
         }
 
         return axios.get(appConfig.apiUrl + '/taxon-products/' + code + '?' + toQueryString(query))
