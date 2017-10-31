@@ -29,7 +29,7 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import {productApi} from '@/api'
+    import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
 
     export default {
@@ -37,17 +37,27 @@
         data () {
             return {
                 error: '',
-                product: {}
+                product: {},
+                review: {}
             }
         },
         created () {
             this.fetchProduct()
+            this.fetchProductReview()
         },
         methods: {
             async fetchProduct () {
                 try {
                     const product = await productApi.getProductBySlug(this.$route.params.slug)
                     this.product = product.data
+                } catch (error) {
+                    this.error = error.toString()
+                }
+            },
+            async fetchProductReview () {
+                try {
+                    const review = await reviewApi.getReviewBySlug(this.$route.params.slug)
+                    this.review = review.data
                 } catch (error) {
                     this.error = error.toString()
                 }

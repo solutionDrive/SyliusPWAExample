@@ -58,6 +58,17 @@ export const productApi = {
     }
 }
 
+export const reviewApi = {
+    /**
+     *
+     * @param slug
+     * @returns {AxiosPromise}
+     */
+    getReviewBySlug (slug) {
+        return axios.get(appConfig.apiUrl + '/product-reviews-by-slug/' + slug + '?channel=' + appConfig.apiChannel)
+    }
+}
+
 export const cartApi = {
     pickUpCart (cartid) {
         const data = new FormData()
