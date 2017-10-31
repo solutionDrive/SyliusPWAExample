@@ -20,6 +20,9 @@
 
 <script>
     export default {
-        name: 'list-pagination'
+        name: 'list-pagination',
+        props: [
+            'list'
+        ]
     }
 </script>

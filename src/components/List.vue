@@ -23,7 +23,7 @@
                                 <product-card :product = product></product-card>
                             </div>
                             <div class="column is-full">
-                                <list-pagination></list-pagination>
+                                <list-pagination :list = list></list-pagination>
                             </div>
                         </div>
                     </div>
