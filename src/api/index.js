@@ -30,6 +30,15 @@ export const productApi = {
      */
     getProduct (code) {
         return axios.get(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
+    },
+    /**
+     * @todo: need an api for this method
+     *
+     * @returns {*|AxiosPromise}
+     */
+    getLatestProducts () {
+        const code = 'mugs'
+        return this.getProductList(code)
     }
 }
 
