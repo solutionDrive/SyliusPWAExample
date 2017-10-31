@@ -23,7 +23,7 @@
                                 <product-card :product = product></product-card>
                             </div>
                             <div class="column is-full">
-                                @todo: pagination component
+                                <list-pagination></list-pagination>
                             </div>
                         </div>
                     </div>
@@ -39,15 +39,17 @@
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
     import Breadcrumb from '@/components/Breadcrumb'
+    import ProductCard from '@/components/ProductCard'
     import ListSidebar from '@/components/ListSidebar'
     import ListSearch from '@/components/ListSearch'
-    import ProductCard from '@/components/ProductCard'
+    import ListPagination from '@/components/ListPagination'
 
     export default {
         data () {
             return {
                 loading: false,
-                error: ''
+                error: '',
+                list: {}
             }
         },
         computed: mapState({
@@ -83,17 +85,19 @@
                 return this.$store.commit('list/setCategory', category.data)
             },
             async fetchProductsFromApi () {
-                let products = await productApi.getProductList(this.$route.params.code)
-                return this.$store.commit('list/setProducts', products.data.items)
+                const list = await productApi.getProductList(this.$route.params.code)
+                this.list = list.data
+                return this.$store.commit('list/setProducts', this.list.items)
             },
             isEmpty
         },
         components: {
             ClipLoader,
             Breadcrumb,
+            ProductCard,
             ListSidebar,
             ListSearch,
-            ProductCard
+            ListPagination
         }
     }
 </script>
