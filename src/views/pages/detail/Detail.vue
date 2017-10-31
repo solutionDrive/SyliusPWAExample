@@ -15,7 +15,7 @@
                         <div class="column is-half-tablet">
                             <h1 class="title">{{product.name}}</h1>
                             <hr>
-                            <div>@todo: review</div>
+                            <detail-rating-link :rating = product.averageRating></detail-rating-link>
                             <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
@@ -38,6 +38,7 @@
     import DetailVariant from '@/views/pages/detail/DetailVariant'
     import DetailProductTab from '@/views/pages/detail/DetailProductTab'
     import DetailProductImage from '@/views/pages/detail/DetailProductImage'
+    import DetailRatingLink from '@/views/pages/detail/DetailRatingLink'
 
     export default {
         data () {
@@ -80,7 +81,8 @@
             Breadcrumb,
             DetailVariant,
             DetailProductTab,
-            DetailProductImage
+            DetailProductImage,
+            DetailRatingLink
         }
     }
 </script>
