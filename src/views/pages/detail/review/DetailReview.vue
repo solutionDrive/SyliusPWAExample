@@ -13,8 +13,7 @@
                             <div class="content">
                                 <p>
                                     <strong>John Smith</strong>
-                                    <small>@johnsmith</small>
-                                    <small>31m</small>
+                                    <small>@todo created_at not available in the api</small>
                                     <br>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                                 </p>
