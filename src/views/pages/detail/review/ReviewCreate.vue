@@ -10,7 +10,7 @@
                 </div>
                 <div class="column is-three-quarters">
                     <div class="box">
-                        <review-create-form></review-create-form>
+                        <review-create-form :productName = product.name></review-create-form>
                     </div>
                 </div>
             </div>
