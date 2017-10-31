@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li><router-link to="/" >{{ appName }}</router-link></li>
+            <ul v-if="!isEmpty(breadcrumb)">
+                <li><router-link to="/" >Home</router-link></li>
                 <li v-for="code in breadcrumb">
                     <!--@todo use category name instead of code in the breadcrumb like sidebar-->
                     <router-link :to="'/list/' + code">{{ code }}</router-link>
@@ -13,12 +13,11 @@
 </template>
 
 <script>
-    import appConfig from '@/config'
+    import {isEmpty} from 'lodash'
 
     export default {
         data () {
             return {
-                appName: appConfig.appName,
                 breadcrumb: []
             }
         },
@@ -46,7 +45,8 @@
                     this.breadcrumb.push(parent.children[0].code)
                     this.addChildrenToBreadcrumb(parent.children[0])
                 }
-            }
+            },
+            isEmpty
         }
     }
 </script>
