@@ -4,7 +4,7 @@
             <tab name="Details">
                 <div class="box tab-box">
                     <p class="content">
-                        @todo: get details from api
+                        @todo: details are currently not available from the api
                     </p>
                     <p class="content">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis doloremque,
@@ -15,7 +15,9 @@
             </tab>
             <tab name="Attributes">
                 <div class="box tab-box">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis doloremque, eveniet harum illum neque nobis nostrum placeat quidem quisquam repellat tempora ullam vel velit veniam. A ea fugit provident?
+                    <p class="content">
+                        @todo: attributes are currently not available from the api
+                    </p>
                 </div>
             </tab>
             <tab name="Reviews">
