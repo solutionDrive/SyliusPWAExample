@@ -1,5 +1,5 @@
 <template>
-    <div class="is-clipped rating-link-wrapper">
+    <div class="is-clipped rating-link-wrapper content">
         <star-rating :star-size = 15
                      :show-rating = false
                      :read-only = true
@@ -25,9 +25,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    .rating-link-wrapper {
-        margin-bottom: 1em;
-    }
-</style>
