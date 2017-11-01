@@ -36,7 +36,11 @@ export const productApi = {
      * @returns {AxiosPromise}
      */
     getProduct (code) {
-        return axios.get(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
+        const query = {
+            'channel': appConfig.apiChannel,
+            'locale': appConfig.apiLocale
+        }
+        return axios.get(appConfig.apiUrl + '/products/' + code + '?' + toQueryString(query))
     },
     /**
      * Get one product by the given slug
@@ -45,7 +49,11 @@ export const productApi = {
      * @returns {AxiosPromise}
      */
     getProductBySlug (slug) {
-        return axios.get(appConfig.apiUrl + '/products-by-slug/' + slug + '?channel=' + appConfig.apiChannel)
+        const query = {
+            'channel': appConfig.apiChannel,
+            'locale': appConfig.apiLocale
+        }
+        return axios.get(appConfig.apiUrl + '/products-by-slug/' + slug + '?' + toQueryString(query))
     },
     /**
      * @todo: need an api for this method
