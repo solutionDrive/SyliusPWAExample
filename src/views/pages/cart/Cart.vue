@@ -1,8 +1,6 @@
 <template>
     <div class="section">
         <div class="container">
-            <div v-if="loading"><clip-loader></clip-loader></div>
-
             <div v-if="emptyCart">
                 <div class="notification is-info">
                     <p><strong>Info</strong></p>
@@ -39,7 +37,6 @@
     export default {
         data () {
             return {
-                loading: false,
                 emptyCart: false
             }
         },
@@ -58,10 +55,8 @@
                     this.emptyCart = true
                     return
                 }
-                this.loading = true
                 const cart = await cartApi.getCart(this.cartid)
                 this.$store.commit('cart/setCart', cart.data)
-                this.loading = false
                 this.emptyCart = false
             }
         },
