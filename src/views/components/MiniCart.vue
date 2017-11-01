@@ -1,8 +1,12 @@
 <template>
     <div>
         <nav class="level">
-            <div class="level-left"></div>
-            <div class="level-right">
+            <div class="level-left">
+                <router-link :to="{name: 'home'}" >
+                    <img src="../../assets/shop_logo.png" alt="sylius" class="shop-logo">
+                </router-link>
+            </div>
+            <div class="level-right mini-cart">
                 <p class="level-item">
                     <router-link :to="{name: 'cart'}" class="button is-dark">
                         <span>{{ total + currency}}</span>
@@ -41,3 +45,13 @@
         }
     }
 </script>
+
+<style>
+    .level-right.mini-cart {
+        display: flex;
+    }
+    .shop-logo {
+        width: 10em;
+        height: auto;
+    }
+</style>
