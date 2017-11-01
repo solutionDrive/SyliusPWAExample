@@ -1,6 +1,7 @@
 <template>
     <div class="tabs is-boxed">
-        <tabs :options="{ useUrlFragment: false }" class="container">
+        <!--@todo: deactivate tab cache on localStorage-->
+        <tabs :options="{ useUrlFragment: false }" cache-lifetime="0" class="container">
             <tab name="Details">
                 <div class="box tab-box">
                     <p class="content">
