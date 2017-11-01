@@ -23,7 +23,16 @@
             </tab>
             <tab name="Reviews">
                 <div class="box tab-box">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis doloremque, eveniet harum illum neque nobis nostrum placeat quidem quisquam repellat tempora ullam vel velit veniam. A ea fugit provident?
+                    <div v-if="isEmpty(review)" class="content">
+                        <div class="notification is-info">
+                            <h4 class="title is-4">Info</h4>
+                            <h6 class="subtitle is-6 no-margin-bottom">There are no reviews</h6>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="button">View more</button>
+                        <button class="button is-link">Add your review</button>
+                    </div>
                 </div>
             </tab>
         </tabs>
@@ -32,12 +41,16 @@
 
 <script>
     import {Tabs, Tab} from 'vue-tabs-component'
+    import {isEmpty} from 'lodash'
 
     export default {
         name: 'detail-product-tab',
         props: [
             'review'
         ],
+        methods: {
+            isEmpty
+        },
         components: {
             Tabs,
             Tab
@@ -55,5 +68,8 @@
         -moz-user-select: text;     /* Firefox all */
         -ms-user-select: text;      /* IE 10+ */
         user-select: text;
+    }
+    .content h6.no-margin-bottom {
+        margin-bottom: 0;
     }
 </style>
