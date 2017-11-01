@@ -16,7 +16,16 @@
 
         <div class="section header-navi">
             <div class="container">
-                <mini-cart></mini-cart>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <router-link :to="{name: 'home'}" >
+                            <img src="../../assets/shop_logo.png" alt="sylius" class="shop-logo">
+                        </router-link>
+                    </div>
+                    <div class="column">
+                        <mini-cart></mini-cart>
+                    </div>
+                </div>
                 <navigation></navigation>
                 <breadcrumb v-if="showBreadCrumb()"></breadcrumb>
             </div>
@@ -54,5 +63,9 @@
 <style lang="scss">
     .header-navi {
         padding-bottom: 0;
+    }
+    .shop-logo {
+        width: 10em;
+        height: auto;
     }
 </style>
