@@ -15,7 +15,9 @@
                         <div class="column is-half-tablet">
                             <h1 class="title">{{product.name}}</h1>
                             <hr>
-                            <detail-rating-link :rating = product.averageRating></detail-rating-link>
+                            <detail-rating-link :rating = product.averageRating
+                                                :count = review.length>
+                            </detail-rating-link>
                             <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
@@ -48,7 +50,7 @@
             return {
                 error: '',
                 loading: false,
-                review: {}
+                review: []
             }
         },
         computed: {
