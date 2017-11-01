@@ -18,7 +18,7 @@
             <div class="container">
                 <mini-cart></mini-cart>
                 <navigation></navigation>
-                <breadcrumb v-if="showBreadCrumb"></breadcrumb>
+                <breadcrumb v-if="showBreadCrumb()"></breadcrumb>
             </div>
         </div>
     </header>
