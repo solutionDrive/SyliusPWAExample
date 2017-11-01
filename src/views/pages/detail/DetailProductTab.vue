@@ -81,6 +81,7 @@
         -moz-user-select: text;     /* Firefox all */
         -ms-user-select: text;      /* IE 10+ */
         user-select: text;
+        white-space: initial;
     }
     .content h6.no-margin-bottom {
         margin-bottom: 0;
