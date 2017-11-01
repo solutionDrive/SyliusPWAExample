@@ -4,7 +4,7 @@
             <div v-if="error" class="notification is-danger">{{ error }}</div>
             <div class="section" v-if="loading"><clip-loader></clip-loader></div>
 
-            <div class="columns is-multiline">
+            <div class="columns is-multiline" v-if="!loading">
                 <div class="column is-one-quarter" v-if="!isEmpty(product)">
                     <product-card :product = product></product-card>
                 </div>
