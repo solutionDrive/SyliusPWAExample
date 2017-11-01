@@ -29,6 +29,11 @@
                             <h6 class="subtitle is-6 no-margin-bottom">There are no reviews</h6>
                         </div>
                     </div>
+                    <div v-else class="content">
+                        <div v-for="item in review" class="content">
+                            <review-media-box :item = item></review-media-box>
+                        </div>
+                    </div>
                     <div>
                         <button class="button">View more</button>
                         <button class="button is-link">Add your review</button>
@@ -42,6 +47,7 @@
 <script>
     import {Tabs, Tab} from 'vue-tabs-component'
     import {isEmpty} from 'lodash'
+    import ReviewMediaBox from '@/views/pages/detail/review/ReviewMediaBox'
 
     export default {
         name: 'detail-product-tab',
@@ -53,7 +59,8 @@
         },
         components: {
             Tabs,
-            Tab
+            Tab,
+            ReviewMediaBox
         }
     }
 </script>
