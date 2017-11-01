@@ -39,25 +39,23 @@
                     this.error = 'choose a variant'
                     return
                 }
-
+                this.loading = true
                 if (this.cartid === '') {
                     this.$store.commit('cart/initCartId')
                     await cartApi.pickUpCart(this.cartid)
                 }
 
                 await this.updateAfterAddToCart()
+                this.loading = false
             },
             async updateAfterAddToCart () {
                 try {
-                    this.loading = true
                     await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
                     const cart = await cartApi.getCart(this.cartid)
                     this.$store.commit('cart/setCart', cart.data)
                 } catch (error) {
                     this.error = error.toString()
                 }
-
-                this.loading = false
             }
         },
         components: {
