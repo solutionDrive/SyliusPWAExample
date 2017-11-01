@@ -7,7 +7,7 @@
                      v-model="rating"
         >
         </star-rating>
-        <router-link :to="{name: 'review-index', params: {slug: this.$route.params.slug}}">@todo: #Reviews</router-link>
+        <router-link :to="{name: 'review-index', params: {slug: this.$route.params.slug}}">{{count}} Reviews</router-link>
         <router-link :to="{name: 'review-create', params: {slug: this.$route.params.slug}}">Add your review</router-link>
     </div>
 </template>
@@ -18,7 +18,8 @@
     export default {
         name: 'detail-rating-link',
         props: [
-            'rating'
+            'rating',
+            'count'
         ],
         components: {
             StarRating
