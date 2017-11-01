@@ -1,4 +1,5 @@
 <template>
+    <!--@todo: hide immediately when changing route, and show again after loading-->
     <div class="container">
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul v-if="!isEmpty(breadcrumb)">
