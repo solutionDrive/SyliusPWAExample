@@ -19,7 +19,7 @@
                             <detail-variant :product = product></detail-variant>
                         </div>
                     </div>
-                    <detail-product-tab></detail-product-tab>
+                    <detail-product-tab :review = review></detail-product-tab>
                     <hr>
                     <div class="has-text-centered latest-product-header">
                         <strong>Latest Products</strong>
@@ -35,7 +35,7 @@
     import {isEmpty} from 'lodash'
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import {productApi} from '@/api'
+    import {productApi, reviewApi} from '@/api'
     import Breadcrumb from '@/views/components/Breadcrumb'
     import LatestProducts from '@/views/components/LatestProducts'
     import DetailVariant from '@/views/pages/detail/DetailVariant'
@@ -47,7 +47,8 @@
         data () {
             return {
                 error: '',
-                loading: false
+                loading: false,
+                review: {}
             }
         },
         computed: {
@@ -76,6 +77,11 @@
                     this.error = error.toString()
                 }
                 this.loading = false
+                this.fetchReviewDataFromApi()
+            },
+            async fetchReviewDataFromApi () {
+                const review = await reviewApi.getReviewBySlug(this.$route.params.slug)
+                this.review = review.data.items
             },
             isEmpty
         },

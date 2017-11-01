@@ -35,6 +35,9 @@
 
     export default {
         name: 'detail-product-tab',
+        props: [
+            'review'
+        ],
         components: {
             Tabs,
             Tab
