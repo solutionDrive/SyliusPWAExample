@@ -6,6 +6,7 @@ const state = {
 }
 
 const mutations = {
+    // @todo: save cartid (localStorage) in order to fetch further with the same id
     initCartId (state) {
         state.cartid = uuidRandom()
     },
