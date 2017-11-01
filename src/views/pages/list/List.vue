@@ -1,30 +1,26 @@
 <template>
-    <div>
-        <breadcrumb></breadcrumb>
-
-        <div class="section">
-            <div class="column is-full" v-if="loading"><clip-loader></clip-loader></div>
-            <div class="container" v-if="!loading">
-                <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <h1 class="title">{{ category.self.name }}</h1>
-                <p>{{ category.self.description }}</p>
-                <hr>
-                <div class="columns">
-                    <div class="column is-one-quarter">
-                        <list-sidebar :category = category.self></list-sidebar>
-                    </div>
-                    <div class="column">
-                        <div class="columns is-multiline">
-                            <!--<div class="column is-full">-->
-                                <!--<list-search></list-search>-->
-                                <!--<p class="is-pulled-right">@todo: need SyliusElasticSearchBundle for filter/search api</p>-->
-                            <!--</div>-->
-                            <div class="column is-one-third" v-for="product in products">
-                                <product-card :product = product></product-card>
-                            </div>
-                            <div class="column is-full">
-                                <list-pagination :list = list></list-pagination>
-                            </div>
+    <div class="section">
+        <div class="column is-full" v-if="loading"><clip-loader></clip-loader></div>
+        <div class="container" v-if="!loading">
+            <div v-if="error" class="notification is-danger">{{ error }}</div>
+            <h1 class="title">{{ category.self.name }}</h1>
+            <p>{{ category.self.description }}</p>
+            <hr>
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <list-sidebar :category = category.self></list-sidebar>
+                </div>
+                <div class="column">
+                    <div class="columns is-multiline">
+                        <!--<div class="column is-full">-->
+                            <!--<list-search></list-search>-->
+                            <!--<p class="is-pulled-right">@todo: need SyliusElasticSearchBundle for filter/search api</p>-->
+                        <!--</div>-->
+                        <div class="column is-one-third" v-for="product in products">
+                            <product-card :product = product></product-card>
+                        </div>
+                        <div class="column is-full">
+                            <list-pagination :list = list></list-pagination>
                         </div>
                     </div>
                 </div>
@@ -37,7 +33,6 @@
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
-    import Breadcrumb from '@/views/components/Breadcrumb'
     import ProductCard from '@/views/components/ProductCard'
     import ListSidebar from '@/views/pages/list/ListSidebar'
     import ListSearch from '@/views/pages/list/ListSearch'
@@ -93,7 +88,6 @@
         },
         components: {
             ClipLoader,
-            Breadcrumb,
             ProductCard,
             ListSidebar,
             ListSearch,

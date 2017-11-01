@@ -1,31 +1,27 @@
 <template>
-    <div>
-        <breadcrumb></breadcrumb>
-
-        <div class="section">
-            <div class="section" v-if="loading"><clip-loader></clip-loader></div>
-            <div class="container" v-if="!loading">
-                <div v-if="error" class="notification is-danger">{{ error }}</div>
-                <div class="columns">
-                    <div class="column is-half-tablet">
-                        <detail-product-image :product=product></detail-product-image>
-                    </div>
-                    <div class="column is-half-tablet">
-                        <h1 class="title">{{product.name}}</h1>
-                        <hr>
-                        <detail-rating-link :rating = product.averageRating
-                                            :count = review.length>
-                        </detail-rating-link>
-                        <detail-variant :product = product></detail-variant>
-                    </div>
+    <div class="section">
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
+        <div class="container" v-if="!loading">
+            <div v-if="error" class="notification is-danger">{{ error }}</div>
+            <div class="columns">
+                <div class="column is-half-tablet">
+                    <detail-product-image :product=product></detail-product-image>
                 </div>
-                <detail-product-tab :review = review></detail-product-tab>
-                <hr>
-                <div class="has-text-centered content">
-                    <strong>Latest Products</strong>
+                <div class="column is-half-tablet">
+                    <h1 class="title">{{product.name}}</h1>
+                    <hr>
+                    <detail-rating-link :rating = product.averageRating
+                                        :count = review.length>
+                    </detail-rating-link>
+                    <detail-variant :product = product></detail-variant>
                 </div>
-                <latest-products></latest-products>
             </div>
+            <detail-product-tab :review = review></detail-product-tab>
+            <hr>
+            <div class="has-text-centered content">
+                <strong>Latest Products</strong>
+            </div>
+            <latest-products></latest-products>
         </div>
     </div>
 </template>
@@ -34,7 +30,6 @@
     import {mapState} from 'vuex'
     import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi, reviewApi} from '@/api'
-    import Breadcrumb from '@/views/components/Breadcrumb'
     import LatestProducts from '@/views/components/LatestProducts'
     import DetailVariant from '@/views/pages/detail/DetailVariant'
     import DetailProductTab from '@/views/pages/detail/DetailProductTab'
@@ -82,7 +77,6 @@
         },
         components: {
             ClipLoader,
-            Breadcrumb,
             LatestProducts,
             DetailVariant,
             DetailProductTab,
