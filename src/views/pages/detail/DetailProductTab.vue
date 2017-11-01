@@ -19,6 +19,11 @@
                     <p class="content">
                         @todo: attributes are currently not available from the api
                     </p>
+                    <p class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Aliquid aperiam at culpa deserunt eius enim eos et expedita inventore ipsum laboriosam minus,
+                        officia perferendis quo recusandae repudiandae unde. Excepturi, minima.
+                    </p>
                 </div>
             </tab>
             <tab name="Reviews">
