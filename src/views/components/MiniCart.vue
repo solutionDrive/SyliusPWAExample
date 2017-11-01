@@ -3,8 +3,8 @@
         <router-link :to="{name: 'cart'}" class="button is-dark">
             <span>{{ total + currency}}</span>
             <span v-if="itemCount">
-                            , {{ itemCount }} item
-                        </span>
+                , {{ itemCount }} item
+            </span>
         </router-link>
     </div>
 </template>
