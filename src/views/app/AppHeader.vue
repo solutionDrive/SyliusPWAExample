@@ -18,6 +18,7 @@
             <div class="container">
                 <mini-cart></mini-cart>
                 <navigation></navigation>
+                <breadcrumb v-if="showBreadCrumb"></breadcrumb>
             </div>
         </div>
     </header>
@@ -26,6 +27,7 @@
 <script>
     import Navigation from '@/views/components/Navigation'
     import MiniCart from '@/views/components/MiniCart'
+    import Breadcrumb from '@/views/components/Breadcrumb'
     import appConfig from '@/config'
 
     export default {
@@ -35,9 +37,16 @@
                 appName: appConfig.appName
             }
         },
+        methods: {
+            showBreadCrumb () {
+                const whitelist = ['list', 'detail']
+                return whitelist.includes(this.$route.name)
+            }
+        },
         components: {
             Navigation,
-            MiniCart
+            MiniCart,
+            Breadcrumb
         }
     }
 </script>
