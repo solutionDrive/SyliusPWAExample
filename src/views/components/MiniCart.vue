@@ -1,22 +1,11 @@
 <template>
-    <div>
-        <nav class="level">
-            <div class="level-left">
-                <router-link :to="{name: 'home'}" >
-                    <img src="../../assets/shop_logo.png" alt="sylius" class="shop-logo">
-                </router-link>
-            </div>
-            <div class="level-right mini-cart">
-                <p class="level-item">
-                    <router-link :to="{name: 'cart'}" class="button is-dark">
-                        <span>{{ total + currency}}</span>
-                        <span v-if="itemCount">
+    <div class="is-pulled-right">
+        <router-link :to="{name: 'cart'}" class="button is-dark">
+            <span>{{ total + currency}}</span>
+            <span v-if="itemCount">
                             , {{ itemCount }} item
                         </span>
-                    </router-link>
-                </p>
-            </div>
-        </nav>
+        </router-link>
     </div>
 </template>
 
@@ -45,13 +34,3 @@
         }
     }
 </script>
-
-<style>
-    .level-right.mini-cart {
-        display: flex;
-    }
-    .shop-logo {
-        width: 10em;
-        height: auto;
-    }
-</style>
