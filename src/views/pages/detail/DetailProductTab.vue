@@ -35,8 +35,14 @@
                         </div>
                     </div>
                     <div>
-                        <button class="button">View more</button>
-                        <button class="button is-link">Add your review</button>
+                        <router-link :to="{name: 'review-index', params: {slug: this.$route.params.slug}}"
+                                     class="button" tag="button">
+                            View more
+                        </router-link>
+                        <router-link :to="{name: 'review-create', params: {slug: this.$route.params.slug}}"
+                                     class="button is-link" tag="button">
+                            Add your review
+                        </router-link>
                     </div>
                 </div>
             </tab>
