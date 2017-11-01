@@ -21,7 +21,7 @@
                 </div>
                 <detail-product-tab :review = review></detail-product-tab>
                 <hr>
-                <div class="has-text-centered latest-product-header">
+                <div class="has-text-centered content">
                     <strong>Latest Products</strong>
                 </div>
                 <latest-products></latest-products>
@@ -91,9 +91,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    .latest-product-header {
-        margin-bottom: 1.5em;
-    }
-</style>
