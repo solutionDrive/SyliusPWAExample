@@ -8,8 +8,14 @@
                 <div class="column is-one-quarter" v-if="!isEmpty(product)">
                     <product-card :product = product></product-card>
                 </div>
-                <div class="column is-three-quarters" v-if="!isEmpty(review)">
-                    <div v-for="item in review.items" class="box">
+                <div class="column is-three-quarters">
+                    <div v-if="isEmpty(review.items)" class="box">
+                        <div class="notification is-info">
+                            <h4 class="title is-4">Info</h4>
+                            <h6 class="subtitle is-6 no-margin-bottom">There are no reviews</h6>
+                        </div>
+                    </div>
+                    <div v-for="item in review.items" class="box" v-else>
                         <review-media-box :item = item></review-media-box>
                     </div>
                     <div>
@@ -19,7 +25,6 @@
                         </router-link>
                     </div>
                 </div>
-                <!--@todo: what if no reviews, should display an info notification-->
             </div>
         </div>
     </div>
