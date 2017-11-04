@@ -5,9 +5,6 @@
                 <h1>Latest Products</h1>
             </div>
             <latest-products></latest-products>
-            <div>
-                <p class="is-pulled-right">@todo: this is just fake product list, need api for latest Products</p>
-            </div>
         </div>
     </div>
 </template>
