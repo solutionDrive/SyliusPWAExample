@@ -56,13 +56,16 @@ export const productApi = {
         return axios.get(appConfig.apiUrl + '/products-by-slug/' + slug + '?' + toQueryString(query))
     },
     /**
-     * @todo: need an api for this method
+     * @todo: api not stable
      *
      * @returns {*|AxiosPromise}
      */
     getLatestProducts () {
-        const code = 'mugs'
-        return this.getProductList(code)
+        const query = {
+            'channel': appConfig.apiChannel
+        }
+
+        return axios.get(appConfig.apiUrl + '/product-latest/' + '?' + toQueryString(query))
     }
 }
 
