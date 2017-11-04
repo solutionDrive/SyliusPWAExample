@@ -88,6 +88,9 @@
         user-select: text;
         white-space: initial;
     }
+    .tabs-component.container {
+        width: 100%;
+    }
     .content h6.no-margin-bottom {
         margin-bottom: 0;
     }
