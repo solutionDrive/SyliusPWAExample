@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="container">
-            <div v-if="emptyCart">
+            <div v-if="isCartEmpty()">
                 <div class="notification is-info">
                     <p><strong>Info</strong></p>
                     <p>Your cart is empty</p>
@@ -35,12 +35,10 @@
     import CartDashboard from '@/views/pages/cart/CartDashboard'
 
     export default {
-        data () {
-            return {
-                emptyCart: false
-            }
-        },
         computed: {
+            isCartEmpty () {
+                return this.cartid === '' || this.cart.items.length === 0
+            },
             ...mapState({
                 cartid: state => state.cart.cartid,
                 cart: state => state.cart.cart
@@ -51,13 +49,11 @@
         },
         methods: {
             async getCart () {
-                if (this.cartid === '') {
-                    this.emptyCart = true
+                if (this.isCartEmpty()) {
                     return
                 }
                 const cart = await cartApi.getCart(this.cartid)
                 this.$store.commit('cart/setCart', cart.data)
-                this.emptyCart = false
             }
         },
         components: {
