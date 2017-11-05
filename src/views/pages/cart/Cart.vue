@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="container">
-            <div v-if="isCartEmpty()">
+            <div v-if="isCartEmpty">
                 <div class="notification is-info">
                     <p><strong>Info</strong></p>
                     <p>Your cart is empty</p>
@@ -49,7 +49,7 @@
         },
         methods: {
             async getCart () {
-                if (this.isCartEmpty()) {
+                if (this.isCartEmpty) {
                     return
                 }
                 const cart = await cartApi.getCart(this.cartid)
