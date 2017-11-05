@@ -36,11 +36,13 @@
                         {{item.product.variants[0].price.current / 100 + cart.currency}}
                     </td>
                     <td>{{item.quantity}}</td>
-                    <td><a class="delete"></a></td>
+                    <td><a class="delete" @click="removeItem(item.id)"></a></td>
                     <td>{{item.total / 100 + cart.currency}}</td>
                 </tr>
             </tbody>
         </div>
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
+        <div v-if="error" class="notification is-danger">{{ error }}</div>
         <div>
             @todo: apply coupon
         </div>
@@ -51,13 +53,17 @@
 </template>
 
 <script>
+    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {isEmpty} from 'lodash'
     import appConfig from '@/config'
+    import {cartApi} from '@/api'
 
     export default {
         name: 'cart-dashboard',
         data () {
             return {
+                loading: false,
+                error: '',
                 imageUrl: appConfig.imageUrl
             }
         },
@@ -65,7 +71,20 @@
             'cart'
         ],
         methods: {
+            async removeItem (itemId) {
+                this.loading = true
+                try {
+                    const response = await cartApi.removeCartItem(this.$store.state.cart.cartid, itemId)
+                    this.$store.commit('cart/setCart', response.data)
+                } catch (error) {
+                    this.error = error.toString()
+                }
+                this.loading = false
+            },
             isEmpty
+        },
+        components: {
+            ClipLoader
         }
     }
 </script>
