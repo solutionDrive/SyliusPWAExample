@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import cart from './modules/cart'
 import list from './modules/list'
 import detail from './modules/detail'
@@ -11,5 +12,8 @@ export default new Vuex.Store({
         cart,
         list,
         detail
-    }
+    },
+    plugins: [createPersistedState({
+        key: 'sylius-pwa-vuex'
+    })]
 })
