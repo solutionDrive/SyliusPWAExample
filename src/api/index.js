@@ -124,6 +124,9 @@ export const cartApi = {
     },
     getCart (cartid) {
         return axios.get(appConfig.apiUrl + '/carts/' + cartid)
+    },
+    removeCartItem (cartid, itemid) {
+        return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid)
     }
 }
 
