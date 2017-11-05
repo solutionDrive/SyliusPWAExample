@@ -17,19 +17,22 @@
         name: 'miniCart',
         computed: {
             total () {
-                return this.isEmpty(this.cart) ? '0.00' : this.cart.totals.items / 100
+                return this.isCartEmpty() ? '0.00' : this.cart.totals.items / 100
             },
             currency () {
-                return this.isEmpty(this.cart) ? 'USD' : this.cart.currency
+                return this.isCartEmpty() ? 'USD' : this.cart.currency
             },
             itemCount () {
-                return this.isEmpty(this.cart) ? 0 : this.cart.items.length
+                return this.isCartEmpty() ? 0 : this.cart.items.length
             },
             ...mapState({
                 cart: state => state.cart.cart
             })
         },
         methods: {
+            isCartEmpty () {
+                return this.isEmpty(this.cart) || this.cart.items.length === 0
+            },
             isEmpty
         }
     }
