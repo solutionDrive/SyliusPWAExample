@@ -60,8 +60,10 @@
             async fetchDataFromApi () {
                 this.resetList()
                 try {
-                    await this.fetchCategoryFromApi()
-                    await this.fetchProductsFromApi()
+                    await Promise.all([
+                        this.fetchCategoryFromApi(),
+                        this.fetchProductsFromApi()
+                    ])
                 } catch (error) {
                     this.error = error.toString()
                 }
