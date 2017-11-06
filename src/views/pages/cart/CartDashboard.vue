@@ -35,7 +35,9 @@
                     <td>
                         {{item.product.variants[0].price.current / 100 + cart.currency}}
                     </td>
-                    <td>{{item.quantity}}</td>
+                    <td>
+                        <input class="input" type="number" v-model="item.quantity">
+                    </td>
                     <td><a class="delete" @click="removeItem(item.id)"></a></td>
                     <td>{{item.total / 100 + cart.currency}}</td>
                 </tr>
@@ -47,7 +49,7 @@
             @todo: apply coupon
         </div>
         <div>
-            @todo: update cart button
+            <button class="button is-warning" @click="updateCart()">Update cart</button>
         </div>
     </div>
 </template>
@@ -75,6 +77,19 @@
                 this.loading = true
                 try {
                     const response = await cartApi.removeCartItem(this.$store.state.cart.cartid, itemId)
+                    this.$store.commit('cart/setCart', response.data)
+                } catch (error) {
+                    this.error = error.toString()
+                }
+                this.loading = false
+            },
+            async updateCart () {
+                this.loading = true
+                try {
+                    for (let item of this.cart.items) {
+                        await cartApi.updateCartItem(this.$store.state.cart.cartid, item.id, parseInt(item.quantity))
+                    }
+                    const response = await cartApi.getCart(this.$store.state.cart.cartid)
                     this.$store.commit('cart/setCart', response.data)
                 } catch (error) {
                     this.error = error.toString()

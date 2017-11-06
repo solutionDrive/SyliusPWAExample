@@ -125,6 +125,9 @@ export const cartApi = {
     getCart (cartid) {
         return axios.get(appConfig.apiUrl + '/carts/' + cartid)
     },
+    updateCartItem (cartid, itemid, quantity) {
+        return axios.put(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid, {quantity})
+    },
     removeCartItem (cartid, itemid) {
         return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid)
     }
