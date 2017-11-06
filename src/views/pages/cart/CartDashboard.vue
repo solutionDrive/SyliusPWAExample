@@ -86,6 +86,7 @@
             async updateCart () {
                 this.loading = true
                 try {
+                    // @todo: need PUT updateCart API instead of item
                     for (let item of this.cart.items) {
                         await cartApi.updateCartItem(this.$store.state.cart.cartid, item.id, parseInt(item.quantity))
                     }
