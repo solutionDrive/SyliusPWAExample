@@ -49,7 +49,7 @@
             <cart-coupon></cart-coupon>
         </div>
         <div>
-            <button class="button is-warning" @click="updateCart()">Update cart</button>
+            <button class="button is-warning is-medium" @click="updateCart()">Update cart</button>
         </div>
     </div>
 </template>

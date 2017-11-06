@@ -19,7 +19,8 @@
                     <div class="column is-one-third">
                         <cart-summary :cart = cart></cart-summary>
                         <div>
-                            @todo: checkout
+                            <button class="button is-link is-large is-fullwidth">Checkout</button>
+                            @todo: checkout API not working
                         </div>
                     </div>
                 </div>
