@@ -1,5 +1,6 @@
 <template>
     <div class="box" v-if="!isEmpty(cart)">
+        <!--@todo: extract this table to CartItem vue component-->
         <div class="table">
             <thead>
                 <tr>
