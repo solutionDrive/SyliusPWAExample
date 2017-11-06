@@ -2,6 +2,7 @@ import uuidRandom from 'uuid-random'
 
 const state = {
     cartid: '',
+    coupon: '',
     cart: {}
 }
 
@@ -15,6 +16,9 @@ const mutations = {
     },
     setCart (state, cart) {
         state.cart = cart
+    },
+    setCoupon (state, coupon) {
+        state.coupon = coupon
     }
 }
 
