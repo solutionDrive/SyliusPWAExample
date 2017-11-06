@@ -45,8 +45,8 @@
         </div>
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
-        <div>
-            @todo: apply coupon
+        <div class="content">
+            <cart-coupon></cart-coupon>
         </div>
         <div>
             <button class="button is-warning" @click="updateCart()">Update cart</button>
@@ -59,6 +59,7 @@
     import {isEmpty} from 'lodash'
     import appConfig from '@/config'
     import {cartApi} from '@/api'
+    import CartCoupon from '@/views/pages/cart/CartCoupon'
 
     export default {
         name: 'cart-dashboard',
@@ -100,7 +101,8 @@
             isEmpty
         },
         components: {
-            ClipLoader
+            ClipLoader,
+            CartCoupon
         }
     }
 </script>
