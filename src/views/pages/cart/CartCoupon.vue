@@ -6,21 +6,23 @@
         </div>
         <div class="control">
             <a class="button is-primary" @click="addCoupon()">Apply coupon</a>
-            <div v-if="loading"><clip-loader></clip-loader></div>
+            <a class="button is-danger" @click="removeCoupon()">Remove coupon</a>
         </div>
+        <div v-if="loading"><clip-loader></clip-loader></div>
         <div v-if="error" class=" section notification is-danger">{{ error }}</div>
     </div>
 </template>
 
 <script>
     import ClipLoader from 'vue-spinner/src/ClipLoader'
-    import {couponApi, cartApi} from '@/api'
+    import {couponApi} from '@/api'
 
     export default {
         data () {
             return {
                 loading: false,
                 error: '',
+                success: '',
                 coupon: ''
             }
         },
@@ -33,9 +35,21 @@
                 }
 
                 try {
-                    await couponApi.addCoupon(this.$store.state.cart.cartid, this.coupon)
-                    const response = await cartApi.getCart(this.$store.state.cart.cartid)
+                    const response = await couponApi.addCoupon(this.$store.state.cart.cartid, this.coupon)
                     this.$store.commit('cart/setCart', response.data)
+                    this.success = 'add coupon ' + this.coupon + ' successfully'
+                } catch (error) {
+                    this.error = error.toString()
+                }
+                this.loading = false
+            },
+            async removeCoupon () {
+                this.loading = true
+
+                try {
+                    const response = await couponApi.removeCoupon(this.$store.state.cart.cartid)
+                    this.$store.commit('cart/setCart', response.data)
+                    this.success = 'coupon ' + this.coupon + ' removed'
                 } catch (error) {
                     this.error = error.toString()
                 }

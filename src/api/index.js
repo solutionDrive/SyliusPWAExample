@@ -136,6 +136,9 @@ export const cartApi = {
 export const couponApi = {
     addCoupon (cartid, coupon) {
         return axios.put(appConfig.apiUrl + '/carts/' + cartid + '/coupon', {coupon})
+    },
+    removeCoupon (cartid) {
+        return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/coupon')
     }
 }
 
