@@ -1,5 +1,6 @@
 <template>
     <div class="section">
+        <!--@todo: mobile looks ugly-->
         <div class="container">
             <div v-if="isCartEmpty">
                 <div class="notification is-info">
