@@ -32,9 +32,6 @@
                 </td>
             </tfoot>
         </table>
-        <div>
-            @todo: price summary not correct
-        </div>
     </div>
 </template>
 
