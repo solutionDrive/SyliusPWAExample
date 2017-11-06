@@ -11,6 +11,9 @@
             </div>
             <div v-if="loading"><clip-loader></clip-loader></div>
         </div>
+        <div v-if="coupon">
+            <span class="tag is-success">{{coupon}}</span>
+        </div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
     </div>
 </template>
