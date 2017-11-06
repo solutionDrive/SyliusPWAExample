@@ -36,11 +36,11 @@
         },
         methods: {
             async addCoupon () {
-                this.loading = true
                 if (!this.couponCode) {
                     return
                 }
 
+                this.loading = true
                 try {
                     const response = await couponApi.addCoupon(this.$store.state.cart.cartid, this.couponCode)
                     this.$store.commit('cart/setCart', response.data)
