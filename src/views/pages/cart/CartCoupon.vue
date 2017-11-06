@@ -27,7 +27,7 @@
                 loading: false,
                 error: '',
                 success: '',
-                couponCode: ''
+                couponCode: '' // @todo: do we still need coupon Code?
             }
         },
         name: 'cart-coupon',
