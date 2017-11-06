@@ -12,7 +12,6 @@
             <div v-if="loading"><clip-loader></clip-loader></div>
         </div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
-        <div v-if="success" class="notification is-success">{{ success }}</div>
     </div>
 </template>
 
@@ -26,7 +25,6 @@
             return {
                 loading: false,
                 error: '',
-                success: '',
                 couponCode: '' // @todo: do we still need coupon Code?
             }
         },
@@ -47,7 +45,6 @@
                     const response = await couponApi.addCoupon(this.$store.state.cart.cartid, this.couponCode)
                     this.$store.commit('cart/setCart', response.data)
                     this.$store.commit('cart/setCoupon', this.couponCode)
-                    this.success = 'add coupon ' + this.couponCode + ' successfully'
                 } catch (error) {
                     this.error = error.toString()
                 }
@@ -60,7 +57,6 @@
                     const response = await couponApi.removeCoupon(this.$store.state.cart.cartid)
                     this.$store.commit('cart/setCart', response.data)
                     this.$store.commit('cart/setCoupon', '')
-                    this.success = 'coupon ' + this.couponCode + ' removed'
                 } catch (error) {
                     this.error = error.toString()
                 }
