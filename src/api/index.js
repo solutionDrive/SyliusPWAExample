@@ -133,6 +133,12 @@ export const cartApi = {
     }
 }
 
+export const couponApi = {
+    addCoupon (cartid, coupon) {
+        return axios.put(appConfig.apiUrl + '/carts/' + cartid + '/coupon', {coupon})
+    }
+}
+
 /**
  * query object to query string
  *
