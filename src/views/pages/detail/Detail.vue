@@ -63,9 +63,10 @@
                 this.resetDetail()
                 this.loading = true
                 try {
-                    const product = await productApi.getProductBySlug(this.$route.params.slug)
-                    // @todo load review later?
-                    const review = await reviewApi.getReviewBySlug(this.$route.params.slug)
+                    const [product, review] = await Promise.all([
+                        productApi.getProductBySlug(this.$route.params.slug),
+                        reviewApi.getReviewBySlug(this.$route.params.slug)
+                    ])
                     this.$store.commit('detail/setProduct', product.data)
                     this.review = review.data.items
                 } catch (error) {
