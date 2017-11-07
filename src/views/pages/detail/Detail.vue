@@ -28,7 +28,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi, reviewApi} from '@/api'
     import LatestProducts from '@/views/components/LatestProducts'
     import DetailVariant from '@/views/pages/detail/DetailVariant'
@@ -76,7 +75,6 @@
             }
         },
         components: {
-            ClipLoader,
             LatestProducts,
             DetailVariant,
             DetailProductTab,

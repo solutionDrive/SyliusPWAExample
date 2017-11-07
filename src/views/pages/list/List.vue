@@ -31,7 +31,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {categoryApi, productApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
     import ListSidebar from '@/views/pages/list/ListSidebar'
@@ -89,7 +88,6 @@
             }
         },
         components: {
-            ClipLoader,
             ProductCard,
             ListSidebar,
             ListSearch,

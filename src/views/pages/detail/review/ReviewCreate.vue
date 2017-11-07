@@ -20,7 +20,6 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
     import ReviewCreateForm from '@/views/pages/detail/review/ReviewCreateForm'
@@ -52,8 +51,7 @@
         },
         components: {
             ProductCard,
-            ReviewCreateForm,
-            ClipLoader
+            ReviewCreateForm
         }
     }
 </script>

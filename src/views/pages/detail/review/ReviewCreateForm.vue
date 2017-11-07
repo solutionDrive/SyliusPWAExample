@@ -42,7 +42,6 @@
 </template>
 
 <script>
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import StarRating from 'vue-star-rating'
     import Validator from 'email-validator'
     import {reviewApi} from '@/api'
@@ -91,8 +90,7 @@
             }
         },
         components: {
-            StarRating,
-            ClipLoader
+            StarRating
         }
     }
 </script>

@@ -49,7 +49,6 @@
 </template>
 
 <script>
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {cartApi} from '@/api'
 
     export default {
@@ -74,9 +73,6 @@
                 }
                 this.loading = false
             }
-        },
-        components: {
-            ClipLoader
         }
     }
 </script>

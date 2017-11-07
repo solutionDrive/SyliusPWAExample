@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {isEmpty} from 'lodash'
     import {productApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
@@ -42,7 +41,6 @@
             isEmpty
         },
         components: {
-            ClipLoader,
             ProductCard
         }
     }

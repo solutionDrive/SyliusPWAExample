@@ -32,7 +32,6 @@
 <script>
     import {cartApi} from '@/api'
     import {mapState} from 'vuex'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import CartSummary from '@/views/pages/cart/CartSummary'
     import CartDashboard from '@/views/pages/cart/CartDashboard'
 
@@ -59,7 +58,6 @@
             }
         },
         components: {
-            ClipLoader,
             CartSummary,
             CartDashboard
         }

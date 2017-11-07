@@ -11,7 +11,6 @@
 </template>
 
 <script>
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {isEmpty} from 'lodash'
     import appConfig from '@/config'
     import {cartApi} from '@/api'
@@ -48,7 +47,6 @@
             isEmpty
         },
         components: {
-            ClipLoader,
             CartCoupon,
             CartItems
         }

@@ -32,7 +32,6 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {productApi, reviewApi} from '@/api'
     import ProductCard from '@/views/components/ProductCard'
     import ReviewMediaBox from '@/views/pages/detail/review/ReviewMediaBox'
@@ -74,8 +73,7 @@
         },
         components: {
             ProductCard,
-            ReviewMediaBox,
-            ClipLoader
+            ReviewMediaBox
         }
     }
 </script>

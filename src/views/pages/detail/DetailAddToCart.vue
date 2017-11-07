@@ -11,7 +11,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {cartApi} from '@/api'
 
     export default {
@@ -57,9 +56,6 @@
                     this.error = error.toString()
                 }
             }
-        },
-        components: {
-            ClipLoader
         }
     }
 </script>

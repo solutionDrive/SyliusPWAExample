@@ -17,7 +17,6 @@
 </template>
 
 <script>
-    import ClipLoader from 'vue-spinner/src/ClipLoader'
     import {mapState} from 'vuex'
     import {couponApi} from '@/api'
 
@@ -63,9 +62,6 @@
                 }
                 this.loading = false
             }
-        },
-        components: {
-            ClipLoader
         }
     }
 </script>
