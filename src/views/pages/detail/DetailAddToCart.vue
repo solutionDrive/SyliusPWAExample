@@ -49,8 +49,7 @@
             },
             async updateAfterAddToCart () {
                 try {
-                    await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
-                    const cart = await cartApi.getCart(this.cartid)
+                    const cart = await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
                     this.$store.commit('cart/setCart', cart.data)
                 } catch (error) {
                     this.error = error.toString()
