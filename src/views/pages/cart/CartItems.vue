@@ -50,13 +50,15 @@
 
 <script>
     import {cartApi} from '@/api'
+    import appConfig from '@/config'
 
     export default {
         name: 'cart-items',
         data () {
             return {
                 loading: false,
-                error: ''
+                error: '',
+                imageUrl: appConfig.imageUrl
             }
         },
         props: [

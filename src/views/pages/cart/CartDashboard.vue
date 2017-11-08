@@ -12,7 +12,6 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import appConfig from '@/config'
     import {cartApi} from '@/api'
     import CartCoupon from '@/views/pages/cart/CartCoupon'
     import CartItems from '@/views/pages/cart/CartItems'
@@ -22,8 +21,7 @@
         data () {
             return {
                 loading: false,
-                error: '',
-                imageUrl: appConfig.imageUrl
+                error: ''
             }
         },
         props: [
