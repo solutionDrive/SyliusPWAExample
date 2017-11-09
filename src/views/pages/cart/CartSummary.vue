@@ -8,28 +8,24 @@
             <tbody>
                 <tr>
                     <td>items:</td>
-                    <td>{{cart.totals.items / 100 + cart.currency}}</td>
+                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.items)}}</td>
                 </tr>
                 <tr>
                     <td>tax:</td>
-                    <td>{{cart.totals.taxes / 100 + cart.currency}}</td>
+                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.taxes)}}</td>
                 </tr>
                 <tr>
                     <td>shipping:</td>
-                    <td>{{cart.totals.shipping / 100 + cart.currency}}</td>
+                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.shipping)}}</td>
                 </tr>
                 <tr>
                     <td>discount:</td>
-                    <td>{{cart.totals.promotion / 100 + cart.currency}}</td>
+                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.promotion)}}</td>
                 </tr>
             </tbody>
             <tfoot>
-                <th>
-                    <h3 class="subtitle">Order total:</h3>
-                </th>
-                <td>
-                    {{cart.totals.total / 100 + cart.currency}}
-                </td>
+                <th><h3 class="subtitle">Order total:</h3></th>
+                <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.total)}}</td>
             </tfoot>
         </table>
     </div>

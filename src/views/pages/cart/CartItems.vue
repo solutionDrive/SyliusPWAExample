@@ -32,14 +32,12 @@
                         </div>
                     </div>
                 </td>
-                <td>
-                    {{item.product.variants[0].price.current / 100 + cart.currency}}
-                </td>
+                <td>{{$syliuspwa.price.formattedVariantPrice(item.product.variants[0].price)}}</td>
                 <td>
                     <input class="input" type="number" v-model="item.quantity">
                 </td>
                 <td><a class="delete" @click="removeItem(item.id)"></a></td>
-                <td>{{item.total / 100 + cart.currency}}</td>
+                <td>{{$syliuspwa.price.formattedPrice(cart.currency, item.total)}}</td>
             </tr>
             </tbody>
         </div>
