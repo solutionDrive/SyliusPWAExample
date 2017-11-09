@@ -56,6 +56,7 @@
         name: 'cart-items',
         data () {
             return {
+                // @todo: need a mixin or plugin for async loading and error handling
                 loading: false,
                 error: '',
                 imageUrl: appConfig.imageUrl
