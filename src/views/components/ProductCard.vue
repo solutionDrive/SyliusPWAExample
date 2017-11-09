@@ -21,7 +21,6 @@
 <script>
     import {isEmpty} from 'lodash'
     import appConfig from '@/config'
-    import mixin from '@/mixins/utils'
 
     export default {
         name: 'product-card',
@@ -45,15 +44,12 @@
                 const key = product.code + '-variant-0'
                 const variant = variants[key]
                 if (typeof variant === 'object' && typeof variant.price === 'object') {
-                    return this.getFormattedPrice(variant.price)
+                    return this.$syliuspwa.getFormattedPrice(variant.price)
                 }
 
                 return ''
             },
             isEmpty
-        },
-        mixins: [
-            mixin
-        ]
+        }
     }
 </script>

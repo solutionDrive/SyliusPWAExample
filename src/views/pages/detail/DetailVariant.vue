@@ -40,7 +40,6 @@
 </template>
 
 <script>
-    import mixin from '@/mixins/utils'
     import DetailAddToCart from '@/views/pages/detail/DetailAddToCart'
 
     export default {
@@ -56,7 +55,7 @@
         ],
         computed: {
             price () {
-                return this.getFormattedPrice(this.product.variants[this.variantCode].price)
+                return this.$syliuspwa.getFormattedPrice(this.product.variants[this.variantCode].price)
             }
         },
         created () {
@@ -75,9 +74,6 @@
         },
         components: {
             DetailAddToCart
-        },
-        mixins: [
-            mixin
-        ]
+        }
     }
 </script>
