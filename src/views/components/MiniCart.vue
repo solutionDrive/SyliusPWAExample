@@ -1,7 +1,7 @@
 <template>
-    <div class="is-pulled-right">
+    <div class="is-pulled-right" v-if="!isCartEmpty()">
         <router-link :to="{name: 'cart'}" class="button is-dark">
-            <span>{{ total + currency}}</span>
+            <span>{{ currency + total}}</span>
             <span v-if="itemCount">
                 , {{ itemCount }} item
             </span>
@@ -17,13 +17,13 @@
         name: 'miniCart',
         computed: {
             total () {
-                return this.isCartEmpty() ? '0.00' : this.cart.totals.items / 100
+                return this.$syliuspwa.price.formattedValue(this.cart.totals.items)
             },
             currency () {
-                return this.isCartEmpty() ? 'USD' : this.cart.currency
+                return this.$syliuspwa.price.formattedCurrency(this.cart.currency)
             },
             itemCount () {
-                return this.isCartEmpty() ? 0 : this.cart.items.length
+                return this.cart.items.length
             },
             ...mapState({
                 cart: state => state.cart.cart

@@ -55,7 +55,7 @@
         ],
         computed: {
             price () {
-                return this.$syliuspwa.getFormattedPrice(this.product.variants[this.variantCode].price)
+                return this.$syliuspwa.price.formattedVariantPrice(this.product.variants[this.variantCode].price)
             }
         },
         created () {

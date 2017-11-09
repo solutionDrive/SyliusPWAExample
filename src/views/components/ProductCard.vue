@@ -44,7 +44,7 @@
                 const key = product.code + '-variant-0'
                 const variant = variants[key]
                 if (typeof variant === 'object' && typeof variant.price === 'object') {
-                    return this.$syliuspwa.getFormattedPrice(variant.price)
+                    return this.$syliuspwa.price.formattedVariantPrice(variant.price)
                 }
 
                 return ''
