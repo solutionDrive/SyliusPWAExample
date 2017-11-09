@@ -13,10 +13,11 @@ export default {
             formattedValue (value) {
                 return (value / 100).toFixed(2)
             },
+            formattedPrice (currency, value) {
+                return this.formattedCurrency(currency) + this.formattedValue(value)
+            },
             formattedVariantPrice (price) {
-                const currency = this.formattedCurrency(price.currency)
-                const value = this.formattedValue(price.current)
-                return currency + value
+                return this.formattedPrice(price.currency, price.current)
             }
         }
         Vue.prototype.$syliuspwa = {
