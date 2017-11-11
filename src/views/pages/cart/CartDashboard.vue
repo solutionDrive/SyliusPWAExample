@@ -1,6 +1,7 @@
 <template>
     <div class="box" v-if="!isEmpty(cart)">
         <cart-items :cart = cart></cart-items>
+        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div class="content">
             <cart-coupon></cart-coupon>
         </div>
@@ -12,7 +13,6 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import {cartApi} from '@/api'
     import CartCoupon from '@/views/pages/cart/CartCoupon'
     import CartItems from '@/views/pages/cart/CartItems'
 
@@ -30,16 +30,9 @@
         methods: {
             async updateCart () {
                 this.loading = true
-                try {
-                    // @todo: need PUT updateCart API instead of item
-                    for (let item of this.cart.items) {
-                        await cartApi.updateCartItem(this.$store.state.cart.cartid, item.id, parseInt(item.quantity))
-                    }
-                    const response = await cartApi.getCart(this.$store.state.cart.cartid)
-                    this.$store.commit('cart/setCart', response.data)
-                } catch (error) {
+                await this.$store.dispatch('cart/updateCart').catch(error => {
                     this.error = error.toString()
-                }
+                })
                 this.loading = false
             },
             isEmpty

@@ -38,6 +38,18 @@ const actions = {
         } catch (error) {
             throw error
         }
+    },
+    async updateCart ({commit, state}) {
+        try {
+            // @todo: need PUT updateCart API instead of item
+            for (let item of state.cart.items) {
+                await cartApi.updateCartItem(state.cartid, item.id, parseInt(item.quantity))
+            }
+            const response = await cartApi.getCart(state.cartid)
+            commit('setCart', response.data)
+        } catch (error) {
+            throw error
+        }
     }
 }
 
