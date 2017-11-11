@@ -1,5 +1,5 @@
 <template>
-    <div class="is-pulled-right" v-if="!isCartEmpty()">
+    <div class="is-pulled-right" v-if="showMiniCart()">
         <router-link :to="{name: 'cart'}" class="button is-dark">
             <span>{{ total }}</span>
             <span v-if="itemCount">
@@ -27,8 +27,8 @@
             })
         },
         methods: {
-            isCartEmpty () {
-                return this.isEmpty(this.cart)
+            showMiniCart () {
+                return !this.isEmpty(this.cart)
             },
             isEmpty
         }
