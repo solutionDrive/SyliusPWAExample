@@ -1,4 +1,5 @@
 import uuidRandom from 'uuid-random'
+import {cartApi} from '@/api'
 
 const state = {
     cartid: '',
@@ -22,8 +23,20 @@ const mutations = {
     }
 }
 
+const actions = {
+    async removeItem ({commit, state}, itemId) {
+        try {
+            const response = await cartApi.removeCartItem(state.cartid, itemId)
+            commit('setCart', response.data)
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
 export default {
     namespaced: true,
     state,
+    actions,
     mutations
 }

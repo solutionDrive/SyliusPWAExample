@@ -47,7 +47,6 @@
 </template>
 
 <script>
-    import {cartApi} from '@/api'
     import appConfig from '@/config'
 
     export default {
@@ -66,12 +65,9 @@
         methods: {
             async removeItem (itemId) {
                 this.loading = true
-                try {
-                    const response = await cartApi.removeCartItem(this.$store.state.cart.cartid, itemId)
-                    this.$store.commit('cart/setCart', response.data)
-                } catch (error) {
+                await this.$store.dispatch('cart/removeItem', itemId).catch(error => {
                     this.error = error.toString()
-                }
+                })
                 this.loading = false
             }
         }
