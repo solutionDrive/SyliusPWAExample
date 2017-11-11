@@ -28,7 +28,7 @@
         },
         methods: {
             isCartEmpty () {
-                return this.isEmpty(this.cart) || this.cart.items.length === 0
+                return this.isEmpty(this.cart)
             },
             isEmpty
         }
