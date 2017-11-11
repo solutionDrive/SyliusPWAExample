@@ -23,6 +23,14 @@ const mutations = {
 }
 
 const actions = {
+    async getCart ({commit, state}) {
+        try {
+            const response = await cartApi.getCart(state.cartid)
+            commit('setCart', response.data)
+        } catch (error) {
+            throw error
+        }
+    },
     async removeItem ({commit, state}, itemId) {
         try {
             const response = await cartApi.removeCartItem(state.cartid, itemId)

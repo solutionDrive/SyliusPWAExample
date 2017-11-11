@@ -30,7 +30,6 @@
 </template>
 
 <script>
-    import {cartApi} from '@/api'
     import {mapState} from 'vuex'
     import CartSummary from '@/views/pages/cart/CartSummary'
     import CartDashboard from '@/views/pages/cart/CartDashboard'
@@ -53,8 +52,10 @@
                 if (this.isCartEmpty) {
                     return
                 }
-                const cart = await cartApi.getCart(this.cartid)
-                this.$store.commit('cart/setCart', cart.data)
+                await this.$store.dispatch('cart/getCart').catch(error => {
+                    // @todo: error handling
+                    console.error(error.toString())
+                })
             }
         },
         components: {
