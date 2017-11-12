@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="tabs margin-top">
+        <nav class="tabs margin-top is-hidden-mobile">
             <ul v-if="taxons && taxons.length">
                 <li v-for="taxon in taxons" :class="{'is-active' : taxon.isActive}">
                     <router-link :to="{name: 'list', params: {code: taxon.code}}">
@@ -8,7 +8,17 @@
                     </router-link>
                 </li>
             </ul>
-        </div>
+        </nav>
+        <nav class="panel is-hidden-tablet">
+            <div v-if="taxons && taxons.length" v-for="taxon in taxons">
+                <router-link :to="{name: 'list', params: {code: taxon.code}}"
+                             :class="{'is-active' : taxon.isActive}"
+                             class="panel-block"
+                >
+                    {{ taxon.code }}
+                </router-link>
+            </div>
+        </nav>
     </div>
 </template>
 
