@@ -10,14 +10,11 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-
     export default {
         name: 'detail-add-to-cart',
         data () {
             return {
                 loading: false,
-                // @todo: handling error based on add-to-basket api request
                 error: ''
             }
         },
@@ -26,11 +23,6 @@
             'variantCode',
             'quantity'
         ],
-        computed: {
-            ...mapState({
-                cartid: state => state.cart.cartid
-            })
-        },
         methods: {
             async addToCart () {
                 if (!this.variantCode) {
