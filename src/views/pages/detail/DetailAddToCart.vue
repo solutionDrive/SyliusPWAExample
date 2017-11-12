@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="control">
-            <button @click="addToCart()" class="button is-link">add to cart</button>
+            <button @click="addToCart()" class="button is-link is-medium">add to cart</button>
         </div>
 
         <div v-if="error" class="notification is-danger">{{ error }}</div>
