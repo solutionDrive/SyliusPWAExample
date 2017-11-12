@@ -5,12 +5,6 @@
                 <router-link to="/" class="navbar-item">
                     <strong>{{ appName }}</strong>
                 </router-link>
-
-                <button class="button navbar-burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </nav>
 
