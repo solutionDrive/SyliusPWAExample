@@ -32,7 +32,7 @@
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button @click="submit" class="button is-link">Add</button>
+                <button @click="submit" class="button is-link is-medium">Add</button>
             </div>
         </div>
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
