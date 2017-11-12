@@ -28,6 +28,7 @@
     import {mapState} from 'vuex'
 
     export default {
+        name: 'cart-coupon',
         data () {
             return {
                 loading: false,
@@ -36,7 +37,6 @@
                 couponCode: '' // @todo: do we still need coupon Code?
             }
         },
-        name: 'cart-coupon',
         computed: {
             ...mapState({
                 coupon: state => state.cart.coupon
@@ -48,20 +48,16 @@
                     return
                 }
 
-                this.error = ''
-                this.loading = true
-                this.loadingAction = 'apply'
-                await this.$store.dispatch('cart/addCoupon', this.couponCode).catch(error => {
-                    this.error = error.toString()
-                })
-                this.loading = false
-                this.loadingAction = ''
+                await this.handleCouponAction('apply', 'cart/addCoupon')
             },
             async removeCoupon () {
+                await this.handleCouponAction('remove', 'cart/removeCoupon')
+            },
+            async handleCouponAction (name, type) {
                 this.error = ''
                 this.loading = true
-                this.loadingAction = 'remove'
-                await this.$store.dispatch('cart/removeCoupon').catch(error => {
+                this.loadingAction = name
+                await this.$store.dispatch(type).catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
