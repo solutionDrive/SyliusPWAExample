@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="table">
+        <div class="table is-narrow is-hidden-mobile">
             <thead>
             <tr>
                 <th>item</th>
@@ -41,6 +41,43 @@
             </tr>
             </tbody>
         </div>
+        <div class="is-hidden-tablet mobile-cart-items">
+            <div class="box" v-for="item in cart.items">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-64x64">
+                            <img :src="imageUrl + item.product.images[0].path"
+                                 :alt="item.product.name"
+                            >
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <router-link :to="{name: 'detail', params: {slug: item.product.slug}}">
+                                {{ item.product.name }}
+                            </router-link>
+                            <small>{{item.product.variants[0].axis[0]}}</small>
+                            <p><small>{{item.product.code}}</small></p>
+                            <nav class="level is-mobile">
+                                <div class="level-left"></div>
+                                <div class="level-right">
+                                    <span class="level-item">
+                                        <label>Qty: </label>
+                                        <input class="input item-quantity" type="number" v-model="item.quantity">
+                                    </span>
+                                    <span class="level-item">
+                                        total: {{$syliuspwa.price.formattedPrice(cart.currency, item.total)}}
+                                    </span>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="media-right">
+                        <a class="delete" @click="removeItem(item.id)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
     </div>
@@ -73,3 +110,12 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .item-quantity {
+        width: 3rem;
+    }
+    .mobile-cart-items {
+        margin-bottom: 1.5rem;
+    }
+</style>
