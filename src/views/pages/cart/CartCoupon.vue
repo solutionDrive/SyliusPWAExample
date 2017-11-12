@@ -26,7 +26,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import {couponApi} from '@/api'
 
     export default {
         data () {
@@ -59,16 +58,12 @@
                 this.loadingAction = ''
             },
             async removeCoupon () {
+                this.error = ''
                 this.loading = true
                 this.loadingAction = 'remove'
-
-                try {
-                    const response = await couponApi.removeCoupon(this.$store.state.cart.cartid)
-                    this.$store.commit('cart/setCart', response.data)
-                    this.$store.commit('cart/setCoupon', '')
-                } catch (error) {
+                await this.$store.dispatch('cart/removeCoupon').catch(error => {
                     this.error = error.toString()
-                }
+                })
                 this.loading = false
                 this.loadingAction = ''
             }

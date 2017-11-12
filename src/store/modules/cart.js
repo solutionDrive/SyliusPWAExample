@@ -95,6 +95,15 @@ const actions = {
         } catch (error) {
             throw new Error(error.response.data.errors.coupon[0])
         }
+    },
+    async removeCoupon ({commit, state}) {
+        try {
+            const response = await couponApi.removeCoupon(state.cartid)
+            commit('setCart', response.data)
+            commit('setCoupon', '')
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
     }
 }
 
