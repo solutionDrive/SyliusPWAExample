@@ -23,6 +23,29 @@ const mutations = {
 }
 
 const actions = {
+    async initCart ({commit, state}) {
+        if (state.cartid === '') {
+            try {
+                commit('initCartId')
+                await cartApi.pickUpCart(state.cartid)
+            } catch (error) {
+                throw error
+            }
+        }
+    },
+    async addToCart ({commit, state}, payload) {
+        try {
+            const response = await cartApi.addToCart(
+                state.cartid,
+                payload.productCode,
+                parseInt(payload.quantity),
+                payload.variantCode
+            )
+            commit('setCart', response.data)
+        } catch (error) {
+            throw error
+        }
+    },
     async getCart ({commit, state}) {
         try {
             const response = await cartApi.getCart(state.cartid)

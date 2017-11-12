@@ -11,7 +11,6 @@
 
 <script>
     import {mapState} from 'vuex'
-    import {cartApi} from '@/api'
 
     export default {
         name: 'detail-add-to-cart',
@@ -39,21 +38,17 @@
                     return
                 }
                 this.loading = true
-                if (this.cartid === '') {
-                    this.$store.commit('cart/initCartId')
-                    await cartApi.pickUpCart(this.cartid)
-                }
-
-                await this.updateAfterAddToCart()
-                this.loading = false
-            },
-            async updateAfterAddToCart () {
-                try {
-                    const cart = await cartApi.addToCart(this.cartid, this.product.code, parseInt(this.quantity), this.variantCode)
-                    this.$store.commit('cart/setCart', cart.data)
-                } catch (error) {
+                await this.$store.dispatch('cart/initCart').catch(error => {
                     this.error = error.toString()
-                }
+                })
+                await this.$store.dispatch('cart/addToCart', {
+                    productCode: this.product.code,
+                    quantity: this.quantity,
+                    variantCode: this.variantCode
+                }).catch(error => {
+                    this.error = error.toString()
+                })
+                this.loading = false
             }
         }
     }
