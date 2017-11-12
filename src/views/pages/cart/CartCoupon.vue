@@ -7,10 +7,14 @@
             </div>
             <div class="control">
                 <a class="button is-primary" @click="addCoupon()">Apply coupon</a>
-                <a class="button is-danger" @click="removeCoupon()" v-if="coupon">Remove coupon</a>
-                <span class="tag is-success" v-if="coupon">{{coupon}}</span>
+            </div>
+            <div class="control">
+                <a class="button is-danger" @click="removeCoupon()" v-if="coupon">Remove</a>
             </div>
             <div v-if="loading"><clip-loader></clip-loader></div>
+        </div>
+        <div v-if="coupon">
+            applied coupon: <span class="tag is-success">{{coupon}}</span>
         </div>
         <div v-if="error" class="notification is-danger">{{ error }}</div>
     </div>
