@@ -19,6 +19,11 @@ const mutations = {
     },
     setCoupon (state, coupon) {
         state.coupon = coupon
+    },
+    resetCart (state) {
+        state.cartid = ''
+        state.coupon = ''
+        state.cart = {}
     }
 }
 
@@ -70,6 +75,14 @@ const actions = {
             }
             const response = await cartApi.getCart(state.cartid)
             commit('setCart', response.data)
+        } catch (error) {
+            throw error
+        }
+    },
+    async clearCart ({commit, state}) {
+        try {
+            await cartApi.clearCart(state.cartid)
+            commit('resetCart')
         } catch (error) {
             throw error
         }

@@ -130,6 +130,9 @@ export const cartApi = {
     },
     removeCartItem (cartid, itemid) {
         return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid)
+    },
+    clearCart (cartid) {
+        return axios.delete(appConfig.apiUrl + '/carts/' + cartid)
     }
 }
 

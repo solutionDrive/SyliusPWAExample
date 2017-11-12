@@ -7,6 +7,7 @@
         </div>
         <div>
             <button class="button is-warning is-medium" @click="updateCart()">Update cart</button>
+            <button class="button is-danger is-medium is-pulled-right" @click="clearCart()">Clear cart</button>
         </div>
     </div>
 </template>
@@ -31,6 +32,14 @@
             async updateCart () {
                 this.loading = true
                 await this.$store.dispatch('cart/updateCart').catch(error => {
+                    this.error = error.toString()
+                })
+                this.loading = false
+            },
+            async clearCart () {
+                // @todo overlay, are you sure?
+                this.loading = true
+                await this.$store.dispatch('cart/clearCart').catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
