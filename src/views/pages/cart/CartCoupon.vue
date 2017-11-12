@@ -6,12 +6,16 @@
                        v-model="couponCode">
             </div>
             <div class="control">
-                <a class="button is-primary" @click="addCoupon()">Apply coupon</a>
+                <a class="button is-primary" @click="addCoupon()"
+                   :class="{'is-loading': loading && loadingAction === 'apply'}">
+                    Apply coupon
+                </a>
             </div>
             <div class="control">
-                <a class="button is-danger" @click="removeCoupon()" v-if="coupon">Remove</a>
+                <a class="button is-danger" @click="removeCoupon()" v-if="coupon"
+                   :class="{'is-loading': loading && loadingAction === 'remove'}">
+                    Remove</a>
             </div>
-            <div v-if="loading"><clip-loader></clip-loader></div>
         </div>
         <div v-if="coupon">
             applied coupon: <span class="tag is-success">{{coupon}}</span>
@@ -28,6 +32,7 @@
         data () {
             return {
                 loading: false,
+                loadingAction: '',
                 error: '',
                 couponCode: '' // @todo: do we still need coupon Code?
             }
@@ -45,17 +50,21 @@
                 }
 
                 this.loading = true
+                this.loadingAction = 'apply'
                 try {
                     const response = await couponApi.addCoupon(this.$store.state.cart.cartid, this.couponCode)
                     this.$store.commit('cart/setCart', response.data)
                     this.$store.commit('cart/setCoupon', this.couponCode)
                 } catch (error) {
+                    // @todo: get the error response object message
                     this.error = error.toString()
                 }
                 this.loading = false
+                this.loadingAction = ''
             },
             async removeCoupon () {
                 this.loading = true
+                this.loadingAction = 'remove'
 
                 try {
                     const response = await couponApi.removeCoupon(this.$store.state.cart.cartid)
@@ -65,6 +74,7 @@
                     this.error = error.toString()
                 }
                 this.loading = false
+                this.loadingAction = ''
             }
         }
     }

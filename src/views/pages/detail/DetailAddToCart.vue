@@ -1,11 +1,12 @@
 <template>
     <div>
         <div class="control">
-            <button @click="addToCart()" class="button is-link is-medium">add to cart</button>
+            <button @click="addToCart()" class="button is-link is-medium" :class="{'is-loading': loading}">
+                add to cart
+            </button>
         </div>
 
         <div v-if="error" class="notification is-danger">{{ error }}</div>
-        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
     </div>
 </template>
 

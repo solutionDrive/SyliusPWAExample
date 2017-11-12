@@ -1,13 +1,18 @@
 <template>
     <div class="box" v-if="!isEmpty(cart)">
         <cart-items :cart = cart></cart-items>
-        <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div class="content">
             <cart-coupon></cart-coupon>
         </div>
         <div>
-            <button class="button is-warning is-medium" @click="updateCart()">Update cart</button>
-            <button class="button is-danger is-medium is-pulled-right" @click="clearCart()">Clear cart</button>
+            <button @click="updateCart()" class="button is-warning is-medium"
+                    :class="{'is-loading': loading && loadingAction === 'update'}">
+                Update cart
+            </button>
+            <button @click="clearCart()" class="button is-danger is-medium is-pulled-right"
+                    :class="{'is-loading': loading && loadingAction === 'delete'}">
+                Clear cart
+            </button>
         </div>
     </div>
 </template>
@@ -22,6 +27,7 @@
         data () {
             return {
                 loading: false,
+                loadingAction: '',
                 error: ''
             }
         },
@@ -31,18 +37,22 @@
         methods: {
             async updateCart () {
                 this.loading = true
+                this.loadingAction = 'update'
                 await this.$store.dispatch('cart/updateCart').catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
+                this.loadingAction = ''
             },
             async clearCart () {
                 // @todo overlay, are you sure?
                 this.loading = true
+                this.loadingAction = 'delete'
                 await this.$store.dispatch('cart/clearCart').catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
+                this.loadingAction = ''
             },
             isEmpty
         },
