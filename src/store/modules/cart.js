@@ -1,5 +1,5 @@
 import uuidRandom from 'uuid-random'
-import {cartApi} from '@/api'
+import {cartApi, couponApi} from '@/api'
 
 const state = {
     cartid: '',
@@ -85,6 +85,15 @@ const actions = {
             commit('resetCart')
         } catch (error) {
             throw error
+        }
+    },
+    async addCoupon ({commit, state}, couponCode) {
+        try {
+            const response = await couponApi.addCoupon(state.cartid, couponCode)
+            commit('setCart', response.data)
+            commit('setCoupon', couponCode)
+        } catch (error) {
+            throw new Error(error.response.data.errors.coupon[0])
         }
     }
 }

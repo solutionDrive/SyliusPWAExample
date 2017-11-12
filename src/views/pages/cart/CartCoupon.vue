@@ -52,15 +52,9 @@
                 this.error = ''
                 this.loading = true
                 this.loadingAction = 'apply'
-                try {
-                    const response = await couponApi.addCoupon(this.$store.state.cart.cartid, this.couponCode).catch(error => {
-                        throw new Error(error.response.data.errors.coupon[0])
-                    })
-                    this.$store.commit('cart/setCart', response.data)
-                    this.$store.commit('cart/setCoupon', this.couponCode)
-                } catch (error) {
+                await this.$store.dispatch('cart/addCoupon', this.couponCode).catch(error => {
                     this.error = error.toString()
-                }
+                })
                 this.loading = false
                 this.loadingAction = ''
             },
