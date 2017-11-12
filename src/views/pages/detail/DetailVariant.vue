@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="columns">
+        <div class="columns is-mobile">
             <div class="column is-one-third">
                 <h3 class="title">{{price}}</h3>
             </div>
