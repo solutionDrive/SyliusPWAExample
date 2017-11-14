@@ -145,6 +145,17 @@ export const couponApi = {
     }
 }
 
+export const authApi = {
+    login (data) {
+        const payload = {
+            _username: data.email,
+            _password: data.password
+        }
+
+        return axios.post(appConfig.apiUrl + '/login_check', payload)
+    }
+}
+
 /**
  * query object to query string
  *
