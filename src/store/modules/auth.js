@@ -14,7 +14,6 @@ const actions = {
     async login ({commit}, formData) {
         try {
             const response = await authApi.login(formData)
-            console.log(response.data.token)
             commit('setToken', response.data.token)
         } catch (error) {
             throw new Error(error.response.data.message)
