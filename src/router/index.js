@@ -7,6 +7,7 @@ import Detail from '@/views/pages/detail/Detail'
 import ReviewIndex from '@/views/pages/detail/review/Review'
 import ReviewCreate from '@/views/pages/detail/review/ReviewCreate'
 import Login from '@/views/pages/auth/Login'
+import Dashboard from '@/views/pages/dashboard/Dashboard'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: Login
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            component: Dashboard
         }
     ]
 })
