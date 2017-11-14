@@ -18,12 +18,12 @@
 
         <div class="navbar-menu" id="navMenu" :class="{'is-active': menuDisplay}">
             <div class="navbar-end">
-                <a class="navbar-item" href="https://bulma.io/">
-                    Home
-                </a>
-                <a class="navbar-item" href="https://bulma.io/">
-                    About
-                </a>
+                <router-link :to="{name: 'login'}" class="navbar-item">
+                    login
+                </router-link>
+                <router-link :to="{name: 'register'}" class="navbar-item">
+                    register
+                </router-link>
             </div>
         </div>
     </nav>
@@ -40,7 +40,13 @@
                 menuDisplay: false
             }
         },
+        watch: {
+            '$route': 'hideMenu'
+        },
         methods: {
+            hideMenu () {
+                this.menuDisplay = false
+            },
             toggleMenu () {
                 this.menuDisplay = !this.menuDisplay
             }
