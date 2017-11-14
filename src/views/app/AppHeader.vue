@@ -1,34 +1,6 @@
 <template>
     <header>
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <router-link to="/" class="navbar-item">
-                    <strong>{{ appName }}</strong>
-                </router-link>
-
-                <button class="button navbar-burger" data-target="navMenu"
-                        :class="{'is-active': menuDisplay}"
-                        @click="toggleMenu()"
-
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="navbar-menu" id="navMenu" :class="{'is-active': menuDisplay}">
-                <div class="navbar-end">
-                    <a class="navbar-item" href="https://bulma.io/">
-                        Home
-                    </a>
-                    <a class="navbar-item" href="https://bulma.io/">
-                        About
-                    </a>
-                </div>
-            </div>
-        </nav>
-
+        <nav-bar></nav-bar>
         <div class="section header-navi">
             <div class="container">
                 <div class="columns is-mobile">
@@ -52,26 +24,18 @@
     import Navigation from '@/views/components/Navigation'
     import MiniCart from '@/views/components/MiniCart'
     import Breadcrumb from '@/views/components/Breadcrumb'
-    import appConfig from '@/config'
+    import NavBar from '@/views/components/NavBar'
 
     export default {
         name: 'app-header',
-        data () {
-            return {
-                appName: appConfig.appName,
-                menuDisplay: false
-            }
-        },
         methods: {
             showBreadCrumb () {
                 const whitelist = ['list', 'detail']
                 return whitelist.includes(this.$route.name)
-            },
-            toggleMenu () {
-                this.menuDisplay = !this.menuDisplay
             }
         },
         components: {
+            NavBar,
             Navigation,
             MiniCart,
             Breadcrumb
