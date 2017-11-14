@@ -26,7 +26,7 @@
                     logout
                 </router-link>
             </div>
-            <div v-else>
+            <div class="navbar-end" v-else>
                 <router-link :to="{name: 'login'}" class="navbar-item">
                     login
                 </router-link>
