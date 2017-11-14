@@ -16,8 +16,17 @@
             </button>
         </div>
 
+
         <div class="navbar-menu" id="navMenu" :class="{'is-active': menuDisplay}">
-            <div class="navbar-end">
+            <div class="navbar-end" v-if="token">
+                <div class="navbar-item">
+                    Hello Username
+                </div>
+                <router-link :to="{name: 'logout'}" class="navbar-item">
+                    logout
+                </router-link>
+            </div>
+            <div v-else>
                 <router-link :to="{name: 'login'}" class="navbar-item">
                     login
                 </router-link>
@@ -31,6 +40,7 @@
 
 <script>
     import appConfig from '@/config'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'nav-bar',
@@ -39,6 +49,11 @@
                 appName: appConfig.appName,
                 menuDisplay: false
             }
+        },
+        computed: {
+            ...mapState({
+                token: state => state.auth.token
+            })
         },
         watch: {
             '$route': 'hideMenu'
