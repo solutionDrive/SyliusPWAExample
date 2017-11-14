@@ -1,6 +1,9 @@
 import {authApi} from '@/api'
 
 const state = {
+    // @todo get user after get the token
+    // @todo: token expire?
+    // @todo: refresh token?
     token: ''
 }
 
