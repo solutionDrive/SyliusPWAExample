@@ -5,6 +5,27 @@
                 <router-link to="/" class="navbar-item">
                     <strong>{{ appName }}</strong>
                 </router-link>
+
+                <button class="button navbar-burger" data-target="navMenu"
+                        :class="{'is-active': menuDisplay}"
+                        @click="toggleMenu()"
+
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div class="navbar-menu" id="navMenu" :class="{'is-active': menuDisplay}">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="https://bulma.io/">
+                        Home
+                    </a>
+                    <a class="navbar-item" href="https://bulma.io/">
+                        About
+                    </a>
+                </div>
             </div>
         </nav>
 
@@ -37,13 +58,17 @@
         name: 'app-header',
         data () {
             return {
-                appName: appConfig.appName
+                appName: appConfig.appName,
+                menuDisplay: false
             }
         },
         methods: {
             showBreadCrumb () {
                 const whitelist = ['list', 'detail']
                 return whitelist.includes(this.$route.name)
+            },
+            toggleMenu () {
+                this.menuDisplay = !this.menuDisplay
             }
         },
         components: {
