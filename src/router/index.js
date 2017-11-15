@@ -11,6 +11,8 @@ import Logout from '@/views/pages/auth/Logout'
 import Register from '@/views/pages/auth/Register'
 import Dashboard from '@/views/pages/dashboard/Dashboard'
 
+import store from '@/store'
+
 Vue.use(Router)
 
 export default new Router({
@@ -63,7 +65,15 @@ export default new Router({
         {
             path: '/dashboard',
             name: 'dashboard',
-            component: Dashboard
+            component: Dashboard,
+            beforeEnter: (to, from, next) => {
+                next(store.state.auth.token ? true : {
+                    path: '/login',
+                    query: {
+                        redirect: to.login
+                    }
+                })
+            }
         }
     ]
 })
