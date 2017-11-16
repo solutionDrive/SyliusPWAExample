@@ -4,20 +4,33 @@ const state = {
     // @todo get user after get the token
     // @todo: token expire?
     // @todo: refresh token?
-    token: ''
+    token: '',
+    me: {}
 }
 
 const mutations = {
     setToken (state, token) {
         state.token = token
+    },
+    setMe (state, me) {
+        state.me = me
     }
 }
 
 const actions = {
-    async login ({commit}, formData) {
+    async login ({commit, dispatch}, formData) {
         try {
-            const response = await authApi.login(formData)
-            commit('setToken', response.data.token)
+            const tokenResponse = await authApi.login(formData)
+            commit('setToken', tokenResponse.data.token)
+            await dispatch('addme')
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    },
+    async addme ({commit, state}) {
+        try {
+            const response = await authApi.getMe(state.token)
+            commit('setMe', response.data)
         } catch (error) {
             throw new Error(error.response.data.message)
         }

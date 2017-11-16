@@ -153,6 +153,11 @@ export const authApi = {
         }
 
         return axios.post(appConfig.apiUrl + '/login_check', payload)
+    },
+    getMe (token) {
+        return axios.get(appConfig.apiUrl + '/me', {
+            headers: { Authorization: 'Bearer ' + token }
+        })
     }
 }
 
