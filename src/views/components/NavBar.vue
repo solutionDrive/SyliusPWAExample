@@ -16,12 +16,12 @@
             </button>
         </div>
 
-
         <div class="navbar-menu" id="navMenu" :class="{'is-active': menuDisplay}">
             <div class="navbar-end" v-if="token">
-                <div class="navbar-item">
-                    Hello Username
-                </div>
+                <div class="navbar-item">Hello {{ me.firstName}}</div>
+                <router-link :to="{name: 'dashboard'}" class="navbar-item">
+                    My Account
+                </router-link>
                 <router-link :to="{name: 'logout'}" class="navbar-item">
                     logout
                 </router-link>
@@ -52,7 +52,8 @@
         },
         computed: {
             ...mapState({
-                token: state => state.auth.token
+                token: state => state.auth.token,
+                me: state => state.auth.me
             })
         },
         watch: {
