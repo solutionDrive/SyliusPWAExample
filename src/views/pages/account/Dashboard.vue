@@ -20,6 +20,8 @@
                     <h3 class="title is-3">My account</h3>
                     <p class="subtitle">Manage your personal information and preferences</p>
                     <hr class="is-paddingless">
+                    <p>{{me.firstName + ' ' + me.lastName }}</p>
+                    <p>{{me.email}}</p>
                 </div>
             </div>
         </div>
@@ -27,6 +29,8 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         name: 'dashboard',
         data () {
@@ -39,6 +43,12 @@
                     {name: 'Order history', link: 'orderHistory'}
                 ]
             }
+        },
+        computed: {
+            ...mapState({
+                token: state => state.auth.token,
+                me: state => state.auth.me
+            })
         }
     }
 </script>
