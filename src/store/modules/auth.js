@@ -34,6 +34,13 @@ const actions = {
         } catch (error) {
             throw new Error(error.response.data.message)
         }
+    },
+    // @todo: need a better way of doing this
+    logout ({commit}, router) {
+        commit('setToken', '')
+        commit('setMe', {})
+
+        router.go(router.currentRoute)
     }
 }
 
