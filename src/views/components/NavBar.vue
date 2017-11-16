@@ -22,9 +22,7 @@
                 <router-link :to="{name: 'dashboard'}" class="navbar-item">
                     My Account
                 </router-link>
-                <router-link :to="{name: 'logout'}" class="navbar-item">
-                    logout
-                </router-link>
+                <a class="navbar-item" @click="logout">logout</a>
             </div>
             <div class="navbar-end" v-else>
                 <router-link :to="{name: 'login'}" class="navbar-item">
@@ -65,6 +63,9 @@
             },
             toggleMenu () {
                 this.menuDisplay = !this.menuDisplay
+            },
+            logout () {
+                this.$store.dispatch('auth/logout', this.$router)
             }
         }
     }
