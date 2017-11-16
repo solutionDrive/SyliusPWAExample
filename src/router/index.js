@@ -9,7 +9,7 @@ import ReviewCreate from '@/views/pages/detail/review/ReviewCreate'
 import Login from '@/views/pages/auth/Login'
 import Logout from '@/views/pages/auth/Logout'
 import Register from '@/views/pages/auth/Register'
-import Dashboard from '@/views/pages/dashboard/Dashboard'
+import Dashboard from '@/views/pages/account/Dashboard'
 
 import store from '@/store'
 
@@ -63,7 +63,7 @@ export default new Router({
             component: Register
         },
         {
-            path: '/dashboard',
+            path: '/account/dashboard',
             name: 'dashboard',
             component: Dashboard,
             beforeEnter: (to, from, next) => {
