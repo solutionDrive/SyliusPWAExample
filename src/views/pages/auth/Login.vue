@@ -80,6 +80,7 @@
                 })
                 this.loading = false
                 this.loadingAction = ''
+                this.$router.push({name: 'dashboard'})
             }
         }
     }
