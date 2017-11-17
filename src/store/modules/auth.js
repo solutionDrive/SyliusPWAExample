@@ -27,6 +27,20 @@ const actions = {
             throw new Error(error.response.data.message)
         }
     },
+    async register ({commit, dispatch}, formData) {
+        try {
+            const response = await authApi.register(formData)
+            if (response.status === 204) {
+                const loginData = {
+                    email: formData.email,
+                    password: formData.password
+                }
+                await dispatch('login', loginData)
+            }
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    },
     async addme ({commit, state}) {
         try {
             const response = await authApi.getMe(state.token)
