@@ -7,7 +7,6 @@ import Detail from '@/views/pages/detail/Detail'
 import ReviewIndex from '@/views/pages/detail/review/Review'
 import ReviewCreate from '@/views/pages/detail/review/ReviewCreate'
 import Login from '@/views/pages/auth/Login'
-import Logout from '@/views/pages/auth/Logout'
 import Register from '@/views/pages/auth/Register'
 import Dashboard from '@/views/pages/account/Dashboard'
 
@@ -51,11 +50,6 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: Login
-        },
-        {
-            path: '/logout',
-            name: 'logout',
-            component: Logout
         },
         {
             path: '/register',
