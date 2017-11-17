@@ -20,8 +20,8 @@ const mutations = {
 const actions = {
     async login ({commit, dispatch}, formData) {
         try {
-            const tokenResponse = await authApi.login(formData)
-            commit('setToken', tokenResponse.data.token)
+            const response = await authApi.login(formData)
+            commit('setToken', response.data.token)
             await dispatch('addme')
         } catch (error) {
             throw new Error(error.response.data.message)
