@@ -17,7 +17,7 @@
                 <div class="field">
                     <label class="label">Email</label>
                     <div class="control">
-                        <input class="input" type="text" value="bulma" v-model="email">
+                        <input class="input" type="text" v-model="email">
                     </div>
                     <!--@todo: validation-->
                 </div>
