@@ -19,7 +19,9 @@
                     <div class="column is-one-third">
                         <cart-summary :cart = cart></cart-summary>
                         <div>
-                            <button class="button is-link is-large is-fullwidth">Checkout</button>
+                            <router-link :to="{name: 'address'}" class="button is-link is-large is-fullwidth">
+                                Checkout
+                            </router-link>
                             @todo: checkout API not working
                         </div>
                     </div>
