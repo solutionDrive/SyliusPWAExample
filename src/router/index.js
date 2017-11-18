@@ -73,7 +73,15 @@ export default new Router({
         {
             path: '/checkout/address',
             name: 'address',
-            component: Address
+            component: Address,
+            beforeEnter: (to, from, next) => {
+                next(store.state.cart.cartid ? true : {
+                    path: '/',
+                    query: {
+                        redirect: to.home
+                    }
+                })
+            }
         }
     ]
 })
