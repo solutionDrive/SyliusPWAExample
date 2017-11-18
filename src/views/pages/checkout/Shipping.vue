@@ -6,9 +6,13 @@
                 <hr>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
-                <div v-if="shipments && shipments !== {}" v-for="shipping in shipments" class="box">
-                    <p>{{shipping.name}}</p>
-                    <p>{{shipping.description}}</p>
+                <div v-if="shipments && shipments !== {}" v-for="shipment in shipments" class="box">
+                    <label class="radio">
+                        <input type="radio" name="shippng">
+                        <strong>{{shipment.name}}</strong>
+                    </label>
+                    <p>{{shipment.description}}</p>
+                    <p class="tag is-light is-medium">{{formarttedTotal(shipment.price)}}</p>
                 </div>
 
                 <div class="field is-grouped">
@@ -53,6 +57,9 @@
                     this.error = error.toString()
                 })
                 this.loading = false
+            },
+            formarttedTotal (price) {
+                return this.$syliuspwa.price.formattedPrice(price.currency, price.current)
             }
         }
     }
