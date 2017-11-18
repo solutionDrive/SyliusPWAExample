@@ -172,6 +172,23 @@ export const authApi = {
     }
 }
 
+export const checkoutApi = {
+    putAddress (cartid, formData) {
+        const payload = {
+            shippingAddress: {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                countryCode: formData.countryCode,
+                street: formData.street,
+                city: formData.city,
+                postcode: formData.postcode,
+                provinceName: formData.provinceName
+            }
+        }
+        return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/address', payload)
+    }
+}
+
 /**
  * query object to query string
  *
