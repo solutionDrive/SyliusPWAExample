@@ -64,9 +64,7 @@
                             back to store
                         </router-link>
 
-                        <button @click="register" class="button is-link"
-                                :class="{'is-loading': loading && loadingAction === 'register'}"
-                        >
+                        <button @click="updateAddress" class="button is-link" :class="{'is-loading': loading}">
                             next
                         </button>
                     </div>
@@ -77,6 +75,8 @@
 </template>
 
 <script>
+    import {some, isEmpty} from 'lodash'
+
     export default {
         name: 'checkout-address',
         data () {
@@ -90,8 +90,41 @@
                 provinceName: '',
                 validationError: '',
                 error: '',
-                loading: false,
-                loadingAction: ''
+                loading: false
+            }
+        },
+        methods: {
+            async updateAddress () {
+                this.validationError = ''
+                this.error = ''
+                this.loading = true
+                const addressData = {
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    countryCode: this.countryCode,
+                    street: this.street,
+                    city: this.city,
+                    postcode: this.postcode,
+                    provinceName: this.provinceName
+                }
+                const cartid = this.$store.state.cart.cartid
+                const payload = {
+                    addressData,
+                    cartid
+                }
+                // @todo: validation
+                if (some(addressData, isEmpty)) {
+                    this.validationError = 'there is empty field'
+                    this.loading = false
+                    return
+                }
+                await this.$store.dispatch('checkout/updateAddress', payload).catch(error => {
+                    this.error = error.toString()
+                })
+                this.loading = false
+                if (this.error === '') {
+                    // this.$router.push({name: 'shipping'})
+                }
             }
         }
     }

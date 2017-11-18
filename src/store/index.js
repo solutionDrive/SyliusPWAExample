@@ -5,6 +5,7 @@ import cart from './modules/cart'
 import list from './modules/list'
 import detail from './modules/detail'
 import auth from './modules/auth'
+import checkout from './modules/checkout'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
         cart,
         list,
         detail,
-        auth
+        auth,
+        checkout
     },
     plugins: [createPersistedState({
         key: 'sylius-pwa-vuex'
