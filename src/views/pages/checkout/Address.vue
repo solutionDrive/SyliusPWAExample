@@ -99,7 +99,7 @@
                 return {
                     firstName: '',
                     lastName: '',
-                    countryCode: '',
+                    countryCode: 'US',
                     street: '',
                     city: '',
                     postcode: '',
