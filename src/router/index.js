@@ -9,6 +9,7 @@ import ReviewCreate from '@/views/pages/detail/review/ReviewCreate'
 import Login from '@/views/pages/auth/Login'
 import Register from '@/views/pages/auth/Register'
 import Dashboard from '@/views/pages/account/Dashboard'
+import Address from '@/views/pages/checkout/Address'
 
 import store from '@/store'
 
@@ -68,6 +69,11 @@ export default new Router({
                     }
                 })
             }
+        },
+        {
+            path: '/checkout/address',
+            name: 'address',
+            component: Address
         }
     ]
 })
