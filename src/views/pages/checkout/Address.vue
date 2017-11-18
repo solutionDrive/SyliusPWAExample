@@ -11,49 +11,49 @@
                 <div class="field">
                     <label class="label">First name</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="firstName">
+                        <input class="input" type="text" v-model="shippingAddress.firstName">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Last name</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="lastName">
+                        <input class="input" type="text" v-model="shippingAddress.lastName">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Street Address</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="street">
+                        <input class="input" type="text" v-model="shippingAddress.street">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">City</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="city">
+                        <input class="input" type="text" v-model="shippingAddress.city">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Postcode</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="postcode">
+                        <input class="input" type="text" v-model="shippingAddress.postcode">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Province name</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="provinceName">
+                        <input class="input" type="text" v-model="shippingAddress.provinceName">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Country Code</label>
                     <div class="control">
-                        <input class="input" type="text" v-model="countryCode">
+                        <input class="input" type="text" v-model="shippingAddress.countryCode">
                     </div>
                     <p><small>@todo: need api to get all available Country Code</small></p>
                 </div>
@@ -76,21 +76,35 @@
 
 <script>
     import {some, isEmpty} from 'lodash'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'checkout-address',
         data () {
             return {
-                firstName: '',
-                lastName: '',
-                countryCode: '',
-                street: '',
-                city: '',
-                postcode: '',
-                provinceName: '',
                 validationError: '',
                 error: '',
                 loading: false
+            }
+        },
+        computed: {
+            ...mapState({
+                cart: state => state.cart.cart
+            }),
+            shippingAddress () {
+                if (this.cart.shippingAddress && !isEmpty(this.cart.shippingAddress)) {
+                    return this.cart.shippingAddress
+                }
+
+                return {
+                    firstName: '',
+                    lastName: '',
+                    countryCode: '',
+                    street: '',
+                    city: '',
+                    postcode: '',
+                    provinceName: ''
+                }
             }
         },
         methods: {
@@ -98,22 +112,12 @@
                 this.validationError = ''
                 this.error = ''
                 this.loading = true
-                const addressData = {
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    countryCode: this.countryCode,
-                    street: this.street,
-                    city: this.city,
-                    postcode: this.postcode,
-                    provinceName: this.provinceName
-                }
-                const cartid = this.$store.state.cart.cartid
                 const payload = {
-                    addressData,
-                    cartid
+                    addressData: this.shippingAddress,
+                    cartid: this.cart.tokenValue
                 }
                 // @todo: validation
-                if (some(addressData, isEmpty)) {
+                if (some(payload.addressData, isEmpty)) {
                     this.validationError = 'there is empty field'
                     this.loading = false
                     return
