@@ -186,6 +186,9 @@ export const checkoutApi = {
             }
         }
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/address', payload)
+    },
+    getShipments (cartid) {
+        return axios.get(appConfig.apiUrl + '/checkout/' + cartid + '/shipping')
     }
 }
 
