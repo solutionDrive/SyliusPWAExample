@@ -127,7 +127,7 @@
                 })
                 this.loading = false
                 if (this.error === '') {
-                    // this.$router.push({name: 'shipping'})
+                    this.$router.push({name: 'shipping'})
                 }
             }
         }
