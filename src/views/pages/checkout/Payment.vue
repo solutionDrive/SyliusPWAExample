@@ -43,11 +43,13 @@
         },
         computed: {
             ...mapState({
+                cart: state => state.cart.cart,
                 payments: state => state.checkout.payments
             })
         },
         created () {
             this.getPayments()
+            this.paymentSelected = this.cart.payments[0].method.code
         },
         methods: {
             async getPayments () {
@@ -59,8 +61,8 @@
             async updatePayment () {
                 this.loading = true
                 this.error = ''
-                const cartid = this.$store.state.cart.cartid
-                const code = this.payment
+                const cartid = this.cart.tokenValue
+                const code = this.paymentSelected
                 await this.$store.dispatch('checkout/updatePayment', {cartid, code}).catch(error => {
                     this.error = error.toString()
                 })
