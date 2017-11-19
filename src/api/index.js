@@ -196,6 +196,16 @@ export const checkoutApi = {
         }
 
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/shipping/0', payload)
+    },
+    getPayments (cartid) {
+        return axios.get(appConfig.apiUrl + '/checkout/' + cartid + '/payment')
+    },
+    putPayment (cartid, paymentCode) {
+        const payload = {
+            method: paymentCode
+        }
+
+        return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/payment/0', payload)
     }
 }
 

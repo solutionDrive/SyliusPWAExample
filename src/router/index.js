@@ -11,6 +11,7 @@ import Register from '@/views/pages/auth/Register'
 import Dashboard from '@/views/pages/account/Dashboard'
 import Address from '@/views/pages/checkout/Address'
 import Shipping from '@/views/pages/checkout/Shipping'
+import Payment from '@/views/pages/checkout/Payment'
 
 import store from '@/store'
 
@@ -88,6 +89,19 @@ export default new Router({
             path: '/checkout/shipping',
             name: 'shipping',
             component: Shipping,
+            beforeEnter: (to, from, next) => {
+                next(store.state.cart.cartid ? true : {
+                    path: '/',
+                    query: {
+                        redirect: to.home
+                    }
+                })
+            }
+        },
+        {
+            path: '/checkout/payment',
+            name: 'payment',
+            component: Payment,
             beforeEnter: (to, from, next) => {
                 next(store.state.cart.cartid ? true : {
                     path: '/',
