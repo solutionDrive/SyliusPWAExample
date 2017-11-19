@@ -2,7 +2,8 @@ import {checkoutApi} from '@/api'
 
 const state = {
     address: {},
-    shipments: {}
+    shipments: {},
+    shipment: {}
 }
 
 const mutations = {
@@ -11,6 +12,9 @@ const mutations = {
     },
     setShipments (state, shipments) {
         state.shipments = shipments
+    },
+    setShipment (state, shipment) {
+        state.shipment = shipment
     }
 }
 
@@ -27,6 +31,14 @@ const actions = {
         try {
             const response = await checkoutApi.getShipments(cartid)
             commit('setShipments', response.data.shipments[0].methods)
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    },
+    async updateShipment ({commit}, payload) {
+        try {
+            const response = await checkoutApi.putShipment(payload.cartid, payload.code)
+            commit('setShipment', response.data)
         } catch (error) {
             throw new Error(error.response.data.message)
         }

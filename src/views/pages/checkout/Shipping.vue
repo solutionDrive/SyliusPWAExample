@@ -21,7 +21,7 @@
                             Change address
                         </router-link>
 
-                        <button class="button is-link" :class="{'is-loading': loading}">
+                        <button @click="updateShipment" class="button is-link" :class="{'is-loading': loading}">
                             next
                         </button>
                     </div>
@@ -53,8 +53,16 @@
         methods: {
             async getShipments () {
                 this.error = ''
-                this.loading = true
                 await this.$store.dispatch('checkout/getShipments', this.$store.state.cart.cartid).catch(error => {
+                    this.error = error.toString()
+                })
+            },
+            async updateShipment () {
+                this.loading = true
+                this.error = ''
+                const cartid = this.$store.state.cart.cartid
+                const code = this.shipping
+                await this.$store.dispatch('checkout/updateShipment', {cartid, code}).catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
