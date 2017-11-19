@@ -30,10 +30,9 @@ npm test
 ## Configuration
 
 configuration for [Sylius DemoShop Api](http://demo.sylius.org)
- 
-```
-# src/config/index.js
 
+``` javascript
+# src/config/index.js
 export default {
     appName: 'Sylius PWA',
     imageUrl: 'http://demo.sylius.org/media/image/',
@@ -42,3 +41,6 @@ export default {
     apiLocale: 'en_GB'
 }
 ```
+
+if you want to test cutting edge features,
+checkout [this repo](https://github.com/sdleiw/SyliusApi) and serve locally
