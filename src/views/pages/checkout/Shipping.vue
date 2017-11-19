@@ -66,6 +66,9 @@
                     this.error = error.toString()
                 })
                 this.loading = false
+                if (this.error === '') {
+                    this.$router.push({name: 'payment'})
+                }
             },
             formarttedTotal (price) {
                 return this.$syliuspwa.price.formattedPrice(price.currency, price.current)
