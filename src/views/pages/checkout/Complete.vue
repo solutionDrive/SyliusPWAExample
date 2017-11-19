@@ -28,9 +28,20 @@
                     <h3 class="subtitle">{{checkout.shipments[0].method.name}}</h3>
                 </div>
 
+                <div class="box" v-if="auth.token === ''">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" v-model="email">
+                        </div>
+                        <p><small>@todo: customer checkout is currently not supported, just for testing</small></p>
+                    </div>
+                    <textarea v-model="note" class="textarea" placeholder="Extra notes"></textarea>
+                </div>
+
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link is-medium" :class="{'is-loading': loading}">
+                        <button @click="completeCheckout" class="button is-link is-medium" :class="{'is-loading': loading}">
                             Place order
                         </button>
                     </div>
@@ -50,7 +61,9 @@
         data () {
             return {
                 loading: false,
-                error: ''
+                error: '',
+                email: '',
+                note: ''
             }
         },
         created () {
@@ -59,7 +72,8 @@
         computed: {
             ...mapState({
                 checkout: state => state.checkout.checkout,
-                cart: state => state.cart.cart
+                cart: state => state.cart.cart,
+                auth: state => state.auth
             }),
             shippingAddress () {
                 return this.checkout.shippingAddress
@@ -71,6 +85,22 @@
                 await this.$store.dispatch('checkout/getCheckout', this.$store.state.cart.cartid).catch(error => {
                     this.error = error.toString()
                 })
+            },
+            async completeCheckout () {
+                this.error = ''
+                this.loading = true
+                const order = {
+                    cartid: this.$store.state.cart.cartid,
+                    payload: {
+                        email: this.email,
+                        note: this.note
+                    }
+                }
+                await this.$store.dispatch('checkout/completeCheckout', order).catch(error => {
+                    this.error = error.toString()
+                })
+                // @todo: clear checkout, cart, redirect
+                this.loading = false
             }
         },
         components: {

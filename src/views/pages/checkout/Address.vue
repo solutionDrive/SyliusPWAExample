@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="container">
-            <section class="box">
+            <section class="box" v-if="shippingAddress">
                 <h3 class="is-3"><strong>Shipping Address</strong></h3>
                 <hr class="is-marginless">
 
@@ -92,6 +92,7 @@
                 cart: state => state.cart.cart
             }),
             shippingAddress () {
+                // @todo: need email field for customer, not supported by the api
                 if (this.cart.shippingAddress && !isEmpty(this.cart.shippingAddress)) {
                     return this.cart.shippingAddress
                 }
