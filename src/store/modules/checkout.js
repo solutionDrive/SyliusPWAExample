@@ -3,9 +3,9 @@ import {checkoutApi} from '@/api'
 const state = {
     address: {},
     shipments: {},
-    shipment: {},
+    shipmentSelected: '', // @todo: currently not use
     payments: {},
-    payment: {}
+    paymentSelected: '' // @todo: currently not user
 }
 
 const mutations = {
@@ -15,14 +15,14 @@ const mutations = {
     setShipments (state, shipments) {
         state.shipments = shipments
     },
-    setShipment (state, shipment) {
-        state.shipment = shipment
+    setShipmentSelected (state, shipmentSelected) {
+        state.shipmentSelected = shipmentSelected
     },
     setPayments (state, payments) {
         state.payments = payments
     },
-    setPayment (state, payment) {
-        state.payment = payment
+    setPaymentSelected (state, paymentSelected) {
+        state.paymentSelected = paymentSelected
     }
 }
 
@@ -45,8 +45,8 @@ const actions = {
     },
     async updateShipment ({commit}, payload) {
         try {
-            const response = await checkoutApi.putShipment(payload.cartid, payload.code)
-            commit('setShipment', response.data)
+            await checkoutApi.putShipment(payload.cartid, payload.code)
+            commit('setShipment', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
@@ -61,8 +61,8 @@ const actions = {
     },
     async updatePayment ({commit}, payload) {
         try {
-            const response = await checkoutApi.putPayment(payload.cartid, payload.code)
-            commit('setPayment', response.data)
+            await checkoutApi.putPayment(payload.cartid, payload.code)
+            commit('setPayment', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
