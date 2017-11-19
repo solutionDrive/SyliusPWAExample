@@ -34,9 +34,13 @@
                 </td>
                 <td>{{$syliuspwa.price.formattedVariantPrice(item.product.variants[0].price)}}</td>
                 <td>
-                    <input class="input" type="number" v-model="item.quantity">
+                    <input v-if="editable" class="input" type="number" v-model="item.quantity">
+                    <span v-else>{{item.quantity}}</span>
                 </td>
-                <td><a class="delete" @click="removeItem(item.id)"></a></td>
+                <td>
+                    <a v-if="editable" class="delete" @click="removeItem(item.id)"></a>
+                    <span v-else>&nbsp;</span>
+                </td>
                 <td>{{$syliuspwa.price.formattedPrice(cart.currency, item.total)}}</td>
             </tr>
             </tbody>
@@ -63,7 +67,8 @@
                                 <div class="level-right">
                                     <span class="level-item">
                                         <label>Qty: </label>
-                                        <input class="input item-quantity" type="number" v-model="item.quantity">
+                                        <input v-if="editable" class="input item-quantity" type="number" v-model="item.quantity">
+                                        <span v-else>{{item.quantity}}</span>
                                     </span>
                                     <span class="level-item">
                                         total: {{$syliuspwa.price.formattedPrice(cart.currency, item.total)}}
@@ -72,7 +77,7 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="media-right">
+                    <div class="media-right" v-if="editable">
                         <a class="delete" @click="removeItem(item.id)"></a>
                     </div>
                 </div>
@@ -96,9 +101,13 @@
                 imageUrl: appConfig.imageUrl
             }
         },
-        props: [
-            'cart'
-        ],
+        props: {
+            cart: Object,
+            editable: {
+                type: Boolean,
+                default: true
+            }
+        },
         methods: {
             async removeItem (itemId) {
                 this.loading = true
