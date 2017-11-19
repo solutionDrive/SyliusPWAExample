@@ -74,8 +74,14 @@ const actions = {
     async getCheckout ({commit}, cartid) {
         try {
             const response = await checkoutApi.getCheckout(cartid)
-            console.log(response.data)
             commit('setCheckout', response.data)
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    },
+    async completeCheckout ({commit}, order) {
+        try {
+            await checkoutApi.completeCheckout(order.cartid, order.payload)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
