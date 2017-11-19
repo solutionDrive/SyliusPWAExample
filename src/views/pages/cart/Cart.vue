@@ -22,7 +22,6 @@
                             <router-link :to="{name: 'address'}" class="button is-link is-large is-fullwidth">
                                 Checkout
                             </router-link>
-                            @todo: checkout API not working
                         </div>
                     </div>
                 </div>
