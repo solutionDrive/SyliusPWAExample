@@ -46,7 +46,7 @@ const actions = {
     async updateShipment ({commit}, payload) {
         try {
             await checkoutApi.putShipment(payload.cartid, payload.code)
-            commit('setShipment', payload.code)
+            commit('setShipmentSelected', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
@@ -62,7 +62,7 @@ const actions = {
     async updatePayment ({commit}, payload) {
         try {
             await checkoutApi.putPayment(payload.cartid, payload.code)
-            commit('setPayment', payload.code)
+            commit('setPaymentSelected', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
