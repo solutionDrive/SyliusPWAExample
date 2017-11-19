@@ -18,9 +18,19 @@
                 
                 <cart-items :cart = cart :editable = false></cart-items>
 
+                <cart-summary :cart = cart></cart-summary>
+
+                <div class="box">
+                    <h3 class="subtitle">{{checkout.payments[0].method.name}}</h3>
+                </div>
+
+                <div class="box">
+                    <h3 class="subtitle">{{checkout.shipments[0].method.name}}</h3>
+                </div>
+
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link" :class="{'is-loading': loading}">
+                        <button class="button is-link is-medium" :class="{'is-loading': loading}">
                             Place order
                         </button>
                     </div>
@@ -33,6 +43,7 @@
 <script>
     import {mapState} from 'vuex'
     import CartItems from '@/views/pages/cart/CartItems'
+    import CartSummary from '@/views/pages/cart/CartSummary'
 
     export default {
         name: 'checkout-complete',
@@ -63,7 +74,8 @@
             }
         },
         components: {
-            CartItems
+            CartItems,
+            CartSummary
         }
     }
 </script>
