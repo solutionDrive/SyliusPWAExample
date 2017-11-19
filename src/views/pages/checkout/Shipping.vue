@@ -8,7 +8,7 @@
 
                 <div v-if="shipments && shipments !== {}" v-for="shipment in shipments" class="box">
                     <label class="radio">
-                        <input type="radio" name="shippng" v-model="shipping" :value="shipment.code">
+                        <input type="radio" name="shippng" v-model="shipmentSelected" :value="shipment.code">
                         <strong>{{shipment.name}}</strong>
                     </label>
                     <p>{{shipment.description}}</p>
@@ -39,16 +39,18 @@
             return {
                 error: '',
                 loading: false,
-                shipping: ''
+                shipmentSelected: ''
             }
         },
         computed: {
             ...mapState({
+                cart: state => state.cart.cart,
                 shipments: state => state.checkout.shipments
             })
         },
         created () {
             this.getShipments()
+            this.shipmentSelected = this.cart.shipments[0].method.code
         },
         methods: {
             async getShipments () {
@@ -61,7 +63,7 @@
                 this.loading = true
                 this.error = ''
                 const cartid = this.$store.state.cart.cartid
-                const code = this.shipping
+                const code = this.shipmentSelected
                 await this.$store.dispatch('checkout/updateShipment', {cartid, code}).catch(error => {
                     this.error = error.toString()
                 })
