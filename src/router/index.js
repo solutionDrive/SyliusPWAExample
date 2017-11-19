@@ -13,6 +13,7 @@ import Address from '@/views/pages/checkout/Address'
 import Shipping from '@/views/pages/checkout/Shipping'
 import Payment from '@/views/pages/checkout/Payment'
 import Complete from '@/views/pages/checkout/Complete'
+import Thankyou from '@/views/pages/checkout/Thankyou'
 
 import store from '@/store'
 
@@ -124,6 +125,11 @@ export default new Router({
                     }
                 })
             }
+        },
+        {
+            path: '/thankyou',
+            name: 'thankyou',
+            component: Thankyou
         }
     ]
 })
