@@ -67,6 +67,9 @@
                     this.error = error.toString()
                 })
                 this.loading = false
+                if (this.error === '') {
+                    this.$router.push({name: 'complete'})
+                }
             }
         }
     }
