@@ -8,7 +8,7 @@
 
                 <div v-if="shipments && shipments !== {}" v-for="shipment in shipments" class="box">
                     <label class="radio">
-                        <input type="radio" name="shippng">
+                        <input type="radio" name="shippng" v-model="shipping" :value="shipment.code">
                         <strong>{{shipment.name}}</strong>
                     </label>
                     <p>{{shipment.description}}</p>
@@ -38,7 +38,8 @@
         data () {
             return {
                 error: '',
-                loading: false
+                loading: false,
+                shipping: ''
             }
         },
         computed: {
