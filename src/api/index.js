@@ -206,6 +206,9 @@ export const checkoutApi = {
         }
 
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/payment/0', payload)
+    },
+    getCheckout (cartid) {
+        return axios.get(appConfig.apiUrl + '/checkout/' + cartid)
     }
 }
 
