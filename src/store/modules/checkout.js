@@ -27,6 +27,14 @@ const mutations = {
     },
     setCheckout (state, checkout) {
         state.checkout = checkout
+    },
+    resetCheckout (state) {
+        state.address = {}
+        state.shipments = {}
+        state.shipmentSelected = {}
+        state.payments = {}
+        state.paymentSelected = {}
+        state.checkout = {}
     }
 }
 
