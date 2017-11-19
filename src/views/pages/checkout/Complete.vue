@@ -99,8 +99,13 @@
                 await this.$store.dispatch('checkout/completeCheckout', order).catch(error => {
                     this.error = error.toString()
                 })
-                // @todo: clear checkout, cart, redirect
+
+                this.$store.commit('cart/resetCart')
+                this.$store.commit('cart/resetCheckout')
                 this.loading = false
+                if (this.error === '') {
+                    this.$router.push({name: 'thankyou'})
+                }
             }
         },
         components: {
