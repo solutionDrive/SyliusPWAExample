@@ -190,9 +190,9 @@ export const checkoutApi = {
     getShipments (cartid) {
         return axios.get(appConfig.apiUrl + '/checkout/' + cartid + '/shipping')
     },
-    putShipment (cartid, paymentCode) {
+    putShipment (cartid, shipmentCode) {
         const payload = {
-            method: paymentCode
+            method: shipmentCode
         }
 
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/shipping/0', payload)
