@@ -5,7 +5,8 @@ const state = {
     shipments: {},
     shipmentSelected: '', // @todo: currently not use
     payments: {},
-    paymentSelected: '' // @todo: currently not user
+    paymentSelected: '', // @todo: currently not user
+    checkout: {}
 }
 
 const mutations = {
@@ -23,6 +24,9 @@ const mutations = {
     },
     setPaymentSelected (state, paymentSelected) {
         state.paymentSelected = paymentSelected
+    },
+    setCheckout (state, checkout) {
+        state.checkout = checkout
     }
 }
 
@@ -63,6 +67,15 @@ const actions = {
         try {
             await checkoutApi.putPayment(payload.cartid, payload.code)
             commit('setPaymentSelected', payload.code)
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    },
+    async getCheckout ({commit}, cartid) {
+        try {
+            const response = await checkoutApi.getCheckout(cartid)
+            console.log(response.data)
+            commit('setCheckout', response.data)
         } catch (error) {
             throw new Error(error.response.data.message)
         }
