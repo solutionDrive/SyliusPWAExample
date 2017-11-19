@@ -62,7 +62,7 @@
             async updateShipment () {
                 this.loading = true
                 this.error = ''
-                const cartid = this.$store.state.cart.cartid
+                const cartid = this.cart.tokenValue
                 const code = this.shipmentSelected
                 await this.$store.dispatch('checkout/updateShipment', {cartid, code}).catch(error => {
                     this.error = error.toString()
