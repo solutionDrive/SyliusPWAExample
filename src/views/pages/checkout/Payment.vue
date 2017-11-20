@@ -25,12 +25,15 @@
                     </div>
                 </div>
             </section>
+            <checkout-cart></checkout-cart>
         </div>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
+    import CheckoutCart from '@/views/pages/checkout/components/Cart'
+
     export default {
         name: 'checkout-payment',
         data () {
@@ -70,6 +73,9 @@
                     this.$router.push({name: 'complete'})
                 }
             }
+        },
+        components: {
+            CheckoutCart
         }
     }
 </script>
