@@ -8,24 +8,24 @@
             <tbody>
                 <tr>
                     <td>items:</td>
-                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.items)}}</td>
+                    <td class="has-text-right">{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.items)}}</td>
                 </tr>
                 <tr>
                     <td>tax:</td>
-                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.taxes)}}</td>
+                    <td class="has-text-right">{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.taxes)}}</td>
                 </tr>
                 <tr>
                     <td>shipping:</td>
-                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.shipping)}}</td>
+                    <td class="has-text-right">{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.shipping)}}</td>
                 </tr>
                 <tr>
                     <td>discount:</td>
-                    <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.promotion)}}</td>
+                    <td class="has-text-right">{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.promotion)}}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <th><h3 class="subtitle">Order total:</h3></th>
-                <td>{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.total)}}</td>
+                <td class="has-text-right">{{$syliuspwa.price.formattedPrice(cart.currency, cart.totals.total)}}</td>
             </tfoot>
         </table>
     </div>
