@@ -70,6 +70,7 @@
                     </div>
                 </div>
             </section>
+            <checkout-cart></checkout-cart>
         </div>
     </div>
 </template>
@@ -77,6 +78,7 @@
 <script>
     import {some, isEmpty} from 'lodash'
     import {mapState} from 'vuex'
+    import CheckoutCart from '@/views/pages/checkout/components/Cart'
 
     export default {
         name: 'checkout-address',
@@ -131,6 +133,9 @@
                     this.$router.push({name: 'shipping'})
                 }
             }
+        },
+        components: {
+            CheckoutCart
         }
     }
 </script>
