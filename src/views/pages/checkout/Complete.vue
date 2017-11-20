@@ -2,9 +2,7 @@
     <div class="section">
         <div class="container">
             <section class="box">
-                <header class="content">
-                    <h3 class="title is-3">Summary of your order</h3>
-                </header>
+                <h1 class="subtitle">Summary of your order</h1>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
                 <div class="box">
                     <div><strong>Shipping Address</strong></div>

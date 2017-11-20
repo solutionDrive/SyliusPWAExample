@@ -1,9 +1,8 @@
 <template>
     <div class="section">
         <div class="container">
-            <section class="box">
-                <h3 class="is-3"><strong>Payment</strong></h3>
-                <hr>
+            <section class="box">   
+                <h1 class="subtitle">Payment</h1>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
                 <div v-if="payments && payments !== {}" v-for="payment in payments" class="box">

@@ -2,8 +2,8 @@
     <div class="section">
         <div class="container">
             <section class="box">
-                <h3 class="is-3"><strong>Shipment</strong></h3>
-                <hr>
+                <h1 class="subtitle">Shipment</h1>
+
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
 
                 <div v-if="shipments && shipments !== {}" v-for="shipment in shipments" class="box">

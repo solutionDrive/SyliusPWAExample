@@ -2,8 +2,7 @@
     <div class="section">
         <div class="container">
             <section class="box" v-if="shippingAddress">
-                <h3 class="is-3"><strong>Shipping Address</strong></h3>
-                <hr class="is-marginless">
+                <h1 class="subtitle">Shipping Address</h1>
 
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
                 <div v-if="validationError" class="notification is-danger">{{ validationError }}</div>
