@@ -9,7 +9,7 @@
                             <img src="../../assets/shop_logo.png" alt="sylius" class="shop-logo">
                         </router-link>
                     </div>
-                    <div class="column">
+                    <div class="column" v-if="isCheckoutPage() === false">
                         <mini-cart></mini-cart>
                     </div>
                 </div>
