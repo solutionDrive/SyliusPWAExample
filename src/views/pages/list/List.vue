@@ -8,7 +8,7 @@
             <hr>
             <div class="columns">
                 <div class="column is-one-quarter">
-                    <list-sidebar :category = category.self></list-sidebar>
+                    <list-sidebar :category="category.self"></list-sidebar>
                 </div>
                 <div class="column">
                     <div class="columns is-multiline">
@@ -17,10 +17,10 @@
                             <!--<p class="is-pulled-right">@todo: need SyliusElasticSearchBundle for filter/search api</p>-->
                         <!--</div>-->
                         <div class="column is-one-third" v-for="product in products">
-                            <product-card :product = product></product-card>
+                            <product-card :product = "product"></product-card>
                         </div>
                         <div class="column is-full">
-                            <list-pagination :list = list></list-pagination>
+                            <list-pagination :list = "list"></list-pagination>
                         </div>
                     </div>
                 </div>

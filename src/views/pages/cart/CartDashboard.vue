@@ -1,6 +1,6 @@
 <template>
     <div class="box" v-if="!isEmpty(cart)">
-        <cart-items :cart = cart></cart-items>
+        <cart-items :cart = "cart"></cart-items>
         <div class="content">
             <cart-coupon></cart-coupon>
         </div>

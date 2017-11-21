@@ -5,18 +5,18 @@
             <div v-if="error" class="notification is-danger">{{ error }}</div>
             <div class="columns">
                 <div class="column is-half-tablet">
-                    <detail-product-image :product=product></detail-product-image>
+                    <detail-product-image :product="product"></detail-product-image>
                 </div>
                 <div class="column is-half-tablet">
                     <h1 class="title">{{product.name}}</h1>
                     <hr>
-                    <detail-rating-link :rating = product.averageRating
-                                        :count = review.length>
+                    <detail-rating-link :rating = "product.averageRating"
+                                        :count = "review.length">
                     </detail-rating-link>
-                    <detail-variant :product = product></detail-variant>
+                    <detail-variant :product = "product"></detail-variant>
                 </div>
             </div>
-            <detail-product-tab :review = review></detail-product-tab>
+            <detail-product-tab :review = "review"></detail-product-tab>
             <hr>
             <div class="has-text-centered content">
                 <strong>Latest Products</strong>

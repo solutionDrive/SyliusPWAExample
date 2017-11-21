@@ -6,11 +6,11 @@
 
             <div class="columns is-multiline" v-if="!isEmpty(product)">
                 <div class="column is-one-quarter">
-                    <product-card :product = product></product-card>
+                    <product-card :product = "product"></product-card>
                 </div>
                 <div class="column is-three-quarters">
                     <div class="box">
-                        <review-create-form :productName = product.name></review-create-form>
+                        <review-create-form :productName = "product.name"></review-create-form>
                     </div>
                 </div>
             </div>

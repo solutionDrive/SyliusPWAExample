@@ -30,9 +30,9 @@
                 </div>
             </div>
             <detail-add-to-cart
-                :product = product
-                :variantCode = variantCode
-                :quantity = quantity
+                :product = "product"
+                :variantCode = "variantCode"
+                :quantity = "quantity"
             >
             </detail-add-to-cart>
         </div>

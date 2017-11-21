@@ -14,10 +14,10 @@
 
                 <div class="columns">
                     <div class="column is-two-thirds">
-                        <cart-dashboard :cart = cart></cart-dashboard>
+                        <cart-dashboard :cart = "cart"></cart-dashboard>
                     </div>
                     <div class="column is-one-third">
-                        <cart-summary :cart = cart></cart-summary>
+                        <cart-summary :cart = "cart"></cart-summary>
                         <div>
                             <router-link :to="{name: 'address'}" class="button is-link is-large is-fullwidth">
                                 Checkout

@@ -16,9 +16,9 @@
                     <div>{{ shippingAddress.countryCode }}</div>
                 </div>
                 
-                <cart-items :cart = cart :editable = false></cart-items>
+                <cart-items :cart = "cart" :editable = "false"></cart-items>
 
-                <cart-summary :cart = cart></cart-summary>
+                <cart-summary :cart = "cart"></cart-summary>
 
                 <div class="box">
                     <h3 class="subtitle">{{checkout.payments[0].method.name}}</h3>

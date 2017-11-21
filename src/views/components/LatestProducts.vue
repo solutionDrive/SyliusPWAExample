@@ -3,7 +3,7 @@
         <div class="section" v-if="loading"><clip-loader></clip-loader></div>
         <div class="columns is-multiline" v-if="!isEmpty(products)">
             <div class="column is-one-quarter" v-for="product in products.slice(0,4)">
-                <product-card :product = product></product-card>
+                <product-card :product="product"></product-card>
             </div>
         </div>
     </div>

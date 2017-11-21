@@ -6,7 +6,7 @@
 
             <div class="columns is-multiline" v-if="!loading">
                 <div class="column is-one-quarter" v-if="!isEmpty(product)">
-                    <product-card :product = product></product-card>
+                    <product-card :product = "product"></product-card>
                 </div>
                 <div class="column is-three-quarters">
                     <div v-if="isEmpty(review.items)" class="box">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div v-for="item in review.items" class="box" v-else>
-                        <review-media-box :item = item></review-media-box>
+                        <review-media-box :item = "item"></review-media-box>
                     </div>
                     <div>
                         <router-link :to="{name: 'review-create', params: {slug: this.$route.params.slug}}"
