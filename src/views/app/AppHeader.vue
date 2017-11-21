@@ -13,7 +13,7 @@
                         <mini-cart></mini-cart>
                     </div>
                 </div>
-                <navigation></navigation>
+                <navigation v-if="hideNavigation() === false"></navigation>
                 <breadcrumb v-if="showBreadCrumb()"></breadcrumb>
             </div>
         </div>
@@ -32,6 +32,10 @@
             showBreadCrumb () {
                 const whitelist = ['list', 'detail']
                 return whitelist.includes(this.$route.name)
+            },
+            hideNavigation () {
+                const blacklist = ['address', 'shipping', 'payment']
+                return blacklist.includes(this.$route.name)
             }
         },
         components: {
