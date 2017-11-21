@@ -1,6 +1,8 @@
 <template>
     <div class="section">
         <div class="container">
+            <checkout-navigation></checkout-navigation>
+            <br>
             <section class="box">
                 <h1 class="subtitle">Summary of your order</h1>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
@@ -53,6 +55,7 @@
     import {mapState} from 'vuex'
     import CartItems from '@/views/pages/cart/CartItems'
     import CartSummary from '@/views/pages/cart/CartSummary'
+    import CheckoutNavigation from '@/views/pages/checkout/components/Navigation'
 
     export default {
         name: 'checkout-complete',
@@ -108,7 +111,8 @@
         },
         components: {
             CartItems,
-            CartSummary
+            CartSummary,
+            CheckoutNavigation
         }
     }
 </script>

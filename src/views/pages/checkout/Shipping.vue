@@ -1,6 +1,8 @@
 <template>
     <div class="section">
         <div class="container">
+            <checkout-navigation></checkout-navigation>
+            <br>
             <section class="box">
                 <h1 class="subtitle">Shipment</h1>
 
@@ -36,6 +38,7 @@
 <script>
     import {mapState} from 'vuex'
     import CheckoutCart from '@/views/pages/checkout/components/Cart'
+    import CheckoutNavigation from '@/views/pages/checkout/components/Navigation'
 
     export default {
         name: 'checkout-shipping',
@@ -81,7 +84,8 @@
             }
         },
         components: {
-            CheckoutCart
+            CheckoutCart,
+            CheckoutNavigation
         }
     }
 </script>

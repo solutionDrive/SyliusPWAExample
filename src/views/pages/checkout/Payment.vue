@@ -1,6 +1,8 @@
 <template>
     <div class="section">
         <div class="container">
+            <checkout-navigation></checkout-navigation>
+            <br>
             <section class="box">   
                 <h1 class="subtitle">Payment</h1>
                 <div v-if="error" class="notification is-danger">{{ error }}</div>
@@ -33,6 +35,7 @@
 <script>
     import {mapState} from 'vuex'
     import CheckoutCart from '@/views/pages/checkout/components/Cart'
+    import CheckoutNavigation from '@/views/pages/checkout/components/Navigation'
 
     export default {
         name: 'checkout-payment',
@@ -75,7 +78,8 @@
             }
         },
         components: {
-            CheckoutCart
+            CheckoutCart,
+            CheckoutNavigation
         }
     }
 </script>

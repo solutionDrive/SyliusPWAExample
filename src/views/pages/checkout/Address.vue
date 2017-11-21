@@ -1,5 +1,7 @@
 <template>
     <div class="section">
+        <checkout-navigation></checkout-navigation>
+        <br>
         <div class="container">
             <section class="box" v-if="shippingAddress">
                 <h1 class="subtitle">Shipping Address</h1>
@@ -78,6 +80,7 @@
     import {some, isEmpty} from 'lodash'
     import {mapState} from 'vuex'
     import CheckoutCart from '@/views/pages/checkout/components/Cart'
+    import CheckoutNavigation from '@/views/pages/checkout/components/Navigation'
 
     export default {
         name: 'checkout-address',
@@ -134,7 +137,8 @@
             }
         },
         components: {
-            CheckoutCart
+            CheckoutCart,
+            CheckoutNavigation
         }
     }
 </script>
