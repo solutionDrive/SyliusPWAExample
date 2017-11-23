@@ -32,7 +32,7 @@ const actions = {
         if (state.cartid === '') {
             try {
                 commit('initCartId')
-                await cartApi.pickUpCart(state.cartid)
+                await cartApi.pickUp(state.cartid)
             } catch (error) {
                 throw error
             }
@@ -40,7 +40,7 @@ const actions = {
     },
     async addToCart ({commit, state}, payload) {
         try {
-            const response = await cartApi.addToCart(
+            const response = await cartApi.addItem(
                 state.cartid,
                 payload.productCode,
                 parseInt(payload.quantity),
@@ -53,7 +53,7 @@ const actions = {
     },
     async getCart ({commit, state}) {
         try {
-            const response = await cartApi.getCart(state.cartid)
+            const response = await cartApi.get(state.cartid)
             commit('setCart', response.data)
         } catch (error) {
             throw error
@@ -61,7 +61,7 @@ const actions = {
     },
     async removeItem ({commit, state}, itemId) {
         try {
-            const response = await cartApi.removeCartItem(state.cartid, itemId)
+            const response = await cartApi.removeItem(state.cartid, itemId)
             commit('setCart', response.data)
         } catch (error) {
             throw error
@@ -71,9 +71,9 @@ const actions = {
         try {
             // @todo: need PUT updateCart API instead of item
             for (let item of state.cart.items) {
-                await cartApi.updateCartItem(state.cartid, item.id, parseInt(item.quantity))
+                await cartApi.updateItem(state.cartid, item.id, parseInt(item.quantity))
             }
-            const response = await cartApi.getCart(state.cartid)
+            const response = await cartApi.get(state.cartid)
             commit('setCart', response.data)
         } catch (error) {
             throw error
@@ -81,7 +81,7 @@ const actions = {
     },
     async clearCart ({commit, state}) {
         try {
-            await cartApi.clearCart(state.cartid)
+            await cartApi.clear(state.cartid)
             commit('resetCart')
         } catch (error) {
             throw error

@@ -100,7 +100,7 @@ export const reviewApi = {
 }
 
 export const cartApi = {
-    pickUpCart (cartid) {
+    pickUp (cartid) {
         const data = new FormData()
         data.append('channel', appConfig.apiChannel)
 
@@ -115,23 +115,23 @@ export const cartApi = {
      * @param variantCode
      * @returns {AxiosPromise}
      */
-    addToCart (cartid, productCode, quantity, variantCode) {
+    addItem (cartid, productCode, quantity, variantCode) {
         return axios.post(appConfig.apiUrl + '/carts/' + cartid + '/items', {
             productCode,
             quantity,
             variantCode
         })
     },
-    getCart (cartid) {
+    get (cartid) {
         return axios.get(appConfig.apiUrl + '/carts/' + cartid)
     },
-    updateCartItem (cartid, itemid, quantity) {
+    updateItem (cartid, itemid, quantity) {
         return axios.put(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid, {quantity})
     },
-    removeCartItem (cartid, itemid) {
+    removeItem (cartid, itemid) {
         return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/items/' + itemid)
     },
-    clearCart (cartid) {
+    clear (cartid) {
         return axios.delete(appConfig.apiUrl + '/carts/' + cartid)
     }
 }
