@@ -27,7 +27,7 @@ describe('api/category', () => {
         ]
         mock.onGet(appConfig.apiUrl + '/taxons/').reply(200, testCategories)
 
-        return categoryApi.getAllCategories()
+        return categoryApi.getAll()
             .then(response => {
                 expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testCategories)
@@ -39,7 +39,7 @@ describe('api/category', () => {
         const code = 'test1234'
         mock.onGet(appConfig.apiUrl + '/taxons/' + code + '?locale=' + appConfig.apiLocale).reply(200, testCategory)
 
-        return categoryApi.getCategoryByCode(code)
+        return categoryApi.getByCode(code)
             .then(response => {
                 expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testCategory)

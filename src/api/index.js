@@ -2,11 +2,11 @@ import axios from 'axios'
 import appConfig from '@/config'
 
 export const categoryApi = {
-    getAllCategories () {
+    getAll () {
         return axios.get(appConfig.apiUrl + '/taxons/')
     },
 
-    getCategoryByCode (code) {
+    getByCode (code) {
         return axios.get(appConfig.apiUrl + '/taxons/' + code + '?locale=' + appConfig.apiLocale)
     }
 }

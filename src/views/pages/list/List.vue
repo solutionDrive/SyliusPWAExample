@@ -77,7 +77,7 @@
                 this.$store.commit('list/resetProducts')
             },
             async fetchCategoryFromApi () {
-                const category = await categoryApi.getCategoryByCode(this.$route.params.code)
+                const category = await categoryApi.getByCode(this.$route.params.code)
                 return this.$store.commit('list/setCategory', category.data)
             },
             async fetchProductsFromApi () {

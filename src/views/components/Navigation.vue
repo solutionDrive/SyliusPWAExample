@@ -40,7 +40,7 @@
         },
         methods: {
             fetchDataFromApi () {
-                categoryApi.getAllCategories().then(response => {
+                categoryApi.getAll().then(response => {
                     this.taxons = response.data[0].children
                     this.taxons.forEach(taxon => {
                         taxon.hasChildren = !!(taxon.children && taxon.children.length)
