@@ -57,7 +57,7 @@
                 this.error = ''
                 this.loading = true
                 this.loadingAction = name
-                await this.$store.dispatch(type).catch(error => {
+                await this.$store.dispatch(type, this.couponCode).catch(error => {
                     this.error = error.toString()
                 })
                 this.loading = false
