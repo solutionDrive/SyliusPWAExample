@@ -63,7 +63,7 @@
             },
             async fetchProductReview () {
                 try {
-                    const review = await reviewApi.getReviewBySlug(this.$route.params.slug)
+                    const review = await reviewApi.getBySlug(this.$route.params.slug)
                     this.review = review.data
                 } catch (error) {
                     this.error = error.toString()

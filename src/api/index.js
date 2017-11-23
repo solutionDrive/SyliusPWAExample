@@ -74,7 +74,7 @@ export const reviewApi = {
      * @param slug
      * @returns {AxiosPromise}
      */
-    getReviewBySlug (slug) {
+    getBySlug (slug) {
         return axios.get(appConfig.apiUrl + '/product-reviews-by-slug/' + slug + '?channel=' + appConfig.apiChannel)
     },
 
@@ -86,7 +86,7 @@ export const reviewApi = {
      * @param email
      * @returns {AxiosPromise}
      */
-    addReviewForSlug (slug, title, rating, comment, email) {
+    addReviewBySlug (slug, title, rating, comment, email) {
         const data = {
             channelCode: appConfig.apiChannel,
             title,
