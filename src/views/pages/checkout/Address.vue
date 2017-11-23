@@ -97,6 +97,7 @@
             }),
             shippingAddress () {
                 // @todo: need email field for customer, not supported by the api
+                // @todo: user address book
                 if (this.cart.shippingAddress && !isEmpty(this.cart.shippingAddress)) {
                     return this.cart.shippingAddress
                 }
