@@ -36,7 +36,7 @@
                     </div>
                     <div v-else class="content">
                         <div v-for="item in review" class="content">
-                            <review-media-box :item = item></review-media-box>
+                            <review-media-box :item = "item"></review-media-box>
                         </div>
                     </div>
                     <div>
