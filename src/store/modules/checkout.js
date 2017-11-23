@@ -41,7 +41,7 @@ const mutations = {
 const actions = {
     async updateAddress ({commit}, payload) {
         try {
-            const response = await checkoutApi.putAddress(payload.cartid, payload.addressData)
+            const response = await checkoutApi.updateAddress(payload.cartid, payload.addressData)
             commit('setAddress', response.data)
         } catch (error) {
             throw new Error(error.response.data.message)
@@ -57,7 +57,7 @@ const actions = {
     },
     async updateShipment ({commit}, payload) {
         try {
-            await checkoutApi.putShipment(payload.cartid, payload.code)
+            await checkoutApi.updateShipment(payload.cartid, payload.code)
             commit('setShipmentSelected', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
@@ -73,7 +73,7 @@ const actions = {
     },
     async updatePayment ({commit}, payload) {
         try {
-            await checkoutApi.putPayment(payload.cartid, payload.code)
+            await checkoutApi.updatePayment(payload.cartid, payload.code)
             commit('setPaymentSelected', payload.code)
         } catch (error) {
             throw new Error(error.response.data.message)
@@ -81,7 +81,7 @@ const actions = {
     },
     async getCheckout ({commit}, cartid) {
         try {
-            const response = await checkoutApi.getCheckout(cartid)
+            const response = await checkoutApi.get(cartid)
             commit('setCheckout', response.data)
         } catch (error) {
             throw new Error(error.response.data.message)
@@ -89,7 +89,7 @@ const actions = {
     },
     async completeCheckout ({commit}, order) {
         try {
-            await checkoutApi.completeCheckout(order.cartid, order.payload)
+            await checkoutApi.complete(order.cartid, order.payload)
         } catch (error) {
             throw new Error(error.response.data.message)
         }

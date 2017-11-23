@@ -173,7 +173,7 @@ export const authApi = {
 }
 
 export const checkoutApi = {
-    putAddress (cartid, formData) {
+    updateAddress (cartid, formData) {
         const payload = {
             shippingAddress: {
                 firstName: formData.firstName,
@@ -190,7 +190,7 @@ export const checkoutApi = {
     getShipments (cartid) {
         return axios.get(appConfig.apiUrl + '/checkout/' + cartid + '/shipping')
     },
-    putShipment (cartid, shipmentCode) {
+    updateShipment (cartid, shipmentCode) {
         const payload = {
             method: shipmentCode
         }
@@ -200,17 +200,17 @@ export const checkoutApi = {
     getPayments (cartid) {
         return axios.get(appConfig.apiUrl + '/checkout/' + cartid + '/payment')
     },
-    putPayment (cartid, paymentCode) {
+    updatePayment (cartid, paymentCode) {
         const payload = {
             method: paymentCode
         }
 
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/payment/0', payload)
     },
-    getCheckout (cartid) {
+    get (cartid) {
         return axios.get(appConfig.apiUrl + '/checkout/' + cartid)
     },
-    completeCheckout (cartid, payload) {
+    complete (cartid, payload) {
         return axios.put(appConfig.apiUrl + '/checkout/' + cartid + '/complete', payload)
     }
 }
