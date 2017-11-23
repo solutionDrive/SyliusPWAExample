@@ -74,7 +74,7 @@
 
                 try {
                     this.loading = true
-                    await reviewApi.addReviewBySlug(
+                    await reviewApi.addBySlug(
                         this.$route.params.slug,
                         this.title,
                         this.rating,

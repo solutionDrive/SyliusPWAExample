@@ -86,7 +86,7 @@ export const reviewApi = {
      * @param email
      * @returns {AxiosPromise}
      */
-    addReviewBySlug (slug, title, rating, comment, email) {
+    addBySlug (slug, title, rating, comment, email) {
         const data = {
             channelCode: appConfig.apiChannel,
             title,
@@ -137,10 +137,10 @@ export const cartApi = {
 }
 
 export const couponApi = {
-    addCoupon (cartid, coupon) {
+    add (cartid, coupon) {
         return axios.put(appConfig.apiUrl + '/carts/' + cartid + '/coupon', {coupon})
     },
-    removeCoupon (cartid) {
+    remove (cartid) {
         return axios.delete(appConfig.apiUrl + '/carts/' + cartid + '/coupon')
     }
 }

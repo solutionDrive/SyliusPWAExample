@@ -89,7 +89,7 @@ const actions = {
     },
     async addCoupon ({commit, state}, couponCode) {
         try {
-            const response = await couponApi.addCoupon(state.cartid, couponCode)
+            const response = await couponApi.add(state.cartid, couponCode)
             commit('setCart', response.data)
             commit('setCoupon', couponCode)
         } catch (error) {
@@ -98,7 +98,7 @@ const actions = {
     },
     async removeCoupon ({commit, state}) {
         try {
-            const response = await couponApi.removeCoupon(state.cartid)
+            const response = await couponApi.remove(state.cartid)
             commit('setCart', response.data)
             commit('setCoupon', '')
         } catch (error) {
