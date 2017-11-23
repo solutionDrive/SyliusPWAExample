@@ -82,7 +82,7 @@
             },
             async fetchProductsFromApi () {
                 const route = this.$route
-                const list = await productApi.getProductList(route.params.code, route.query.page)
+                const list = await productApi.getList(route.params.code, route.query.page)
                 this.list = list.data
                 return this.$store.commit('list/setProducts', this.list.items)
             }

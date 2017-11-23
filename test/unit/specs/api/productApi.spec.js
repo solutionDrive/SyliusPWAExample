@@ -38,7 +38,7 @@ describe('api/product', () => {
         mock.onGet(appConfig.apiUrl + '/taxon-products/' + testCode + '?' + queryString)
             .reply(200, testProductList)
 
-        return productApi.getProductList(testCode, 2)
+        return productApi.getList(testCode, 2)
             .then(response => {
                 expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testProductList)
@@ -51,7 +51,7 @@ describe('api/product', () => {
         mock.onGet(appConfig.apiUrl + '/products/' + code + '?channel=' + appConfig.apiChannel)
             .reply(200, testProduct)
 
-        return productApi.getProduct(code)
+        return productApi.getByCode(code)
             .then(response => {
                 expect(response.status).to.equal(200)
                 expect(response.data).to.deep.equal(testProduct)

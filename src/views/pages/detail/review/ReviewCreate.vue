@@ -41,7 +41,7 @@
         methods: {
             async fetchProduct () {
                 try {
-                    const product = await productApi.getProductBySlug(this.$route.params.slug)
+                    const product = await productApi.getBySlug(this.$route.params.slug)
                     this.product = product.data
                 } catch (error) {
                     this.error = error.toString()

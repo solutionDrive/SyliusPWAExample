@@ -64,7 +64,7 @@
                 this.loading = true
                 try {
                     const [product, review] = await Promise.all([
-                        productApi.getProductBySlug(this.$route.params.slug),
+                        productApi.getBySlug(this.$route.params.slug),
                         reviewApi.getReviewBySlug(this.$route.params.slug)
                     ])
                     this.$store.commit('detail/setProduct', product.data)

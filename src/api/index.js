@@ -19,7 +19,7 @@ export const productApi = {
      * @param page
      * @returns {AxiosPromise}
      */
-    getProductList (code, page = 1) {
+    getList (code, page = 1) {
         const query = {
             'channel': appConfig.apiChannel,
             'limit': appConfig.apiLimit,
@@ -35,7 +35,7 @@ export const productApi = {
      * @param code product code
      * @returns {AxiosPromise}
      */
-    getProduct (code) {
+    getByCode (code) {
         const query = {
             'channel': appConfig.apiChannel,
             'locale': appConfig.apiLocale
@@ -48,7 +48,7 @@ export const productApi = {
      * @param slug
      * @returns {AxiosPromise}
      */
-    getProductBySlug (slug) {
+    getBySlug (slug) {
         const query = {
             'channel': appConfig.apiChannel,
             'locale': appConfig.apiLocale
@@ -60,7 +60,7 @@ export const productApi = {
      *
      * @returns {*|AxiosPromise}
      */
-    getLatestProducts () {
+    getLatest () {
         const query = {
             'channel': appConfig.apiChannel
         }
