@@ -27,7 +27,7 @@
             })
         },
         created () {
-            this.fetchDataFromApi()
+            this.getLatestProducts()
         },
         methods: {
             /**
@@ -36,7 +36,7 @@
              *
              * @todo: set cache ttl
              */
-            async fetchDataFromApi () {
+            async getLatestProducts () {
                 if (this.products && !isEmpty(this.products)) {
                     return
                 }
