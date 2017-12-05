@@ -18,7 +18,8 @@
         name: 'latest-products',
         data () {
             return {
-                loading: false
+                loading: false,
+                error: ''
             }
         },
         computed: {
@@ -42,6 +43,7 @@
                 }
 
                 this.loading = true
+                this.error = ''
                 await this.$store.dispatch('shop/getLatestProducts').catch(error => {
                     this.error = error.toString()
                 })
