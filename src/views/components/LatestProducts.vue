@@ -11,7 +11,7 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import {productApi} from '@/api'
+    import {productApi} from 'sylius-axios-api'
     import ProductCard from '@/views/components/ProductCard'
 
     export default {

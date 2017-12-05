@@ -21,6 +21,7 @@
     "email-validator": "^1.1.1",
     "lodash": "^4.17.4",
     "sw-precache-webpack-plugin": "^0.11.4",
+    "sylius-axios-api": "^0.2.2",
     "uuid-random": "^1.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
