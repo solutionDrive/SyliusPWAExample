@@ -11,31 +11,34 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import {productApi} from 'sylius-axios-api'
     import ProductCard from '@/views/components/ProductCard'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'latest-products',
         data () {
             return {
-                loading: false,
-                products: []
+                loading: false
             }
+        },
+        computed: {
+            ...mapState({
+                products: state => state.shop.latestProducts
+            })
         },
         created () {
             this.fetchDataFromApi()
         },
         methods: {
             async fetchDataFromApi () {
-                this.loading = true
-
-                try {
-                    const products = await productApi.getLatest()
-                    this.products = products.data.items
-                } catch (error) {
-                    this.error = error.toString()
+                // if cached, no need to call the api
+                if (this.products && !isEmpty(this.products)) {
+                    return
                 }
-
+                this.loading = true
+                await this.$store.dispatch('shop/getLatestProducts').catch(error => {
+                    this.error = error.toString()
+                })
                 this.loading = false
             },
             isEmpty
