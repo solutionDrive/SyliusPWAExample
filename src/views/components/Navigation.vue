@@ -62,6 +62,7 @@
             initTaxons () {
                 this.taxons.forEach(taxon => {
                     taxon.hasChildren = !!(taxon.children && taxon.children.length)
+                    // @todo isActive only works after reload the page
                     taxon.isActive = taxon.code === this.$route.params.code
                 })
             }
