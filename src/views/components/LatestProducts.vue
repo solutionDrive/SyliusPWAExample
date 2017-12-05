@@ -30,11 +30,17 @@
             this.fetchDataFromApi()
         },
         methods: {
+            /**
+             * dispatch getLatestProducts call
+             * if cached, no need to call the api
+             *
+             * @todo: set cache ttl
+             */
             async fetchDataFromApi () {
-                // if cached, no need to call the api
                 if (this.products && !isEmpty(this.products)) {
                     return
                 }
+
                 this.loading = true
                 await this.$store.dispatch('shop/getLatestProducts').catch(error => {
                     this.error = error.toString()
