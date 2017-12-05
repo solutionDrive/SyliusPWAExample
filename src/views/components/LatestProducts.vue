@@ -11,8 +11,8 @@
 
 <script>
     import {isEmpty} from 'lodash'
-    import ProductCard from '@/views/components/ProductCard'
     import {mapState} from 'vuex'
+    import ProductCard from '@/views/components/ProductCard'
 
     export default {
         name: 'latest-products',
