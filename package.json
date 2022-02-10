@@ -79,7 +79,7 @@
     "karma-webpack": "^4.0.2",
     "mocha": "^6.2.0",
     "nightwatch": "^1.1.13",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "opn": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "ora": "^3.4.0",
